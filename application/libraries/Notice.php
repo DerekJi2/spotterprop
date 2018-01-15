@@ -24,7 +24,10 @@ class Notice
     
     public function push_notice($e)
     {
-        $this->notice[]    =    $e;
+        if (gettype($e) == "array")
+            $this->notice[] = $e;
+        else
+            $this->notice = $e;
     }
     
     /**
