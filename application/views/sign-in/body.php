@@ -11,7 +11,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <div class="login-box">
         <div class="register-logo">
             <?php
-            $logo   =   '<a href="' . base_url() . '"><b>' . __('Tendoo CMS') . '</b> ' . get('str_core') . '</a>';
+            $logo   =   '<a href="' . base_url() . '"><b>' . __('Syrian Properties') . '</b> ' . get('str_core') . '</a>';
             echo $this->events->apply_filters( 'signin_logo', $logo );
             ?>
         </div>

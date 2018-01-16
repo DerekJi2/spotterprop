@@ -60,7 +60,7 @@ class Nexo_Restful extends CI_Model
         $this->db->insert('restapi_keys', array(
             'key'            =>    $randomString,
             'scopes'        =>    'core',
-            'app_name'        =>    __('Tendoo CMS'),
+            'app_name'        =>    __('Syrian Properties'),
             'user'            =>    0,
             'date_created'    =>    date_now(),
             'expire'        =>    0

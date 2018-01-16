@@ -1,6 +1,6 @@
 <?php
 /**
- * Database configuration for Tendoo CMS
+ * Database configuration for Syrian Properties
  * -------------------------------------
  * Tendoo Version : 3
 **/

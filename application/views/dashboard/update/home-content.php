@@ -4,7 +4,7 @@ $result    =    $this->Update_Model->check();
 if ($result) {
     // var_dump( $result );
     ?>
-   <h4><?php echo sprintf(__('Tendoo CMS : %s is available'), riake('title', $result[0]));
+   <h4><?php echo sprintf(__('Syrian Properties : %s is available'), riake('title', $result[0]));
     ?></h4>
    <p><?php echo riake('content', $result[0]);
     ?></p>

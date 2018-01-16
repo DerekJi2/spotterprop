@@ -9,7 +9,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <body class="login-page">
 <div class="login-box">
-    <div class="register-logo"> <a href="<?php echo base_url();?>"><b><?php echo __('Tendoo CMS');?></b> <?php echo get('str_core');?></a> </div>
+    <div class="register-logo"> <a href="<?php echo base_url();?>"><b><?php echo __('Syrian Properties');?></b> <?php echo get('str_core');?></a> </div>
     <div class="login-box-body">
         <form method="post">
         <h3 class="page-header text-center"><?php echo __('Permission request');?></h3>

@@ -16,8 +16,8 @@ $config[ 'oauth_scopes' ]    =    array(
         'group'            =>        array( 'user', 'master', 'administrator' )
     ),
     'core'                =>        array(
-        'label'            =>        __('Control Tendoo CMS'),
-        'description'    =>        __('Give full access to modules, users and options on Tendoo CMS.'),
+        'label'            =>        __('Control Syrian Properties'),
+        'description'    =>        __('Give full access to modules, users and options on Syrian Properties.'),
         'app'            =>        'system',
         'icon'            =>        'fa fa-user-secret',
         'color'            =>        'bg-red',

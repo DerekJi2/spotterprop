@@ -1,4 +1,4 @@
-# You're using Tendoo CMS 3.1.4
+# You're using Syrian Properties 3.1.4
 
 ##Functions
 	- helpers

@@ -17,7 +17,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><?php echo $this->events->apply_filters('dashboard_logo_small', $this->config->item('tendoo_logo_min'));?></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><?php echo xss_clean($this->events->apply_filters('dashboard_logo_long', $this->config->item('tendoo_logo_long')));?></span> </a>
+            <span class="logo-lg"><?php echo xss_clean($this->events->apply_filters('dashboard_logo_long', $this->config->item('syprop_logo_long')));?></span> </a>
 
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">

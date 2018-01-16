@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Tendoo CMS\n"
+"Project-Id-Version: Syrian Properties\n"
 "POT-Creation-Date: 2016-11-26 16:34+0100\n"
 "PO-Revision-Date: 2016-11-26 16:36+0100\n"
 "Last-Translator: \n"
@@ -204,8 +204,8 @@ msgstr "Tendoo"
 
 #: views/dashboard/footer.php:13
 #, php-format
-msgid "Thank you for using Tendoo CMS &mdash; %s in %s seconds"
-msgstr "Merci d'utiliser Tendoo CMS &mdash; %s en %s secondes"
+msgid "Thank you for using Syrian Properties &mdash; %s in %s seconds"
+msgstr "Merci d'utiliser Syrian Properties &mdash; %s en %s secondes"
 
 #: views/dashboard/gui/gui-items.php:324
 #, fuzzy
@@ -454,8 +454,8 @@ msgstr "Installation de la nouvelle version ..."
 
 #: views/dashboard/update/home-content.php:7
 #, fuzzy, php-format
-msgid "Tendoo CMS : %s is available"
-msgstr "Tendoo CMS:%s est disponible"
+msgid "Syrian Properties : %s is available"
+msgstr "Syrian Properties:%s est disponible"
 
 #: views/dashboard/update/home-content.php:12
 #, fuzzy
@@ -471,8 +471,8 @@ msgstr "Votre version est à jour !"
 #: views/do-setup/site.php:4 views/oauth/body.php:12 views/sign-in/body.php:14
 #: views/sign-in/recovery.php:14 views/sign-up/body.php:5
 #, fuzzy
-msgid "Tendoo CMS"
-msgstr "Tendoo CMS"
+msgid "Syrian Properties"
+msgstr "Syrian Properties"
 
 #: views/do-setup/database.php:8
 #, fuzzy
@@ -1761,8 +1761,8 @@ msgstr "J'ai déjà un compte"
 #~ msgid "Postgre SQL"
 #~ msgstr "Postgre SQL"
 
-#~ msgid "Thank you for using Tendoo CMS. &mdash %s in %s seconds"
-#~ msgstr "Merci d'utiliser Tendoo CMS. & mdash%s en%s secondes"
+#~ msgid "Thank you for using Syrian Properties. &mdash %s in %s seconds"
+#~ msgstr "Merci d'utiliser Syrian Properties. & mdash%s en%s secondes"
 
 #~ msgid ""
 #~ "Thanks for having choosed Tendoo to host your project. Here is the "
@@ -1775,5 +1775,5 @@ msgstr "J'ai déjà un compte"
 #~ "êtes prêt, allons-y !!!"
 
 #, fuzzy
-#~ msgid "Thanks you for using Tendoo CMS"
-#~ msgstr "Merci pour l'aide que vous Tendoo CMS"
+#~ msgid "Thanks you for using Syrian Properties"
+#~ msgstr "Merci pour l'aide que vous Syrian Properties"
