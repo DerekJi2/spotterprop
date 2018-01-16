@@ -68,7 +68,7 @@ $config['aauth'] = array(
 
     // system email.
     'email' => 'user@tendoo.org',
-    'name' => 'Tendoo CMS'
+    'name' => 'Syrian Properties'
 
 );
 

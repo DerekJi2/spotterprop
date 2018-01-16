@@ -46,7 +46,7 @@
             </figure>
             <!-- /.author-->
             <div class="wrapper">
-                <h5>John Doe</h5>
+                <h5>Mouris</h5>
                 <figure class="rating big color" data-rating="5"></figure>
                 <p>
                     Nunc pellentesque vestibulum mauris, eget suscipit mauris

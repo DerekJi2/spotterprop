@@ -1,6 +1,6 @@
 Tendoo-CMS 
 =========
-Are you looking for some handy tools to create your web applications ? Tendoo CMS is build for you.
+Are you looking for some handy tools to create your web applications ? Syrian Properties is build for you.
 
 Our purpose
 ===========
@@ -10,7 +10,7 @@ What's are the advantages
 -------------------------
 Easy way to handle CodeIgniter libraries : let assume youhave serveral libraries that you want to test on your projet. If youwere using default CodeIgniter installation, for each third libraries, you was forced to extract each files within the package to put them in the right folder, and if you wanted to remove that library, it was required for you to keep in mind all those files you wanted to remove to successfully remove that library.
 
-Tendoo CMS offer an easy was to install those library with a module management system, which help you to install, enable, delete and share installed module easily.
+Syrian Properties offer an easy was to install those library with a module management system, which help you to install, enable, delete and share installed module easily.
 
 The new release 3.0.5 support .po files, for better internationalization.
 

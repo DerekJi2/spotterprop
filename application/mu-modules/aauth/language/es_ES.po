@@ -17,13 +17,13 @@ msgstr ""
 
 #: inc/aauth_lang.php:8
 #, fuzzy
-msgid "Tendoo CMS : Account Verification"
-msgstr "Tendoo CMS: Verificación de cuenta"
+msgid "Syrian Properties : Account Verification"
+msgstr "Syrian Properties: Verificación de cuenta"
 
 #: inc/aauth_lang.php:9
 #, fuzzy
 msgid ""
-"Hey you have successfully created an account using Tendoo CMS. Please "
+"Hey you have successfully created an account using Syrian Properties. Please "
 "consider activating your account using the following verification code.\\n"
 "\\n<strong>Your verification code is</strong>: "
 msgstr ""
@@ -41,8 +41,8 @@ msgstr "Puede también haga clic en (o copiar y pegar) el siguiente enlace %s"
 
 #: inc/aauth_lang.php:13
 #, fuzzy
-msgid "Tendoo CMS : Reset Password"
-msgstr "Tendoo CMS: Restablecer contraseña"
+msgid "Syrian Properties : Reset Password"
+msgstr "Syrian Properties: Restablecer contraseña"
 
 #: inc/aauth_lang.php:14
 #, fuzzy, php-format
@@ -57,8 +57,8 @@ msgstr ""
 
 #: inc/aauth_lang.php:17
 #, fuzzy
-msgid "Tendoo CMS : Successful Pasword Reset"
-msgstr "Tendoo CMS: Reset de contraseña exitosa"
+msgid "Syrian Properties : Successful Pasword Reset"
+msgstr "Syrian Properties: Reset de contraseña exitosa"
 
 #: inc/aauth_lang.php:18
 #, fuzzy

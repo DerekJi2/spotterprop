@@ -36,7 +36,7 @@
             <div class="col-md-3 col-sm-3">
                 <div class="member">
                     <img src="<?php echo site_url('assets/img/member-3.jpg') ?>" alt="">
-                    <h4>John Doe</h4>
+                    <h4>Mouris</h4>
                     <figure>PR Manager</figure>
                     <hr>
                     <div class="social">

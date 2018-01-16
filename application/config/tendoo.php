@@ -195,7 +195,7 @@ $config[ 'site_timezone' ]                                =    array_flip(array(
     '(UTC+13:00) Nuku\'alofa' => 'Pacific/Tongatapu'
 ));
 //
-$config[ 'default_user_names' ]                            =    'John Doe';
+$config[ 'default_user_names' ]                            =    'Mouris';
 $config[ 'admin_menus' ]                                =    array();
 $config[ 'admin_menu_position' ]                        =    array( 'before' , 'after' );
 $config[ 'admin_menu_item' ]                            =    array( 'dashboard' , 'menu' , 'about' , 'controllers' , 'installer' , 'modules' , 'themes' , 'settings' , 'frontend' );

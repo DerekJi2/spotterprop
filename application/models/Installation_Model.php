@@ -420,7 +420,7 @@ class Installation_Model extends CI_Model
         $string_config =
         "<?php
 /**
- * Database configuration for Tendoo CMS
+ * Database configuration for Syrian Properties
  * -------------------------------------
  * Tendoo Version : " . get('core_version') . "
 **/
