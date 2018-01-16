@@ -209,7 +209,7 @@ class Installation_Model extends CI_Model
                 PRIMARY KEY (`Id`)
             ) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
             ");
-            $this->db->query("INSERT INTO `{$database_prefix}definedtype` 
+            $this->db->query("INSERT INTO `{$database_prefix}gallery` 
                 VALUES 
                 (1,1,'','assets/img/items/real-estate/6.jpg','2017-12-20 00:00:00','','2017-12-20 00:00:00','','',0,0,0),
                 (2,1,'','assets/img/items/real-estate/5.jpg','2017-12-20 00:00:00','','2017-12-20 00:00:00','','',0,0,0),
