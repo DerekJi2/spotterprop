@@ -143,14 +143,15 @@ class Dashboard_Model extends CI_Model
         $admin_menus[ 'dashboard' ][]    =    array(
             'href'            =>        site_url('dashboard'),
             'icon'            =>        'fa fa-dashboard',
-            'title'            =>        __('Dashboard')
+            'title'           =>        __('Dashboard'),
+            'disable'         =>        true    // disable menu title showed as first submenu
         );
 
         if (User::can('manage_core')) {
             $admin_menus[ 'dashboard' ][]    =    array(
                 'href'            =>        site_url(array( 'dashboard', 'update' )),
                 'icon'            =>        'fa fa-dashboard',
-                'title'            =>        __('Update Center'),
+                'title'            =>        __('Update Center', 'aauth'),
                 'notices_nbr'    =>        $this->events->apply_filters('update_center_notice_nbr', 0)
             );
 
@@ -185,6 +186,25 @@ class Dashboard_Model extends CI_Model
                 'title'            =>        __('Settings'),
                 'icon'            =>        'fa fa-cogs',
                 'href'            =>        site_url('dashboard/settings')
+            );
+
+            $admin_menus[ 'properties' ][]    =    array(
+                'href'            =>        site_url('properties'),
+                'icon'            =>        'fa fa-home',
+                'title'            =>        __('Properties'),
+                'disable'       =>          true    // disable menu title showed as first submenu
+            );
+
+            $admin_menus[ 'properties' ][]    =    array(
+                'href'            =>        site_url(array( 'Listing/List' )),
+                'icon'            =>        'fa fa-list',
+                'title'            =>        __('List'),
+            );
+
+            $admin_menus[ 'properties' ][]    =    array(
+                'href'            =>        site_url(array( 'properties/add' )),
+                'icon'            =>        'fa fa-plus',
+                'title'            =>        __('Add'),
             );
         }
 

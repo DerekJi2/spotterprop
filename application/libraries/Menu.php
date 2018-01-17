@@ -96,6 +96,7 @@ class Menu
                             <a <?php echo $custom_style;
                         ?> href="<?php echo riake('href', $menu, '#');
                         ?>">
+                                <i class="<?php echo riake('icon', $menu, 'fa fa-star');?>"></i> 
                                 <span><?php echo riake('title', $menu);
                         ?></span>
                                 <?php

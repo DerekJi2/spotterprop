@@ -65,21 +65,22 @@ class aauth_dashboard extends CI_model
         ) {
             $menus[ 'users' ]        =    array(
                 array(
-                    'title'     =>        __('Manage Users', 'aauth'),
+                    'title'     =>        __('Users Management', 'aauth'),
                     'icon'      =>        'fa fa-users',
                     'href'      =>        site_url('dashboard/users'),
+                    'disable'   =>        true  // disable menu title showed as first submenu
                 )
             );
 
             $menus[ 'users' ][]    =                array(
                 'title'            =>        __('Create a new User', 'aauth'),
-                'icon'            =>        'fa fa-users',
+                'icon'            =>        'fa fa-user-plus',
                 'href'            =>        site_url('dashboard/users/create')
             );
 
             $menus[ 'roles' ]        =        array(
                 array(
-                    'title'            =>        __('Groups', 'aauth'),
+                    'title'            =>        __('Roles & Permissions', 'aauth'),
                     'icon'            =>        'fa fa-shield',
                     'href'            =>        site_url('dashboard/groups')
                 )
@@ -88,7 +89,7 @@ class aauth_dashboard extends CI_model
 
         $menus[ 'users' ][]    =                array(
             'title'            =>        __('My profile', 'aauth'),
-            'icon'            =>        'fa fa-users',
+            'icon'            =>        'fa fa-user-circle',
             'href'            =>        site_url('dashboard/users/profile')
         );
 
