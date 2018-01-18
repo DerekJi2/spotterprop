@@ -243,6 +243,20 @@ class Gui extends CI_Model
         $this->load->view('dashboard/aside-right');
     }
 
+    public function output_framework()
+    {
+        $this->load->view('dashboard/header');
+        $this->load->view('dashboard/horizontal-menu');
+        $this->load->view('dashboard/aside');
+    }
+
+    public function output_end()
+    {
+        $this->load->view('dashboard/footer');
+        $this->load->view('dashboard/aside-right');
+    }
+
+
     /**
      * 	Get GUI cols
      *	@access		:	Public

@@ -142,8 +142,14 @@ class aauth_dashboard extends CI_model
             );
 
             $menus[ 'props' ][]    =                array(
+                'title'            =>        __('List', 'aauth'),
+                'icon'            =>        'fa fa-list',
+                'href'            =>        site_url('dashboard/props/list')
+            );
+
+            $menus[ 'props' ][]    =                array(
                 'title'            =>        __('Create a Property', 'aauth'),
-                'icon'            =>        'fa fa-user-plus',
+                'icon'            =>        'fa fa-plus',
                 'href'            =>        site_url('dashboard/props/create')
             );
 
@@ -559,7 +565,11 @@ class aauth_dashboard extends CI_model
 
     public function props($page = 'list', $index = 1)
     {
-        if ($page == 'create') {
+        if ($page == 'list') {
+
+            $this->load->mu_module_view( 'aauth', 'props/list', null);
+        }
+        elseif ($page == 'create') {
 
             $this->load->mu_module_view( 'aauth', 'props/create', null);
         }

@@ -42,6 +42,17 @@
 		return $typesModel->get_result();
     }
 
+    function get_agent($propId)
+    {
+        $CI = @get_instance();
+        $CI->load->model("Agent_model");
+        $agentModel = new Agent_model();
+        $agentQuery = $agentModel->query_by_propertyid($propId);
+        $agentResult = $agentQuery->result();
+        $agent = $agentResult[0];
+        return $agent;
+    }
+
     function get_lang_from_url()
     {
         $uri = $_SERVER['REQUEST_URI'];
