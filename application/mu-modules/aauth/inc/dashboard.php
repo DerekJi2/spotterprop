@@ -567,9 +567,11 @@ class aauth_dashboard extends CI_model
     {
         if ($page == 'list') {
 
+            $this->Gui->set_title(__('Properties', 'aauth'));
             $this->load->mu_module_view( 'aauth', 'props/list', null);
         }
         elseif ($page == 'create') {
+            $this->Gui->set_title(__('Create a Property', 'aauth'));
 
             $this->load->mu_module_view( 'aauth', 'props/create', null);
         }

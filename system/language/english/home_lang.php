@@ -75,10 +75,10 @@ $lang['home_Go_to_Detail'] = 'Go to Detail';
 
 // Types
 $lang['home_House'] = 'House';
-$lang['home_Town_House'] = 'Town_House';
+$lang['home_Town_House'] = 'Town House';
 $lang['home_Apartment'] = 'Apartment';
 $lang['home_Condominium'] = 'Condominium';
-$lang['home_Office_Building'] = 'Office_Building';
+$lang['home_Office_Building'] = 'Office Building';
 $lang['home_Land'] = 'Land';
 
 // Quick View

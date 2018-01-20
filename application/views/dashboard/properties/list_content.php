@@ -19,19 +19,19 @@
     $list = get_property_list();
 ?>
 <div>
-<a href="#">
+<a href="dashboard/props/create">
     <span>➕</span>
-    <span>Add New Property</span>
+    <span><?= get_lang("Add New Property")?></span>
 </a>
 </div>
 <table class="table prop-list-table">
     <thead>
         <tr>
         <th scope="col">#</th>
-        <th scope="col">Property</th>
-        <th scope="col">Specification</th>
-        <th scope="col">Agent/Owner</th>
-        <th scope="col">Status</th>
+        <th scope="col"><?= get_lang("Property")?></th>
+        <th scope="col"><?= get_lang("Specification")?></th>
+        <th scope="col"><?= get_lang("Agent/Owner")?></th>
+        <th scope="col"><?= get_lang("Status")?></th>
         <th scope="col"></th>
         </tr>
     </thead>

@@ -23,3 +23,32 @@ nsProperty.Get = function(id) {
     }
     return null;
 }
+
+nsProperty.Create = function(model) {
+
+    var URL = BASEURL + "Property/Create";
+    ConsoleLog(URL);
+
+    var promise = $.ajax({
+        url: URL,
+        data: model, 
+        type : "POST",
+    });
+
+    return promise;
+
+    promise.fail((xhr, status, error) =>{
+        ConsoleLog("nsProperty.Create().fail() " + error);
+    });
+
+    promise.done((response) =>{
+        ConsoleLog("nsProperty.Create().done() ");
+        ConsoleLog(response);
+    });
+    
+    promise.always(() => {
+        ConsoleLog("nsProperty.Create().always()");
+    });
+
+}
+

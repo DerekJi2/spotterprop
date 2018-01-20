@@ -84,3 +84,30 @@ function get_url_param(name) {
     
     return value;
 }
+
+/**
+ * 
+ * @param {*} x 
+ */
+function isNullOrEmpty(x)
+{
+    return (x == undefined || x == null || x == "");
+}
+
+/**
+ * 
+ * @param {*} val 
+ * @param {*} selector 
+ */
+function isInvalid(val, selector)
+{
+    var isEmpty = isNullOrEmpty(val);
+    if (isEmpty)
+    {
+        $(selector).focus();
+        ConsoleDebug("Invalid: " + selector);
+        return true;
+    }
+
+    return false;
+}

@@ -23,6 +23,14 @@ $this->load->config('rest');
 $key        =    $this->config->item('rest_key_name');
 $value      =    @$Options[ 'rest_key' ];
 ?>
+
+<script type="text/javascript">
+var BASEURL = "<?=site_url() ?>";
+var LANGSITEURL = "<?= lang_site_url();?>";
+</script>
+
+<base href="<?= site_url() ?>" />
+
 <script type="text/javascript">
 var tendoo	=	new Object;
 
@@ -130,3 +138,6 @@ tendoo.options			=	new function(){
 </script>
 <?php $this->events->do_action('dashboard_header');?>
 </head>
+
+<script src="assets/js/local.common.js"></script>
+<script src="assets/js/local.google.map.js"></script>

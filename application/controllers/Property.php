@@ -103,4 +103,11 @@ class Property extends BaseDB_Controller {
         header('Content-Type: application/json');
         echo json_encode( $result );
     }
+
+    public function Create()
+    {
+        $addr = $this->input->post("Address");
+
+        echo $addr;
+    }
 }
