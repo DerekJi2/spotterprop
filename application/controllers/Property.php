@@ -135,6 +135,8 @@ class Property extends BaseDB_Controller {
 */
         $result = add_property($data, $features, $specs);
         $data["DbResult"] = $result;
-        return $this->load->view("Property/Create", $data);
+        //return $this->load->view("Property/Create", $data);
+
+        echo $result->Id;
     }
 }

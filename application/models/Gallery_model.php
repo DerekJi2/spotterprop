@@ -24,5 +24,29 @@ class Gallery_model extends BaseTable_model {
         return $query->result();
     }
 
+    public function insert($propertyId, $imageUrl, $personId = 0, $displayNum = 0, $isFloorPlan = 0)
+    {
+        $now = date('Y-m-d H:i:s');
+        // $data = array(
+        //     'PropertyId'    => $propertyId,
+        //     'ImageUrl'      => $imageUrl,
+        //     'CreatedOn'     => $now,
+        //     'CreatedBy'     => $personId,
+        //     'ModifiedOn'    => $now,
+        //     'ModifiedBy'    => $personId,
+        //     'DisplayNum'    => $displayNum,
+        //     'IsFloorPlan'   => $isFloorPlan,
+        //     'IsDeleted'     => 0
+        // );
+
+        // $ok = $this->db->insert($this->tableName, $data);
+
+        $sql = "INSERT INTO $this->tableName(PropertyId, ImageUrl, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy, DisplayNum, IsFloorPlan, IsDeleted) 
+        VALUES($propertyId, '$imageUrl', '$now', $personId, '$now', $personId, $displayNum, $isFloorPlan, 0);";
+
+        echo $sql."\r\n";
+        $ok = $this->db->query($sql);
+        return $ok;
+    }
 
 }

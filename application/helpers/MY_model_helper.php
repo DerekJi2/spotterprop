@@ -82,6 +82,7 @@
         $CI->load->model("PropertySpec_model");		
 		$specsModel = new PropertySpec_model();
         $ok = $specsModel->insert_specs($propertyId, $specs);        
+        return $ok;
     }
 
     function array_value($array, $key, $default = 0)
@@ -96,4 +97,29 @@
             return $default;
         
         return $array[$key];
+    }
+
+    function upload_image($imgSource)
+	{
+        $filename = get_image_uniqname();
+        $ok = file_put_contents($filename, base64_decode($imgSource));
+
+        return $filename;
+    }
+    
+    function get_image_uniqname($imageType = "property")
+    {
+        $dir = "user-assets/$imageType-images";
+        $name = date('Y_m_d_h_i_s_v').uniqid();
+        $filename = "$dir/$name.png";
+        return $filename;
+    }
+
+    function insert_gallery($propertyId, $imageUrl, $personId = 0, $displayNum = 0, $isFloorPlan = 0)
+    {
+        $CI = @get_instance();
+        $CI->load->model("Gallery_model");		
+		$galleryModel = new Gallery_model();
+        $ok = $galleryModel->insert($propertyId, $imageUrl, $personId, $displayNum, $isFloorPlan);
+        return $ok;
     }

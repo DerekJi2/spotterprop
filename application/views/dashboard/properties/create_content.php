@@ -11,8 +11,9 @@
 </style>
 
 <div class="col-md-8 order-md-1">
-    
+
 <form>
+    
     <div class="row">
         <div class="col-md-5 mb-3">
             <div class="custom-control custom-radio">
@@ -25,7 +26,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="row">
         <div class="col-md-8 mb-3">
@@ -162,15 +162,7 @@
         </div>
     </div>
 
-    <!-- <div class="row form-group form-row">
-        <div class="col-md-5 mb-3">
-            <label for="username">Gallery</label>
-            <div class="input-group">
-                <input type="text" class="form-control" id="username" placeholder="Username" required>
-                <div class="invalid-feedback" style="width: 100%;"></div>
-            </div>
-        </div>
-    </div> -->
+    <?php $this->load->view("dashboard/properties/_gallery_upload"); ?>
 
     <div class="hidden">
         <input type="hidden" id="personid" value="0" />
@@ -180,13 +172,20 @@
     <hr class="mb-12">
     
     <div class="row form-group form-row">
-        <div class="col-md-12 col-lg-12 col-sm-12 alert-box" style="display:none;">
+        <div class="col-md-12 col-lg-12 col-sm-12 confirm-box" style="display:none;">
             <div class="col-md-6 col-lg-8 col-sm-12 alert alert-warning" role="alert" > 
                 Are you going to create this property? 
             </div>
             <button href="javascript:void(0);" onclick="javascript: onPropCreateCancelClick();" class="btn btn-secondary" style="margin:10px;">Cancel</button>
             <button href="javascript:void(0);" onclick="javascript: onPropCreateSaveConfirm();" class="btn btn-danger" style="margin:10px;">Yes, continue to save</button>
         </div>
+
+        <div class="col-md-12 col-lg-12 col-sm-12 progress-box" style="display:none;">
+            <div class="col-md-6 col-lg-8 col-sm-12 alert alert-info" role="alert" > 
+                
+            </div>
+        </div>
+
         <div class="col-md-3 mb-3" >
             <!-- <button class="btn btn-default btn-prop-create-cancel" type="button">Cancel</button> -->
             <button class="btn btn-primary btn-prop-create-save" type="button" onclick="javascript: onPropCreateSaveClick(this);">Save</button>
@@ -206,6 +205,9 @@
         var model = new propertyCreateModel();
         console.log(model);
 
+        $('.confirm-box').hide();
+        show_progress_msg("Saving your property ...");
+
         var promise = nsProperty.Create(model);
 
         promise.fail((xhr, status, error) =>{
@@ -216,6 +218,10 @@
         promise.done((response) =>{
             ConsoleLog("nsProperty.Create().done() ");
             ConsoleLog(response);
+            var propertyId = response;
+            add_progress_msg('Property has been saved successfully! Id = ' + propertyId);
+
+            uploadImages(propertyId);
         });
         
         promise.always(() => {
@@ -276,7 +282,7 @@
      * 
      */
     function onPropCreateSaveClick(btn) {
-        $('.alert-box').show();
+        $('.confirm-box').show();
         $(btn).hide();
     }
 
@@ -284,8 +290,32 @@
      * 
      */
     function onPropCreateCancelClick() {
-        $('.alert-box').hide();
+        $('.confirm-box').hide();
         $(".btn-prop-create-save").show();
     }
 
+    function add_progress_msg(msg)
+    {
+        var alertbox = $('.progress-box .alert');
+        var html = alertbox.html();
+        html += "<p>" + msg + "</p>";
+        alertbox.html(html);
+        $('.progress-box').show();
+    }
+
+    function close_progress_msg()
+    {
+        var alertbox = $('.progress-box .alert');
+
+        alertbox.hide();
+        alertbox.html('');
+    }
+
+    function show_progress_msg(msg)
+    {
+        var alertbox = $('.progress-box .alert');
+
+        alertbox.html('');
+        add_progress_msg(msg);
+    }
 </script>
