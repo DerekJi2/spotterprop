@@ -178,7 +178,7 @@ var LANGSITEURL = "<?= lang_site_url();?>";
     var _latitude = 51.541216;
     var _longitude = -0.095678;
     // var jsonPath = '<?=site_url('assets/json/real-estate.json.txt')?>';
-    var jsonPath = LANG + "/Property/JsonList";
+    var jsonPath = "<?= lang_site_url() ?>" + "Property/JsonList";
     
     // Load JSON data and create Google Maps
 

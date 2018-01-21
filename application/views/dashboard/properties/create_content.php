@@ -17,11 +17,11 @@
         <div class="col-md-5 mb-3">
             <div class="custom-control custom-radio">
                 <label for="country">Purpose: </label>
-                <input name="category" type="radio" class="custom-control-input" value="1" checked>
-                <label class="custom-control-label" for="credit">For Sale</label>
+                <input name="category" id="category-1" type="radio" class="custom-control-input" value="1" checked>
+                <label class="custom-control-label" for="category-1">For Sale</label>
 
-                <input name="category" type="radio" class="custom-control-input" value="2">
-                <label class="custom-control-label" for="debit">For Rent</label>
+                <input name="category" id="category-2" type="radio" class="custom-control-input" value="2">
+                <label class="custom-control-label" for="category-2">For Rent</label>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
                 <input id="typeid-<?= $type->Id ?>" name="typeid" type="radio" 
                     class="custom-control-input"
                     value="<?= $type->Id ?>" <?=$checked ?> >
-                <label class="custom-control-label" for="credit"><?= get_lang($type->Name) ?></label>
+                <label class="custom-control-label" for="typeid-<?= $type->Id ?>"><?= get_lang($type->Name) ?></label>
                 </span>
             <?php 
             } ?>
@@ -66,15 +66,39 @@
         <div class="col-md-4">
             <label for="price">Price: </label>
             <div class="input-group">
-                <input type="text" class="form-control" id="price" placeholder="Price" required>
+                <input type="text" class="form-control" id="price" placeholder="Price" value="100000" required>
             </div>
         </div> 
         <div class="col-md-4">
             <label for="builtyear">Built Year: </label>
             <div class="input-group">
-                <input type="text" class="form-control" id="builtyear" placeholder="Built Year" required>
+                <input type="text" class="form-control" id="builtyear" placeholder="Built Year" value="1980" required>
             </div>
         </div>    
+        <div class="col-md-4">
+            <label for="Bedrooms">Bedrooms: </label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="Bedrooms" placeholder="Bedrooms" value="2" required>
+            </div>
+        </div> 
+        <div class="col-md-4">
+            <label for="Bathrooms">Bathrooms: </label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="Bathrooms" placeholder="Bathrooms" value="1" required>
+            </div>
+        </div> 
+        <div class="col-md-4">
+            <label for="Garages">Garages: </label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="Garages" placeholder="Garages" value="0" required>
+            </div>
+        </div> 
+        <div class="col-md-4">
+            <label for="Area">Area: </label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="Area" placeholder="Area" value="80" required>
+            </div>
+        </div> 
         <div class="col-md-4">
             <label for="featured">Featured: </label>
             <div class="input-group featured-group" style="margin-top:5px;">
@@ -121,7 +145,7 @@
     <div class="row form-group form-row">
         <div class="col-md-12 mb-3">
             <div><label>Description</label></div>
-            <textarea style="width:100%;height:60px;"></textarea>
+            <textarea id="description" class="custom-control-label" style="width:100%;height:60px;"></textarea>
         </div>
     </div>
 
@@ -151,11 +175,12 @@
     <div class="hidden">
         <input type="hidden" id="personid" value="0" />
         <input type="hidden" id="propertyid" value="0" />
+        <input type="hidden" id="guid" value=<?= GUID(); ?> />
     </div>
     <hr class="mb-12">
     
     <div class="row form-group form-row">
-        <div class="col-md-12 col-lg-12 col-sm-12 alert-box" style="display:block;">
+        <div class="col-md-12 col-lg-12 col-sm-12 alert-box" style="display:none;">
             <div class="col-md-6 col-lg-8 col-sm-12 alert alert-warning" role="alert" > 
                 Are you going to create this property? 
             </div>
@@ -181,10 +206,11 @@
         var model = new propertyCreateModel();
         console.log(model);
 
-        nsProperty.Create(model);
+        var promise = nsProperty.Create(model);
 
         promise.fail((xhr, status, error) =>{
             ConsoleLog("nsProperty.Create().fail() " + error);
+            ConsoleLog(xhr.responseText);
         });
 
         promise.done((response) =>{
@@ -231,6 +257,19 @@
 
         this.PersonId = $('#personid').val() || 0;
         this.PropertyId = $("#propertyid").val() || 0;
+
+        this.Specs = [ 0,               // NOTHING - NOT IN USE
+                $('#Bedrooms').val(),   // Bedrooms
+                $('#Bathrooms').val(),  // Bathrooms
+                0,                      // Rooms - NOT IN USE
+                $('#Garages').val(),    // Garages
+                $('#Area').val(),       // Area
+                0,                      // LandArea - NOT IN USE
+                0                       // BuildingArea - NOT IN USE
+        ]
+
+        this.guid = $("#guid").val() || "";
+        this.Description = $("#description").val() || "";
     }
 
     /**

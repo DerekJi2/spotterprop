@@ -256,32 +256,15 @@ class Property_model extends BaseTable_model {
     /**
      * return the newly created property row();
      */
-    function create($model)
+    function insert($data)
     {
-        $guid = com_create_guid();
-        $data = array(
-            'Categroy'  => $model.Category,
-            'Address'   => $model.Address,
-            'Location'  => $model.Location,
-            'Latitude'  => $model.Latitude,
-            'Longitude' => $model.Longitude,
-            'TypeId'    => $model.TypeId,
-            'Rating'    => 0,
-            'CreatedOn' => date('Y-m-d H:i:s'),
-            'Price'     => $model.Price,
-            'Featured'  => $model.Featured,
-            'BuiltYear' => $model.BuiltYear,
-            'PersonId'  => $model.PersonId,
-            'Description' => $model.Description,
-            'StatusId'  => 1, // draft
-            'guid'      => $guid, // identify the property 
-        );
-        
         $ok = $this->db->insert($this->tableName, $data);
         if ($ok)
-        {
-            $query = $this->db->query('SELECT name FROM ? WHERE guid=? LIMIT 1', 
-                                            array($this->tableName, $guid));
+        {            
+            $guid = $data["guid"]; //"ECCB1523-6BEE-4ADB-86F4-2BB889504A09";
+            $sql = sprintf('SELECT * FROM %s WHERE guid=\'%s\' LIMIT 1', 
+                                $this->tableName, $guid);
+            $query = $this->db->query($sql);
             $row = $query->row();
             return $row; // return the newly created property row();
         }

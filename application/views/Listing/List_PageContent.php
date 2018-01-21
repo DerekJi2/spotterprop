@@ -36,7 +36,12 @@
                             <?php 
                             $count = 0;
                             $total_count = sizeof($list->data);
-                            foreach ($list->data as $item) { $count++; ?>
+                            foreach ($list->data as $item) { 
+                            ?>
+                            <?php
+                                $count++; 
+                                $gallery = array_value($item->gallery, 0, "assets/img/syr/no-image-house.png");
+                            ?>
                             <div class="div-property-item div-property-item-<?=$count;?> redefine-visible" id="div-item-<?=$item->id; ?>" data-createdon="<?=$item->date_created; ?>" data-propid="<?=$item->id; ?>" data-price="<?=$item->price; ?>">
                                 <div class="item list">
                                     <div class="image">
@@ -51,15 +56,15 @@
                                                 </div>
                                             </div>
                                             <div class="item-specific">
-                                            <span title="<?= get_lang('Bedrooms') ?>"><img src="<?=site_url('assets/img/bedrooms.png'); ?>" alt=""><?=$item->item_specific["Bedrooms"]; ?></span>
-                                            <span title="<?= get_lang('Bathrooms') ?>"><img src="<?=site_url('assets/img/bathrooms.png'); ?>" alt=""><?=$item->item_specific["Bathrooms"]; ?></span>
-                                            <span title="<?= get_lang('Area') ?>"><img src="<?=site_url('assets/img/area.png'); ?>" alt=""><?=$item->item_specific["Area"]; ?>m<sup>2</sup></span>
-                                            <span title="<?= get_lang('Garages') ?>"><img src="<?=site_url('assets/img/garages.png'); ?>" alt=""><?=$item->item_specific["Garages"]; ?></span>
+                                                <span title="<?= get_lang('Bedrooms') ?>"><img src="<?=site_url('assets/img/bedrooms.png'); ?>" alt=""><?=array_value($item->item_specific, "Bedrooms", 0); ?></span>
+                                                <span title="<?= get_lang('Bathrooms') ?>"><img src="<?=site_url('assets/img/bathrooms.png'); ?>" alt=""><?=array_value($item->item_specific, "Bathrooms", 0); ?></span>
+                                                <span title="<?= get_lang('Area') ?>"><img src="<?=site_url('assets/img/area.png'); ?>" alt=""><?=array_value($item->item_specific, "Area", 0); ?>m<sup>2</sup></span>
+                                                <span title="<?= get_lang('Garages') ?>"><img src="<?=site_url('assets/img/garages.png'); ?>" alt=""><?=array_value($item->item_specific, "Garages", 0); ?></span>
                                             </div>
                                             <div class="icon">
                                                 <i class="fa fa-thumbs-up"></i>
                                             </div>
-                                            <img src="<?=site_url($item->gallery[0]); ?>" alt="">
+                                            <img src="<?=site_url($gallery); ?>" alt="">
                                         </a>
                                     </div>
                                     <div class="wrapper">

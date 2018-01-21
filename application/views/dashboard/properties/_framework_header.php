@@ -2,6 +2,7 @@
 
 $this->load->helper('url');
 $this->load->helper('MY_data_helper');
+$this->load->helper('MY_model_helper');
 $this->Gui->output_framework(); 
 
 $_DEBUG_ = true;

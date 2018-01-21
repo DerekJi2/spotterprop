@@ -39,10 +39,25 @@
 <?php 
     $count = 0;
     $total_count = sizeof($list->data);
-    foreach ($list->data as $item) { $count++; $agent = get_agent($item->id); ?>
+    foreach ($list->data as $item) { ?>
+        <?php
+            $count++; 
+            $agent = get_agent($item->id); 
+            $item_gallery = ($item->gallery == null|| sizeof($item->gallery) < 1) ? "assets/img/syr/no-image-house.png" : $item->gallery[0];
+            $agent_photo = ($agent == null) ? "assets/img/syr/no-image-user.png" : $agent->Photo;
+            $agent_name = ($agent == null) ? "<i style=\"color:grey\">(unknown)</i>" : $agent->Name;
+            $agent_email = ($agent == null) ? "" : $agent->Email;
+            $agent_mobile = ($agent == null) ? "" : $agent->Mobile;
+            $Bedrooms = array_value($item->item_specific, "Bedrooms", 0); 
+            $Bathrooms = array_value($item->item_specific, "Bathrooms", 0);
+            $Garages = array_value($item->item_specific, "Garages", 0); 
+            $Area = array_value($item->item_specific, "Area", 0); 
+        ?>
         <tr>
             <!-- <th scope="row"><?=$count?></th> -->
-            <th scope="row"><img class="gallery" src="<?=site_url($item->gallery[0]); ?>" alt=""></th>
+            <?php 
+            ?>
+            <th scope="row"><img class="gallery" src="<?=site_url($item_gallery); ?>" alt=""></th>
             <td>
                 <div><?=$item->title?>, <span class="prop-list-row-loc"><?=$item->location?></span></div>
                 
@@ -56,22 +71,23 @@
 
             <td>
                 <div class="item-specific">
-                    <span class="spn-item-spec-sm" title="<?= get_lang('Bedrooms') ?>"><img class="item-spec" src="<?=site_url('assets/img/bedrooms.png'); ?>" alt=""><?=$item->item_specific["Bedrooms"]; ?></span>
-                    <span class="spn-item-spec-sm" title="<?= get_lang('Bathrooms') ?>"><img class="item-spec" src="<?=site_url('assets/img/bathrooms.png'); ?>" alt=""><?=$item->item_specific["Bathrooms"]; ?></span>
-                    <span class="spn-item-spec-sm" title="<?= get_lang('Garages') ?>"><img class="item-spec" src="<?=site_url('assets/img/garages.png'); ?>" alt=""><?=$item->item_specific["Garages"]; ?></span>
+                    <span class="spn-item-spec-sm" title="<?= get_lang('Bedrooms') ?>"><img class="item-spec" src="<?=site_url('assets/img/bedrooms.png'); ?>" alt=""><?=$Bedrooms; ?></span>
+                    <span class="spn-item-spec-sm" title="<?= get_lang('Bathrooms') ?>"><img class="item-spec" src="<?=site_url('assets/img/bathrooms.png'); ?>" alt=""><?=$Bathrooms; ?></span>
+                    <span class="spn-item-spec-sm" title="<?= get_lang('Garages') ?>"><img class="item-spec" src="<?=site_url('assets/img/garages.png'); ?>" alt=""><?=$Garages; ?></span>
                 </div>
                 <div class="item-specific">
-                    <span class="spn-item-spec-lg" title="<?= get_lang('Area') ?>"><img class="item-spec" src="<?=site_url('assets/img/area.png'); ?>" alt=""><?=$item->item_specific["Area"]; ?>m<sup>2</sup></span>
+                    <span class="spn-item-spec-lg" title="<?= get_lang('Area') ?>"><img class="item-spec" src="<?=site_url('assets/img/area.png'); ?>" alt=""><?=$Area; ?>m<sup>2</sup></span>
                 </div>
             </td>
-            <td class="td-agent">
+            <td class="td-agent">                
                 <div class="agent-image">
-                    <img src="<?php echo site_url($agent->Photo) ?>" alt="">
-                    <strong><?=$agent->Name?></strong>
-                </div>
-                
-                <div class="agent-info agent-email"><i class="fa fa-envelope-o"></i><?=$agent->Email?></div>
-                <div class="agent-info agent-mobile"><i class="fa fa-mobile"></i><?=$agent->Mobile?></div>
+                    <img src="<?php echo site_url($agent_photo) ?>" alt="">
+                    <strong><?=$agent_name?></strong>
+                </div>                
+                <?php if ($agent != null) { ?>
+                <div class="agent-info agent-email"><i class="fa fa-envelope-o"></i><?=$agent_email?></div>
+                <div class="agent-info agent-mobile"><i class="fa fa-mobile"></i><?=$agent_mobile?></div>
+                <?php } ?>
             </td>
             <td>
             </td>

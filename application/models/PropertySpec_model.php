@@ -37,6 +37,47 @@ class PropertySpec_model extends BaseTable_model {
 
         return $query->result();
     }
+
+    public function insert_specs($propertyId, $specs)
+    {
+        if ($specs == null || sizeof($specs) < 1)
+            return true;
+
+        $values = array();
+        for ($i = 1; $i < sizeof($specs); $i++)
+        {
+            $spec_id = $i;
+            $spec_value = $specs[$i];
+            $value = sprintf("(%d, %d, %d)", $propertyId, $spec_id, $spec_value);
+
+            array_push($values, $value);
+        }
+        $values_string = implode(", ", $values);
+        // echo $values_string."\r\n";
+        $sql = sprintf("INSERT INTO %s(PropertyId, SpecId, SpecValue) VALUES %s", $this->tableName, $values_string);
+
+        // echo $sql."\r\n";
+
+        $ok = $this->db->query($sql);
+        return $ok;
+    }
+
+    public function update_specs($propertyId, $specs)
+    {
+        if ($specs == null || sizeof($specs) < 1)
+            return true;
+
+        $ok = 0;
+        for ($i = 1; $i <= sizeof($specs); $i++)
+        {
+            $spec_id = $i;
+            $spec_value = $specs[$i];
+            $sql = sprintf("UPDATE %s SET SpecValue=%d WHERE PropertyId=%d AND SpecId=%d AND SpecValue!=%d)", $propertyId, $spec_id, $spec_value);
+
+            $ok = $this->db->query($sql);
+        }
+        return $ok;
+    }
 }
 
 class PropertySpecPair

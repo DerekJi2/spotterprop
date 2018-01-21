@@ -49,7 +49,7 @@
         $agentModel = new Agent_model();
         $agentQuery = $agentModel->query_by_propertyid($propId);
         $agentResult = $agentQuery->result();
-        $agent = $agentResult[0];
+        $agent = ($agentResult != null && sizeof($agentResult) > 0) ? $agentResult[0] : null;
         return $agent;
     }
 

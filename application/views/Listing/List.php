@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->helper('url');
 $this->load->helper('MY_data_helper');
+$this->load->helper('MY_model_helper');
 
 $_DEBUG_ = true;
 $_Timestamp = "?v=";
