@@ -42,6 +42,14 @@
 		return $typesModel->get_result();
     }
 
+    function get_property_specs($propertyId)
+    {
+        $CI = @get_instance();
+        $CI->load->model("PropertySpec_model");		
+		$specModel = new PropertySpec_model();
+		return $specModel->get_result_by_propertyid($propertyId);
+    }
+
     function get_agent($propId)
     {
         $CI = @get_instance();

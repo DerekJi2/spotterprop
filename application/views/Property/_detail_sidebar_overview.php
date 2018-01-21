@@ -1,20 +1,30 @@
+<?php
+    $this->load->helper("MY_model_helper");
+    $specs =$vw->item_specific;
+    $bedrooms = array_value($specs, "Bedrooms", 0);
+    $bathrooms = array_value($specs, "Bathrooms", 0);
+    $area = array_value($specs, "Area", 0);
+    $garages = array_value($specs, "Garages", 0);
+    $rooms = array_value($specs, "Rooms", 0);
+?>
+
 <!--Overview-->
 <section>
     <header><h3><?= get_lang('Overview') ?></h3></header>
     <figure>
         <dl>
             <dt><?= get_lang('Bedrooms') ?></dt>
-            <dd>1</dd>
+            <dd><?= $bedrooms ?></dd>
             <dt><?= get_lang('Bathrooms') ?></dt>
-            <dd>1</dd>
+            <dd><?= $bathrooms ?></dd>
             <dt><?= get_lang('Area') ?></dt>
-            <dd>140</dd>
+            <dd><?= $area ?></dd>
             <dt><?= get_lang('Garages') ?></dt>
-            <dd>1</dd>
+            <dd><?= $garages ?></dd>
             <dt><?= get_lang('Rooms') ?></dt>
-            <dd>5</dd>
+            <dd><?= $rooms ?></dd>
             <dt><?= get_lang('Build Year') ?></dt>
-            <dd>1982</dd>
+            <dd><?= $vw->year ?></dd>
         </dl>
     </figure>
 </section>

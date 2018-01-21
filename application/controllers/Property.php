@@ -48,7 +48,7 @@ class Property extends BaseDB_Controller {
         $agentModel = new Agent_model();
         $agentQuery = $agentModel->query_by_propertyid($id);
         $agentResult = $agentQuery->result();
-        $data["agent"] = $agentResult[0];
+        $data["agent"] = ($agentResult == null || sizeof($agentResult) < 1) ? null : $agentResult[0];
 
         $this->load->view('Property/Detail', $data);
     }

@@ -19,7 +19,7 @@ $latest = get_property_latest(2);
                 break;
             } 
 
-            $imgSrc = ($item->gallery != null && sizeof($item->gallery) > 0) ? site_url($item->gallery[0]) : "";
+            $imgSrc = ($item->gallery != null && sizeof($item->gallery) > 0) ? site_url($item->gallery[0]) : site_url("assets/img/syr/no-image-house.png");
         ?>
         <a href="<?=lang_site_url('Property/Detail/'.$item->Id."/") ?>" class="item-horizontal small">
             <h3><?php echo $item->Address; ?></h3>

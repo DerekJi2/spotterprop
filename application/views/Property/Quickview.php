@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->helper('url');
 $this->load->helper('MY_data_helper');
-$this->lang->load('home', 'chinese');
+$this->lang->load('home', 'english');
 ?>
 <!DOCTYPE html>
 <html>

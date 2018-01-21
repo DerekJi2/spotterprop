@@ -37,18 +37,6 @@ nsProperty.Create = function(model) {
 
     return promise;
 
-    promise.fail((xhr, status, error) =>{
-        ConsoleLog("nsProperty.Create().fail() " + error);
-    });
-
-    promise.done((response) =>{
-        ConsoleLog("nsProperty.Create().done() ");
-        ConsoleLog(response);
-    });
-    
-    promise.always(() => {
-        ConsoleLog("nsProperty.Create().always()");
-    });
 
 }
 

@@ -550,13 +550,20 @@ function drawItemSpecific(category, json, a){
 // Quick View ----------------------------------------------------------------------------------------------------------
 
 function quickView(id){
+    var lang = get_lang_from_url();
+    var URL = BASEURL;
+    URL += (lang == "") ? "" : "/";
+    URL += "Property/QuickView/" + id;
     $.ajax({
-        type: 'POST',
-        url: BASEURL + get_lang_from_url() + "/Property/QuickView/" + id,
+        type: 'GET',
+        url: URL,
         data: id,
         success: function (data) {
             // Create HTML element with loaded data
             $('body').append(data);
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr.responseText);
         }
     });
 }

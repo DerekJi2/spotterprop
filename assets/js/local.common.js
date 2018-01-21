@@ -70,7 +70,9 @@ function SetRedefineVisible(dom, visible) {
 function get_lang_from_url()
 {
     var fields = location.href.replace(BASEURL, '').split('/');
-    var lang = fields[0] || "";
+    var field = fields[0] || "";
+
+    var lang = (field == "ar" || field == "en" || field == "cn") ? field : "";
     return lang;
 }
 
