@@ -101,15 +101,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         })
                         </script>
 
+                        <?php
+                            $this->load->helper("MY_user_helper");
+                            $loginUser = get_login_user();
+                            $username = ($loginUser == null || $loginUser->name == null || $loginUser->name == "") ? 
+                                            $this->config->item('default_user_names') :
+                                            $loginUser->name;
+
+                        ?>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         	<img class="img-circle" alt="<?php echo $this->events->apply_filters('user_menu_card_avatar_alt', '');?>" src="<?php echo $this->events->apply_filters('user_menu_card_avatar_src', '');?>" width="20"/>
-                            <span class="hidden-xs"><?php echo xss_clean($this->events->apply_filters('user_menu_name', $this->config->item('default_user_names')));?></span> </a>
+                            <span class="hidden-xs"><?php echo xss_clean($this->events->apply_filters('user_menu_name', $username));?></span> </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
                                 	<img class="img-circle" alt="<?php echo $this->events->apply_filters('user_menu_card_avatar_alt', '');?>" src="<?php echo $this->events->apply_filters('user_menu_card_avatar_src', '');?>"/>
-                                    <p><?php echo xss_clean($this->events->apply_filters('user_menu_card_header', $this->config->item('default_user_names')));?></p>
+                                    <p><?php echo xss_clean($this->events->apply_filters('user_menu_card_header', $username));?></p>
                                 </li>
                                 <!-- Menu Body -->
                                 <?php echo xss_clean($this->events->apply_filters('after_user_card', ''));?>
