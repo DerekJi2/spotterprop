@@ -151,6 +151,12 @@ class aauth_setup extends CI_model
 		  `verification_code` text COLLATE utf8_general_ci,
 		  `ip_address` text COLLATE utf8_general_ci,
 		  `login_attempts` int(11) DEFAULT '0',
+          `RoleType` int(11) NOT NULL DEFAULT '1' COMMENT '1:agent;2:owner;',
+          `Phone` varchar(45) DEFAULT NULL,
+          `Mobile` varchar(45) DEFAULT NULL,
+          `Position` varchar(45) DEFAULT NULL,
+          `AgencyId` int(11) DEFAULT NULL,
+          `Photo` varchar(255) DEFAULT NULL,
 		  PRIMARY KEY (`id`)
 		) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;");
         

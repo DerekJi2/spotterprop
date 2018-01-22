@@ -7,6 +7,8 @@
 
 global $Options;
 
+$this->load->helper("MY_data_helper");
+
 ?>
 <!doctype html>
 <html>
