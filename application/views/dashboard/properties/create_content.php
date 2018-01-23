@@ -165,7 +165,12 @@
     <?php $this->load->view("dashboard/properties/_gallery_upload"); ?>
 
     <div class="hidden">
-        <input type="hidden" id="personid" value="0" />
+    <?php
+        $this->load->helper("MY_user_helper");
+        $loginUser = get_login_user();
+        $personId = $loginUser == null ? 0 : $loginUser->id;
+    ?>
+        <input type="hidden" id="personid" value="<?= $personId ?>" />
         <input type="hidden" id="propertyid" value="0" />
         <input type="hidden" id="guid" value=<?= GUID(); ?> />
     </div>

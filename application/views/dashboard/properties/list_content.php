@@ -45,8 +45,8 @@
             $agent = get_agent($item->id); 
             $item_gallery = ($item->gallery == null|| sizeof($item->gallery) < 1) ? "assets/img/syr/no-image-house.png" : $item->gallery[0];
             $agent_photo = ($agent == null) ? "assets/img/syr/no-image-user.png" : $agent->Photo;
-            $agent_name = ($agent == null) ? "<i style=\"color:grey\">(unknown)</i>" : $agent->Name;
-            $agent_email = ($agent == null) ? "" : $agent->Email;
+            $agent_name = ($agent == null) ? "<i style=\"color:grey\">(unknown)</i>" : $agent->name;
+            $agent_email = ($agent == null) ? "" : $agent->email;
             $agent_mobile = ($agent == null) ? "" : $agent->Mobile;
             $Bedrooms = array_value($item->item_specific, "Bedrooms", 0); 
             $Bathrooms = array_value($item->item_specific, "Bathrooms", 0);
@@ -86,7 +86,7 @@
                 </div>                
                 <?php if ($agent != null) { ?>
                 <div class="agent-info agent-email"><i class="fa fa-envelope-o"></i><?=$agent_email?></div>
-                <div class="agent-info agent-mobile"><i class="fa fa-mobile"></i><?=$agent_mobile?></div>
+                <div class="agent-info agent-mobile"><i class="fa fa-mobile icon-mobile"></i><?=$agent_mobile?></div>
                 <?php } ?>
             </td>
             <td>

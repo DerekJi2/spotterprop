@@ -53,14 +53,14 @@
                     if (done_count == gallery_count)
                     {
                         add_progress_msg('All images have been uploaded successfully.');
-                        add_progress_msg('Congratulations! Your property has been saved. <a href="Listing/Grid">Hava a look</a>');
+                        add_progress_msg('Congratulations! Your property has been saved. <a href="Property/Detail/' + propertyId + '">Hava a look</a>');
                     }
                 });
             });
         }
         else
         {
-            add_progress_msg('Congratulations! Your property has been saved. <a href="Listing/Grid">Hava a look</a>');
+            add_progress_msg('Congratulations! Your property has been saved. <a href="Property/Detail/' + propertyId + '">Hava a look</a>');
         }
     }
 

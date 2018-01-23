@@ -2,10 +2,10 @@
 <section>
     <header><h3><?= get_lang('Contact Agent') ?></h3></header>
     <?php
-        $agent_photo = ($agent == null || $agent->Photo == null || $agent->Photo == "") ? "assets/img/syr/no-image-house.png" : $agent->Photo;
-        $agent_name = ($agent == null || $agent->Name == null || $agent->Name == "") ? "<i style=\"color:grey;\">(unknown)</i>" : $agent->Name;
+        $agent_photo = ($agent == null || $agent->Photo == null || $agent->Photo == "") ? "assets/img/syr/no-image-user.png" : $agent->Photo;
+        $agent_name = ($agent == null || $agent->name == null || $agent->name == "") ? "<i style=\"color:grey;\">(unknown)</i>" : $agent->name;
         $agent_phone = ($agent == null || $agent->Phone == null || $agent->Phone == "") ? "" : $agent->Phone;
-        $agent_email = ($agent == null || $agent->Email == null || $agent->Email == "") ? "" : $agent->Email;
+        $agent_email = ($agent == null || $agent->email == null || $agent->email == "") ? "" : $agent->email;
         $agent_mobile = ($agent == null || $agent->Mobile == null || $agent->Mobile == "") ? "" : $agent->Mobile;
         $agent_website = ($agent == null || $agent->Website == null || $agent->Website == "") ? "" : $agent->Website;
     ?>
@@ -23,7 +23,7 @@
         <?php if ($agent != null) { ?>
         <figure>
             <div class="info">
-                <i class="fa fa-mobile"></i>
+                <i class="fa fa-mobile icon-mobile"></i>
                 <span><?php echo $agent_mobile; ?></span>
             </div>
 

@@ -11,7 +11,7 @@ class Agent_model extends BaseTable_model {
      */
     function __construct()
     {
-        $tablename = "agent";
+        $tablename = "aauth_users";
         parent::__construct($tablename);
     }
 
@@ -20,7 +20,7 @@ class Agent_model extends BaseTable_model {
      */
     function query_by_propertyid($propId)
     {
-        $tablePeople = $this->db->dbprefix("People");
+        $tablePeople = $this->db->dbprefix("aauth_users");
         $tableProperty = $this->db->dbprefix("Property");
         $tableAgency = $this->db->dbprefix("Agency");
 

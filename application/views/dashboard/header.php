@@ -141,5 +141,7 @@ tendoo.options			=	new function(){
 <?php $this->events->do_action('dashboard_header');?>
 </head>
 
+
+<link rel="stylesheet" type="text/css" href="assets/css/user.style.css?v=201801">
 <script src="assets/js/local.common.js"></script>
 <script src="assets/js/local.google.map.js"></script>
