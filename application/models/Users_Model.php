@@ -183,7 +183,8 @@ class Users_model extends CI_Model
      * @param
     **/
 
-    public function edit($user_id, $email, $password, $group_id, $user_group, $old_password = null, $mode = 'edit', $user_status = '0')
+    public function edit($user_id, $email, $password, $group_id, $user_group, $old_password = null, $mode = 'edit', $user_status = '0',
+        $phone = "", $mobile = "", $photo = "assets/img/syr/no-image-user.png")
     {
         $return        =    'user-updated';
         // old password has been defined
@@ -196,7 +197,7 @@ class Users_model extends CI_Model
             // if password is correct
             if ($query->result_array()) {
                 $return    =    array();
-                $return[]    =    $this->auth->update_user($user_id, $email, $password);
+                $return[]    =    $this->auth->update_user($user_id, $email, $password, $phone, $mobile, $photo);
             } else {
                 return 'old-pass-incorrect';
             }
@@ -212,7 +213,8 @@ class Users_model extends CI_Model
             $this->auth->add_member($user_id, $group_id);
 
             // Change user password and email
-            $this->auth->update_user($user_id, $email, $password);
+            $this->auth->update_user($user_id, $email, $password, $phone, $mobile, $photo);
+            // return;
 
             // User Status
             $user            =    $this->auth->get_user($user_id);

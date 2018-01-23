@@ -454,8 +454,13 @@ class aauth_dashboard extends CI_model
                 $this->input->post('userprivilege'),
                 null, // user Privilege can't be editer through profile dash
                 $this->input->post('old_pass'),
-                'profile'
+                'profile',
+                "0",
+                    $this->input->post('Phone'),
+                    $this->input->post('Mobile'),
+                    $this->input->post('Photo')
             );
+            // return;
 
             // var_dump( $exec );die;
 

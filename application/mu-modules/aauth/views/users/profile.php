@@ -75,6 +75,30 @@ $this->Gui->add_item(array(
     'name'            =>    'confirm',
 ), 'user_profile', 1);
 
+$this->Gui->add_item(array(
+    'type'            =>    'text',
+    'label'            =>    __('Phone', 'aauth'),
+    'name'            =>    'Phone',
+    'value'            =>    $this->users->current->Phone
+), 'user_profile', 1);
+
+$this->Gui->add_item(array(
+    'type'            =>    'text',
+    'label'            =>    __('Mobile', 'aauth'),
+    'name'            =>    'Mobile',
+    'value'            =>    $this->users->current->Mobile
+), 'user_profile', 1);
+
+$this->Gui->add_item(array(
+    'type'            =>    'text',
+    'label'            =>    __('Photo', 'aauth'),
+    'name'            =>    'Photo',
+    'disabled'      => true,
+    'value'            =>    $this->users->current->Photo
+), 'user_profile', 1);
+
+// $this->Gui->add_item("<img src=\"$this->users->current->Photo\">");
+
 // add to a group
 
 // load custom field for user creatin

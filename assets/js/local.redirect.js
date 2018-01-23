@@ -1,7 +1,7 @@
 var nsRedirect = nsRedirect || {};
 
 nsRedirect.AdminRoot = function(){
-    return "";
+    return BASEURL;
 }
 
 nsRedirect.OnLoad = function() {

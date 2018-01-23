@@ -167,7 +167,11 @@ class aauth_fields extends CI_model
 
         ob_start();
         $skin    =    riake('user_id', $config) ? $this->options->get('theme-skin', riake('user_id', $config)) : '';
+
+        $this->load->view("dashboard/users/_photo");
         ?>
+
+        <section class="sec-select-theme hidden">
         <h3><?php _e('Select a theme', 'aauth');
         ?></h3>
         <ul class="list-unstyled clearfix theme-selector">
@@ -270,6 +274,9 @@ class aauth_fields extends CI_model
         </ul>
         <input type="hidden" name="theme-skin" value="<?php echo $skin;
         ?>" />
+        </section>
+
+        <hr/>
 		<style>
         .theme-selector li a.active
         {

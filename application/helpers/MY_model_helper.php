@@ -99,9 +99,9 @@
         return $array[$key];
     }
 
-    function upload_image($imgSource)
+    function upload_image($imgSource, $type = "property")
 	{
-        $filename = get_image_uniqname();
+        $filename = get_image_uniqname($type);
         $ok = file_put_contents($filename, base64_decode($imgSource));
 
         return $filename;

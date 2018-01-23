@@ -699,7 +699,8 @@ class Aauth
      * @param string|bool $name User's name, or FALSE if not to be updated
      * @return bool Update fails/succeeds
      */
-    public function update_user($user_id, $email = false, $pass = false, $name = false)
+    public function update_user($user_id, $email = false, $pass = false,
+        $phone = false, $mobile = false, $photo = false, $name = false)
     {
         $data = array();
 
@@ -713,6 +714,18 @@ class Aauth
 
         if ($name != false) {
             $data['name'] = $name;
+        }
+
+        if ($phone != false) {
+            $data['Phone'] = $phone;
+        }
+
+        if ($mobile != false) {
+            $data['Mobile'] = $mobile;
+        }
+
+        if ($photo != false) {
+            $data['Photo'] = $photo;
         }
 
         $this->CI->db->where('id', $user_id);
