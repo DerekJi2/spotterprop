@@ -436,6 +436,10 @@ class aauth_dashboard extends CI_model
             redirect(array( 'dashboard', 'access-denied' ));
         }
 
+        $userId = $this->users->current->id; // ignore $index here. it's useless actually
+
+        $user_group            =    farray($this->users->auth->get_user_groups($userId));
+
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('user_email', __('User Email', 'aauth'), 'valid_email');
@@ -451,10 +455,10 @@ class aauth_dashboard extends CI_model
                 $this->users->auth->get_user_id(),
                 $this->input->post('user_email'),
                 $this->input->post('password'),
-                $this->input->post('userprivilege'),
-                null, // user Privilege can't be editer through profile dash
-                $this->input->post('old_pass'),
-                'profile',
+                $user_group->group_id, //$this->input->post('userprivilege'),
+                $user_group, // user Privilege can't be editer through profile dash
+                $this->input->post('confirm'),
+                'edit',
                 "0",
                     $this->input->post('Phone'),
                     $this->input->post('Mobile'),
@@ -462,18 +466,20 @@ class aauth_dashboard extends CI_model
             );
             // return;
 
+            // force refresh current user - otherwise page will load old information after saved
+            $this->users->current = $this->auth->get_user(false, true);
             // var_dump( $exec );die;
 
             $this->notice->push_notice_array($exec);
         }
-
+        
         $this->load->library( 'oauthLibrary' );
 
         $data                   =   array();
         $data[ 'apps' ]         =   $this->oauthlibrary->getUserApp( User::id() );
         $this->Gui->set_title(sprintf(__('My Profile &mdash; %s', 'aauth'), get('core_signature')));
 
-         $this->load->mu_module_view( 'aauth', 'users/profile', $data );
+        $this->load->mu_module_view( 'aauth', 'users/profile', $data );
     }
 
     public function users_test($index)

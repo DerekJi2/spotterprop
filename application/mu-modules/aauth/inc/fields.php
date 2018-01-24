@@ -151,19 +151,19 @@ class aauth_fields extends CI_model
 
     public function user_custom_fields($config)
     {
-        $this->Gui->add_item(array(
-            'type'        =>        'text',
-            'name'        =>        'first-name',
-            'label'        =>        __('First Name', 'aauth'),
-            'value'        =>        riake('user_id', $config) ? $this->options->get('first-name', riake('user_id', $config)) : false
-        ), $config[ 'meta_namespace' ], $config[ 'col_id' ]);
+        // $this->Gui->add_item(array(
+        //     'type'        =>        'text',
+        //     'name'        =>        'first-name',
+        //     'label'        =>        __('First Name', 'aauth'),
+        //     'value'        =>        riake('user_id', $config) ? $this->options->get('first-name', riake('user_id', $config)) : false
+        // ), $config[ 'meta_namespace' ], $config[ 'col_id' ]);
 
-        $this->Gui->add_item(array(
-            'type'        =>        'text',
-            'name'        =>        'last-name',
-            'label'        =>        __('Last Name', 'aauth'),
-            'value'        =>        riake('user_id', $config) ? $this->options->get('last-name', riake('user_id', $config)) : false
-        ), $config[ 'meta_namespace' ], $config[ 'col_id' ]);
+        // $this->Gui->add_item(array(
+        //     'type'        =>        'text',
+        //     'name'        =>        'last-name',
+        //     'label'        =>        __('Last Name', 'aauth'),
+        //     'value'        =>        riake('user_id', $config) ? $this->options->get('last-name', riake('user_id', $config)) : false
+        // ), $config[ 'meta_namespace' ], $config[ 'col_id' ]);
 
         ob_start();
         $skin    =    riake('user_id', $config) ? $this->options->get('theme-skin', riake('user_id', $config)) : '';

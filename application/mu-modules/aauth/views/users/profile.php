@@ -89,13 +89,13 @@ $this->Gui->add_item(array(
     'value'            =>    $this->users->current->Mobile
 ), 'user_profile', 1);
 
-$this->Gui->add_item(array(
-    'type'            =>    'text',
-    'label'            =>    __('Photo', 'aauth'),
-    'name'            =>    'Photo',
-    'disabled'      => true,
-    'value'            =>    $this->users->current->Photo
-), 'user_profile', 1);
+// $this->Gui->add_item(array(
+//     'type'            =>    'text',
+//     'label'            =>    __('Photo', 'aauth'),
+//     'name'            =>    'Photo',
+//     'disabled'      => true,
+//     'value'            =>    $this->users->current->Photo
+// ), 'user_profile', 1);
 
 // $this->Gui->add_item("<img src=\"$this->users->current->Photo\">");
 
