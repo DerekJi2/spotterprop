@@ -6,16 +6,33 @@
 **/
 
 $complete_users    =    array();
+
+// Get current login user's group_id
+$loginId = $this->users->current->id; 
+$login_group            =    farray($this->users->auth->get_user_groups($loginId));
+$login_group_id = $login_group->group_id;
+
 // adding user to complete_users array
 foreach ($users as $user) {
+    $userId = $user->user_id;
+    $user_group            =    farray($this->users->auth->get_user_groups($userId));
+    $user_group_id = $user_group->group_id;
+
+    $delete_button = '<a onclick="return confirm( \'' . _s( 'Would you like to delete this account ?', 'aauth' ) . '\' )" href="' . site_url(array( 'dashboard', 'users', 'delete', $user->user_id )) . '">' . __('Delete', 'aauth') . '</a>';
+
+    // Editors should NOT be able to delete Admin/Editor accounts
+    if ($login_group_id != 4 && $login_group_id >= $user_group_id)
+    {
+        $delete_button = "";
+    }
+
     $complete_users[]    =    array(
         $user->user_id ,
         '<a href="' . site_url(array( 'dashboard', 'users', 'edit', $user->user_id )) . '">' . $user->user_name . '</a>' ,
         $user->group_name,
         $user->email ,
         $user->last_login,
-        $user->banned   ==  1 ? __( 'Unactive' , 'aauth') : __( 'Active' , 'aauth'),
-         '<a onclick="return confirm( \'' . _s( 'Would you like to delete this account ?', 'aauth' ) . '\' )" href="' . site_url(array( 'dashboard', 'users', 'delete', $user->user_id )) . '">' . __('Delete', 'aauth') . '</a>' ,
+        $user->banned   ==  1 ? __( 'Unactive' , 'aauth') : __( 'Active' , 'aauth'), $delete_button,
     );
 }
 
