@@ -80,9 +80,9 @@ class aauth_fields extends CI_model
             'submit'    =>
             '<div class="row">
 				<div class="col-xs-7">
-				  <div class="checkbox icheck">
+				  <div class="checkbox icheck hidden">
 					<label>
-					  <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false"><input type="checkbox" name="keep_connected"><ins class="iCheck-helper"></ins></div> ' . __('Remember me', 'aauth') . '
+					  <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false"><input type="checkbox" name="keep_connected" checked><ins class="iCheck-helper"></ins></div> ' . __('Remember me', 'aauth') . '
 					</label>
 				  </div>
 				</div><!-- /.col -->

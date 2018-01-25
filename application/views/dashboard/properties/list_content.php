@@ -17,6 +17,10 @@
 
 <?php 
     $list = get_property_list();
+
+    // Filter User's Own Properties if current login account is 'Users' Level
+    $userId = $this->users->current->id;
+    $list->data = filter_properties($list->data, $userId);
 ?>
 <div>
 <a href="dashboard/props/create">

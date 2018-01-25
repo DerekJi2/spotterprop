@@ -35,4 +35,14 @@ class Agent_model extends BaseTable_model {
         return $query;
     }
 
+    /**
+     * 
+     */
+    function get_group_id($userId)
+    {
+        $user_group = farray($this->users->auth->get_user_groups($userId));
+        $user_group_id = $user_group->group_id;
+
+        return $user_group_id;
+    }
 }
