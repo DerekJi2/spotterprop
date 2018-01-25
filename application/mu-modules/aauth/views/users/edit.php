@@ -61,8 +61,15 @@ $this->Gui->add_item(array(
 
 $groups_array    =    array();
 
+$userId = $this->users->current->id; // ignore $index here. it's useless actually
+$user_group            =    farray($this->users->auth->get_user_groups($userId));
+$user_group_id = $user_group->group_id;
+
 foreach ($groups as $group) {
-    $groups_array[ $group->id ] = $group->definition != null ? $group->definition : $group->name;
+	if ($user_group_id <= $group->id)
+    {
+        $groups_array[ $group->id ] = $group->definition != null ? $group->definition : $group->name;
+    }
 }
 
 $this->Gui->add_item(array(

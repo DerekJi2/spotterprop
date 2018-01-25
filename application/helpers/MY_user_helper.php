@@ -9,3 +9,10 @@ function get_login_user()
 
     return $user;
 }
+
+// function get_login_groupid()
+// {
+//     $userId = $this->users->current->id; // ignore $index here. it's useless actually
+//     $user_group            =    farray($this->users->auth->get_user_groups($userId));
+//     $user_group_id = $user_group->group_id;
+// }
