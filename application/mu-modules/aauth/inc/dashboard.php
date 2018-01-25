@@ -51,6 +51,12 @@ class aauth_dashboard extends CI_model
         $props_menu = $this->menu_props($users_menu);
 
         return $props_menu;
+
+        // $props_menu = $this->menu_props($menus);
+
+        // $users_menu = $this->menu_props($props_menu);
+
+        // return $users_menu;
     }
 
     public function menu_users($menus)
@@ -73,6 +79,7 @@ class aauth_dashboard extends CI_model
             User::can('edit_users') ||
             User::can('delete_users')
         ) {
+            // Top level
             $menus[ 'users' ]        =    array(
                 array(
                     'title'     =>        __('Users Management', 'aauth'),
@@ -82,12 +89,39 @@ class aauth_dashboard extends CI_model
                 )
             );
 
+            // Sub level - 1. List all users
             $menus[ 'users' ][]    =                array(
-                'title'            =>        __('Create a new User', 'aauth'),
+                'title'            =>        __('Users List', 'aauth'),
+                'icon'            =>        'fa fa-users',
+                'href'            =>        site_url('dashboard/users/list')
+            );
+
+
+            // Sub level - 2. Create a user
+            $menus[ 'users' ][]    =                array(
+                'title'            =>        __('Create New', 'aauth'),
                 'icon'            =>        'fa fa-user-plus',
                 'href'            =>        site_url('dashboard/users/create')
             );
 
+            // Sub leve - 3. Delete a user
+            // $menus[ 'users' ][]    =                array(
+            //     'title'            =>        __('Delete', 'aauth'),
+            //     'icon'            =>        'fa fa-trash',
+            //     'href'            =>        site_url('dashboard/users/delete')
+            // );
+        }        
+
+        $menus[ 'users' ][]    =                array(
+            'title'            =>        __('My profile', 'aauth'),
+            'icon'            =>        'fa fa-user-circle',
+            'href'            =>        site_url('dashboard/users/profile')
+        );
+
+        if (
+            User::can("manage_core")
+        )
+        {
             $menus[ 'roles' ]        =        array(
                 array(
                     'title'            =>        __('Roles & Permissions', 'aauth'),
@@ -97,18 +131,6 @@ class aauth_dashboard extends CI_model
             );
         }
 
-        $menus[ 'users' ][]    =                array(
-            'title'            =>        __('Delete', 'aauth'),
-            'icon'            =>        'fa fa-trash',
-            'href'            =>        site_url('dashboard/users/delete')
-        );
-
-        $menus[ 'users' ][]    =                array(
-            'title'            =>        __('My profile', 'aauth'),
-            'icon'            =>        'fa fa-user-circle',
-            'href'            =>        site_url('dashboard/users/profile')
-        );
-
         return $menus;
     }
 
@@ -117,7 +139,7 @@ class aauth_dashboard extends CI_model
         $menus[ 'props' ]        =    array(
             array(
                 'title'            =>        __('Props', 'aauth'),
-                'icon'            =>        'fa fa-users',
+                'icon'            =>        'fa fa-home',
                 'href'            =>        site_url('dashboard/props'),
                 'disable'    => true
             )
@@ -128,14 +150,14 @@ class aauth_dashboard extends CI_model
         **/
 
         if (
-            User::can('create_users') ||
-            User::can('edit_users') ||
-            User::can('delete_users')
+            User::can('create_property') ||
+            User::can('edit_property') ||
+            User::can('delete_property')
         ) {
             $menus[ 'props' ]        =    array(
                 array(
                     'title'     =>        __('Property Management', 'aauth'),
-                    'icon'      =>        'fa fa-users',
+                    'icon'      =>        'fa fa-home',
                     'href'      =>        site_url('dashboard/props'),
                     'disable'   =>        true  // disable menu title showed as first submenu
                 )

@@ -34,16 +34,21 @@ foreach (force_array($groups) as $group) {
     $label_permissions    =    ob_get_clean();
     $group_array[]    =    array(
         // '<a href="' . site_url( array( 'dashboard' , 'groups' , 'edit' , $group->id ) ) . '">' . $group->name . '</a>',
-        $group->name,
+        //$group->name,
         $group->definition,
-        $group->is_admin == 1 ? __('Yes', 'aauth') : __('No', 'aauth'),
+        //$group->is_admin == 1 ? __('Yes', 'aauth') : __('No', 'aauth'),
         $label_permissions
     );
 }
 
 $this->Gui->add_item(array(
     'type'            =>    'table',
-    'cols'            =>    array( __('Role name', 'aauth'), __('Description', 'aauth'), __('Admin', 'aauth'), __('Permissions', 'aauth') ),
+    'cols'            =>    array(
+                                // __('Role name', 'aauth'), 
+                                __('Role Name', 'aauth'), 
+                                // __('Admin', 'aauth'), 
+                                __('Permissions', 'aauth') 
+                            ),
     'rows'            =>    $group_array
 ), 'role_list', 1);
 

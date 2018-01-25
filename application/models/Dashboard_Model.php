@@ -187,25 +187,6 @@ class Dashboard_Model extends CI_Model
                 'icon'            =>        'fa fa-cogs',
                 'href'            =>        site_url('dashboard/settings')
             );
-
-            $admin_menus[ 'properties' ][]    =    array(
-                'href'            =>        site_url('properties'),
-                'icon'            =>        'fa fa-home',
-                'title'            =>        __('Properties'),
-                'disable'       =>          true    // disable menu title showed as first submenu
-            );
-
-            $admin_menus[ 'properties' ][]    =    array(
-                'href'            =>        site_url(array( 'Listing/List' )),
-                'icon'            =>        'fa fa-list',
-                'title'            =>        __('List'),
-            );
-
-            $admin_menus[ 'properties' ][]    =    array(
-                'href'            =>        site_url(array( 'properties/add' )),
-                'icon'            =>        'fa fa-plus',
-                'title'            =>        __('Add'),
-            );
         }
 
         foreach (force_array($this->events->apply_filters('admin_menus', $admin_menus)) as $namespace => $menus) {

@@ -90,17 +90,17 @@ class Users_model extends CI_Model
         // Only create if group does'nt exists (it's optional)
         // Creating admin Group
         if (! $group = $this->auth->get_group_id('master')) {
-            $this->auth->create_group('master', __('Master Group'), true, __('Can create users, install modules, manage options'));
+            $this->auth->create_group('master', __('Admin'), true, __('Can create users, install modules, manage options'));
         }
 
         // Creating admin Group
         if (! $group = $this->auth->get_group_id('administrator')) {
-            $this->auth->create_group('administrator', __('Admin Group'), true, __('Can install modules, manage options'));
+            $this->auth->create_group('administrator', __('Editors'), true, __('Can install modules, manage options'));
         }
 
         // Create user
         if (! $group = $this->auth->get_group_id('users')) {
-            $this->auth->create_group('user', __('User Group'), true, __('Just a user'));
+            $this->auth->create_group('user', __('Users'), true, __('Just a user'));
         }
     }
 
@@ -332,28 +332,42 @@ class Users_model extends CI_Model
         $this->auth->create_perm('edit_profile', __('Create Options'), __('Allow option creation'));
 
         /**
+         * Property Permission
+        **/
+
+        $this->auth->create_perm('create_property', __('Create Properties'), __('Allow create properties'));
+        $this->auth->create_perm('edit_property', __('Edit Properties'), __('Allow edit properties'));
+        $this->auth->create_perm('delete_property', __('Delete Properties'), __('Allow delete properties'));
+        $this->auth->create_perm('list_property', __('List Properties'), __('Allow list properties'));
+
+        /**
          * Assign Permission to Groups
         **/
 
         // Master
-        $this->users->auth->allow_group('master', 'manage_core');
+        // $this->users->auth->allow_group('master', 'manage_core');
 
-        $this->users->auth->allow_group('master', 'create_options');
-        $this->users->auth->allow_group('master', 'edit_options');
-        $this->users->auth->allow_group('master', 'delete_options');
-        $this->users->auth->allow_group('master', 'read_options');
+        // $this->users->auth->allow_group('master', 'create_options');
+        // $this->users->auth->allow_group('master', 'edit_options');
+        // $this->users->auth->allow_group('master', 'delete_options');
+        // $this->users->auth->allow_group('master', 'read_options');
 
-        $this->users->auth->allow_group('master', 'install_modules');
-        $this->users->auth->allow_group('master', 'update_modules');
-        $this->users->auth->allow_group('master', 'delete_modules');
-        $this->users->auth->allow_group('master', 'toggle_modules');
-        $this->users->auth->allow_group('master', 'extract_modules');
+        // $this->users->auth->allow_group('master', 'install_modules');
+        // $this->users->auth->allow_group('master', 'update_modules');
+        // $this->users->auth->allow_group('master', 'delete_modules');
+        // $this->users->auth->allow_group('master', 'toggle_modules');
+        // $this->users->auth->allow_group('master', 'extract_modules');
 
         $this->users->auth->allow_group('master', 'create_users');
         $this->users->auth->allow_group('master', 'edit_users');
         $this->users->auth->allow_group('master', 'delete_users');
 
         $this->users->auth->allow_group('master', 'edit_profile');
+
+        $this->users->auth->allow_group('master', 'create_property');
+        $this->users->auth->allow_group('master', 'edit_property');
+        $this->users->auth->allow_group('master', 'delete_property');
+        $this->users->auth->allow_group('master', 'list_property');
 
         // Administrators
         $this->users->auth->allow_group('administrator', 'create_options');
@@ -369,7 +383,17 @@ class Users_model extends CI_Model
 
         $this->users->auth->allow_group('administrator', 'edit_profile');
 
+        $this->users->auth->allow_group('administrator', 'create_property');
+        $this->users->auth->allow_group('administrator', 'edit_property');
+        $this->users->auth->allow_group('administrator', 'delete_property');
+        $this->users->auth->allow_group('administrator', 'list_property');
+
         // Users
         $this->users->auth->allow_group('user', 'edit_profile');
+
+        $this->users->auth->allow_group('user', 'create_property');
+        $this->users->auth->allow_group('user', 'edit_property');
+        $this->users->auth->allow_group('user', 'delete_property');
+        $this->users->auth->allow_group('user', 'list_property');
     }
 }
