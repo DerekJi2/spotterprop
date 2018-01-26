@@ -616,13 +616,15 @@ class aauth_dashboard extends CI_model
             $this->Gui->set_title(__('Edit Property', 'aauth'));
             $this->load->mu_module_view( 'aauth', 'props/delete', $data);
         }
-        elseif ($page == 'complete') {
-            $this->Gui->set_title(__('Edit Property', 'aauth'));
-            $this->load->mu_module_view( 'aauth', 'props/complete', $data);
+        elseif ($page == 'submit') {
+            $this->Gui->set_title(__('Submit Property', 'aauth'));
+            $data["target_status_id"] = 2;
+            $this->load->mu_module_view( 'aauth', 'props/update_status', $data);
         }
-        elseif ($page == 'approve') {
-            $this->Gui->set_title(__('Edit Property', 'aauth'));
-            $this->load->mu_module_view( 'aauth', 'props/approve', $data);
+        elseif ($page == 'publish') {
+            $this->Gui->set_title(__('Publish Property', 'aauth'));
+            $data["target_status_id"] = 3;
+            $this->load->mu_module_view( 'aauth', 'props/update_status', $data);
         }
     }
 }

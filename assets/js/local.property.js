@@ -73,3 +73,62 @@ nsProperty.Delete = function(propertyId, userid, really) {
     return promise;
 }
 
+nsProperty.UpdateStatus = function(propertyId, userid, statusid) {
+    var URL = BASEURL + "Property/UpdateStatus";
+    console.log("UpdateStatus: StatusId = " + statusid);
+
+    var promise = $.ajax({
+        url: URL,
+        data: { 
+            PropertyId: propertyId, 
+            UserId: userid,
+            StatusId: statusid, 
+        }, 
+        type : "POST",
+    });
+
+    return promise;
+}
+
+nsProperty.Draft = function(propertyId, userid) {
+    var statusid = 1;
+    return nsProperty.UpdateStatus(propertyId, userid, 1);
+}
+
+nsProperty.Submit = function(propertyId, userid) {
+    var statusid = 2;
+    return nsProperty.UpdateStatus(propertyId, userid, 2);
+}
+
+nsProperty.Publish = function(propertyId, userid) {
+    var statusid = 3;
+    return nsProperty.UpdateStatus(propertyId, userid, 3);
+}
+
+nsProperty.StatusText = function(statusId)
+{
+    var StatusArray = ["undefined",
+                        "draft",
+                        "submitted",
+                        "published"];
+
+    if (statusId >= 0 && statusId < StatusArray.length)
+    {
+        return StatusArray[statusId];
+    }
+    return "UNDEFINED";
+}
+
+nsProperty.StatusLabel = function(statusId)
+{
+    var StatusArray = ["undefined",
+    "label-warning",
+    "label-info",
+    "label-success"];
+
+    if (statusId >= 0 && statusId < StatusArray.length)
+    {
+        return StatusArray[statusId];
+    }
+    return "UNDEFINED";
+}

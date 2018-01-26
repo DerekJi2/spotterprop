@@ -22,15 +22,31 @@ class Property_model extends BaseTable_model {
     /**
      * 
      */
-    function get_json_array()
+    function get_json_array($incDeleted = false, $statusRange = [1,2,3])
     {
         $arr = array();
 
         $result = $this->get_result();
         foreach($result as $row)
         {
-            $json = $this->get_json_model_from_property_row($row);
-            array_push($arr, $json);
+            $included = true;
+            $isDeleted = $row->IsDeleted;
+            if ($isDeleted == 1 && $incDeleted == false)
+            {
+                $included = false;
+            }
+
+            if ($included == true)
+            {
+                $status = $row->StatusId;
+                $included = in_array($status, $statusRange);
+            }
+
+            if ($included == true)
+            {
+                $json = $this->get_json_model_from_property_row($row);
+                array_push($arr, $json);
+            }
         }
 
         $json = new class($arr) {
@@ -168,6 +184,7 @@ class Property_model extends BaseTable_model {
         $json->latitude = $row->Latitude;
         $json->longitude = $row->Longitude;
         $json->TypeId = $row->TypeId;
+        $json->StatusId = $row->StatusId;
         $json->rating = $row->Rating;
         $json->date_created = $row->CreatedOn;
         $json->price = $row->Price;
@@ -293,6 +310,18 @@ class Property_model extends BaseTable_model {
             $sql = "UPDATE $this->tableName SET IsDeleted=1";
 
         $sql = $sql." WHERE Id=$propertyId;";
+
+        echo "\r\n".$sql."\r\n";
+        $ok = $this->db->query($sql);
+        return $ok;
+    }
+
+    /**
+     * 
+     */
+    public function update_status($propertyId, $statusId)
+    {
+        $sql = "UPDATE $this->tableName SET StatusId=$statusId WHERE Id=$propertyId";
 
         echo "\r\n".$sql."\r\n";
         $ok = $this->db->query($sql);

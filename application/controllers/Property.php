@@ -165,4 +165,20 @@ class Property extends BaseDB_Controller {
 
         echo $result;
     }
+
+    public function UpdateStatus()
+    {
+        $this->ci->load->helper("MY_model_helper");
+
+        $property_id = $this->input->post("PropertyId");
+        $userid = $this->input->post("UserId");
+        $statusid = $this->input->post("StatusId");
+
+        $result = 0;
+        if (in_array($statusid, [1, 2, 3]))
+        {
+            $result = update_property_status($property_id, $statusid, $userid);
+        }
+        echo $result;
+    }
 }

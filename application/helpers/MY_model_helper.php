@@ -1,5 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+    /**
+     * 
+     */
     function GUID()
     {
         if (function_exists('com_create_guid') === true)
@@ -10,6 +13,9 @@
         return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
     }
 
+    /**
+     * 
+     */
     function track_property_insert($propertyData, $userid)
     {
         $operation = "INSERT";
@@ -19,6 +25,9 @@
 		return $model->insert($operation, $propertyData, $userid, $propertyData->Id);
     }
 
+    /**
+     * 
+     */
     function track_property_update($propertyData, $userid)
     {
         $operation = "UPDATE";
@@ -28,6 +37,9 @@
 		return $model->insert($operation, $propertyData, $userid, $propertyData["Id"]);
     }
 
+    /**
+     * 
+     */
     function track_property_delete($propertyId, $userid, $really)
     {
         $operation = "DELETE ($really)";
@@ -37,7 +49,22 @@
 		return $model->insert($operation, $propertyId, $userid, $propertyId);
     }
 
+    /**
+     * 
+     */
+    function track_property_status($propertyId, $userid, $statusid)
+    {
+        $operation = "STATUS ($statusid)";
+        $CI = @get_instance();
+        $CI->load->model("TrackProperty_Model");		
+		$model = new TrackProperty_Model();
+		return $model->insert($operation, $statusid, $userid, $propertyId);
+    }
 
+
+    /**
+     * 
+     */
     function add_property($propertyData, $new_features, $specs)
     {
         $CI = @get_instance();
@@ -61,6 +88,9 @@
         }
     }
 
+    /**
+     * 
+     */
     function update_property($propertyData, $new_features, $specs, $userid)
     {
         $CI = @get_instance();
@@ -83,6 +113,9 @@
         return $ok;
     }
 
+    /**
+     * 
+     */
     function update_property_features($propertyId, $new_features)
     {
         if ($new_features == null || sizeof($new_features) < 1)
@@ -119,6 +152,9 @@
         $ok_delete = $featuresModel->delete_array($propertyId, $delete_list, $mark_only);
     }
 
+    /**
+     * 
+     */
     function add_property_specs($propertyId, $specs)
     {
         $CI = @get_instance();
@@ -128,6 +164,9 @@
         return $ok;
     }
 
+    /**
+     * 
+     */
     function array_value($array, $key, $default = 0)
     {
         if ($array == null || sizeof($array) < 1)
@@ -142,6 +181,9 @@
         return $array[$key];
     }
 
+    /**
+     * 
+     */
     function upload_image($imgSource, $type = "property")
 	{
         $filename = get_image_uniqname($type);
@@ -150,6 +192,9 @@
         return $filename;
     }
     
+    /**
+     * 
+     */
     function get_image_uniqname($imageType = "property")
     {
         $dir = "user-assets/$imageType-images";
@@ -158,6 +203,9 @@
         return $filename;
     }
 
+    /**
+     * 
+     */
     function insert_gallery($propertyId, $imageUrl, $personId = 0, $displayNum = 0, $isFloorPlan = 0)
     {
         $CI = @get_instance();
@@ -167,6 +215,9 @@
         return $ok;
     }
 
+    /**
+     * 
+     */
     function delete_gallery($propertyId, $imageUrl)
     {
         $CI = @get_instance();
@@ -176,6 +227,9 @@
         return $ok;
     }
 
+    /**
+     * 
+     */
     function delete_property($propertyId, $userid, $really = true)
     {
         $CI = @get_instance();
@@ -187,6 +241,41 @@
         return $ok;
     }
 
+    /**
+     * 
+     */
+    function update_property_status($propertyId, $statusId, $userid)
+    {
+        $CI = @get_instance();
+        $CI->load->model("Property_model");		
+		$propModel = new Property_model();
+        $ok = $propModel->update_status($propertyId, $statusId);
+
+        track_property_status($propertyId, $userid, $statusId);
+        return $ok;
+    }
+
+    function submit_property($propertyId, $userid)
+    {
+        $statusid = 2;
+        return update_property_status($propertyId, $statusid, $userid);
+    }
+
+    function publish_property($propertyId, $userid)
+    {
+        $statusid = 3;
+        return update_property_status($propertyId, $statusid, $userid);
+    }
+
+    function draft_property($propertyId, $userid)
+    {
+        $statusid = 1;
+        return update_property_status($propertyId, $statusid, $userid);
+    }
+
+    /**
+     * 
+     */
     function get_property_details($property_id)
     {
         $CI = @get_instance();
@@ -217,4 +306,38 @@
         $data["agent"] = ($agentResult == null || sizeof($agentResult) < 1) ? null : $agentResult[0];
 
         return $data;
+    }
+
+    /**
+     * 
+     */
+    function get_status_text($statusId)
+    {
+        $StatusArray = ["undefined",
+                        "draft",
+                        "submitted",
+                        "published"];
+
+        if ($statusId >= 0 && $statusId < sizeof($StatusArray))
+        {
+            return $StatusArray[$statusId];
+        }
+        return "UNDEFINED";
+    }
+
+    /**
+     * 
+     */
+    function get_status_label($statusId)
+    {
+        $StatusArray = ["undefined",
+                        "label-warning",
+                        "label-info",
+                        "label-success"];
+
+        if ($statusId >= 0 && $statusId < sizeof($StatusArray))
+        {
+            return $StatusArray[$statusId];
+        }
+        return "UNDEFINED";
     }

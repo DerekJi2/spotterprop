@@ -13,6 +13,9 @@
 .agent-image img { width:60px; margin-right:10px; }
 .td-agent { width:120px; }
 .agent-info i { display:inline-block; margin-right:3px; width:14px; }
+.td-status .label { display:inline-block; width:60px; }
+.td-status div { width:100%; text-align:center; }
+.td-status div a { font-size:12px; }
 </style>
 
 <?php 
@@ -35,7 +38,7 @@
         <th scope="col"><?= get_lang("Property")?></th>
         <th scope="col"><?= get_lang("Specification")?></th>
         <th scope="col"><?= get_lang("Agent/Owner")?></th>
-        <th scope="col"><?= get_lang("Status")?></th>
+        <th scope="col" style="text-align:center;"><?= get_lang("Status")?></th>
         <th scope="col"></th>
         </tr>
     </thead>
@@ -98,24 +101,49 @@
                 <div class="agent-info agent-mobile"><i class="fa fa-mobile icon-mobile"></i><?=$agent_mobile?></div>
                 <?php } ?>
             </td>
-            <td>
-            </td>
-            <td>
             <?php
                 $property_edit_link = lang_site_url()."dashboard/props/edit/$item->id";
                 $property_delete_link = "javascript: onClick_DeleteProperty($item->id);";
-                $property_complete_link = lang_site_url()."dashboard/props/complete/$item->id";
-                $property_approve_link = lang_site_url()."dashboard/props/approve/$item->id";
+                $property_submit_link = "javascript: onClick_SubmitProperty(this, $item->id);";
+                $property_publish_link = "javascript: onClick_PublishProperty(this, $item->id);";
+                // $property_submit_link = lang_site_url()."dashboard/props/submit/$item->id";
+                // $property_publish_link = lang_site_url()."dashboard/props/publish/$item->id";
             ?>
-                <a href="<?= $property_edit_link ?>" title="Edit"><i class="fa fa-edit"></i></a>
-                <a href="<?= $property_delete_link ?>" title="Delete"><i class="fa fa-remove"></i></a>
-                <a href="<?= $property_complete_link ?>" title="Complete"><i class="fa fa-check"></i></a>
-                <a href="<?= $property_approve_link ?>" title="Approve"><i class="fa fa-thumbs-up"></i></a>
+            <td class='td-status' allign="center">
+                <div><span class="label <?= get_status_label($item->StatusId) ?>"><?= get_status_text($item->StatusId) ?></span></div>
+
+                <!-- show submit button if 'draft' -->
+                <?php if ($item->StatusId == 1 ) { ?>   
+                <div><a href="javascript:void(0);" onclick="<?= $property_submit_link ?>" title="Submit">submit now!</a></div>
+                <?php } ?>
+
+                <!-- show publish button if 'submitted' -->
+                <?php if (get_group_id($userId) < 6 && $item->StatusId == 2 ) { ?>
+                <br/>
+                <div><a href="javascript:void(0);" onclick="<?= $property_publish_link ?>" title="Publish" style="" class="btn-xs btn-danger"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> </a></div>
+                <?php } ?>
+            </td>
+            <td>            
+                <a href="<?= $property_edit_link ?>" title="Edit"><i class="fa fa-edit" style="color:blue;"></i> Edit</a>
+                <br/><br/>
+                <a href="javascript:void(0);" onclick="<?= $property_delete_link ?>" title="Delete"><i class="fa fa-remove" style="color:#FF5733;"></i> Delete</a>
+                
             </td>
         </tr>
     <?php } ?>
     </tbody>
 </table>
+
+<div class='dv-publish-template' style="display:none;">
+    <br/>
+    <div>
+        <a href="javascript:void(0);" onclick="<?= $property_publish_link ?>" 
+            title="Publish" style="" class="btn-xs btn-danger">
+            <i class="fa fa-thumbs-o-up" aria-hidden="true">
+            </i>
+        </a>
+    </div>
+</div>
 
 <script type="text/javascript" src="assets/js/local.property.js"></script>
 
@@ -142,6 +170,72 @@ function onClick_DeleteProperty(propertyId)
         
         promise.always(() => {
             ConsoleLog("nsProperty.Delete().always()");
+        });
+    }
+}
+
+function onClick_SubmitProperty(obj, propertyId)
+{
+    var userid = <?= $this->users->current->id ?>;
+    var groupid = <?= get_group_id($userId) ?>;
+    var confirmed = confirm("Are you sure to submit this property?");
+
+    if (confirmed) 
+    {
+        var promise = nsProperty.Submit(propertyId, userid);
+
+        promise.fail((xhr, status, error) =>{
+            ConsoleLog("nsProperty.Submit().fail() " + error);
+            ConsoleLog(xhr.responseText);
+        });
+
+        promise.done((response) =>{
+            ConsoleLog("nsProperty.Submit().done() " + response);
+            // location.href = BASEURL + "dashboard/props/list";
+            var parentDiv = $(obj).parent().parent();
+            var span = parentDiv.find('span');
+            span.html(nsProperty.StatusText(2));
+            span.addClass(nsProperty.StatusLabel(2));
+            $(obj).remove();
+
+            if (groupid < 6)
+            {
+                var publish_button = $('.dv-publish-template').html();
+                $(publish_button).appendTo(parentDiv);
+            }
+        });
+        
+        promise.always(() => {
+            ConsoleLog("nsProperty.Submit().always()");
+        });
+    }
+}
+
+function onClick_PublishProperty(obj, propertyId)
+{
+    var userid = <?= $this->users->current->id ?>;
+    var confirmed = confirm("Are you sure to publish this property?");
+
+    if (confirmed) 
+    {
+        var promise = nsProperty.Publish(propertyId, userid);
+
+        promise.fail((xhr, status, error) =>{
+            ConsoleLog("nsProperty.Publish().fail() " + error);
+            ConsoleLog(xhr.responseText);
+        });
+
+        promise.done((response) =>{
+            ConsoleLog("nsProperty.Publish().done() " + response);
+            // location.href = BASEURL + "dashboard/props/list";
+            var span = $(obj).parent().parent().find('span');
+            span.html(nsProperty.StatusText(3));
+            span.addClass(nsProperty.StatusLabel(3));
+            $(obj).remove();
+        });
+        
+        promise.always(() => {
+            ConsoleLog("nsProperty.Publish().always()");
         });
     }
 }

@@ -2,12 +2,12 @@
 
 
 
-    function get_property_list()
+    function get_property_list($incDeleted = false, $statusRange = [1,2,3])
     {
         $CI = @get_instance();
         $CI->load->model("Property_model");		
 		$propertyModel = new Property_model();
-		return $propertyModel->get_json_array();
+		return $propertyModel->get_json_array($incDeleted, $statusRange);
     }
 
     function get_property_latest($top)
