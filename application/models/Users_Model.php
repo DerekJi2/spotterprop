@@ -345,18 +345,18 @@ class Users_model extends CI_Model
         **/
 
         // Master
-        // $this->users->auth->allow_group('master', 'manage_core');
+        $this->users->auth->allow_group('master', 'manage_core');
 
-        // $this->users->auth->allow_group('master', 'create_options');
-        // $this->users->auth->allow_group('master', 'edit_options');
-        // $this->users->auth->allow_group('master', 'delete_options');
-        // $this->users->auth->allow_group('master', 'read_options');
+        $this->users->auth->allow_group('master', 'create_options');
+        $this->users->auth->allow_group('master', 'edit_options');
+        $this->users->auth->allow_group('master', 'delete_options');
+        $this->users->auth->allow_group('master', 'read_options');
 
-        // $this->users->auth->allow_group('master', 'install_modules');
-        // $this->users->auth->allow_group('master', 'update_modules');
-        // $this->users->auth->allow_group('master', 'delete_modules');
-        // $this->users->auth->allow_group('master', 'toggle_modules');
-        // $this->users->auth->allow_group('master', 'extract_modules');
+        $this->users->auth->allow_group('master', 'install_modules');
+        $this->users->auth->allow_group('master', 'update_modules');
+        $this->users->auth->allow_group('master', 'delete_modules');
+        $this->users->auth->allow_group('master', 'toggle_modules');
+        $this->users->auth->allow_group('master', 'extract_modules');
 
         $this->users->auth->allow_group('master', 'create_users');
         $this->users->auth->allow_group('master', 'edit_users');
@@ -370,16 +370,16 @@ class Users_model extends CI_Model
         $this->users->auth->allow_group('master', 'list_property');
 
         // Administrators
-        $this->users->auth->allow_group('administrator', 'create_options');
-        $this->users->auth->allow_group('administrator', 'edit_options');
-        $this->users->auth->allow_group('administrator', 'delete_options');
-        $this->users->auth->allow_group('administrator', 'read_options');
+        // $this->users->auth->allow_group('administrator', 'create_options');
+        // $this->users->auth->allow_group('administrator', 'edit_options');
+        // $this->users->auth->allow_group('administrator', 'delete_options');
+        // $this->users->auth->allow_group('administrator', 'read_options');
 
-        $this->users->auth->allow_group('administrator', 'install_modules');
-        $this->users->auth->allow_group('administrator', 'update_modules');
-        $this->users->auth->allow_group('administrator', 'delete_modules');
-        $this->users->auth->allow_group('administrator', 'toggle_modules');
-        $this->users->auth->allow_group('administrator', 'extract_modules');
+        // $this->users->auth->allow_group('administrator', 'install_modules');
+        // $this->users->auth->allow_group('administrator', 'update_modules');
+        // $this->users->auth->allow_group('administrator', 'delete_modules');
+        // $this->users->auth->allow_group('administrator', 'toggle_modules');
+        // $this->users->auth->allow_group('administrator', 'extract_modules');
 
         $this->users->auth->allow_group('administrator', 'edit_profile');
 
