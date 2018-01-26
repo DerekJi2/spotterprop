@@ -145,14 +145,23 @@ class Property extends BaseDB_Controller {
         $features = $this->input->post("Features");
         $specs = $this->input->post("Specs");
 
-        /*
-        $this->ci->load->model($this->modelName);
-        $data["DbResult"] = ($this->model != null) ? $this->model->insert($data) : null;
-*/
         $userid = $this->input->post("UserId");
         $result = update_property($data, $features, $specs, $userid);
-        $data["DbResult"] = $result;
-        //return $this->load->view("Property/Create", $data);
+
+        echo $result;
+    }
+
+    public function Delete()
+    {
+        $this->ci->load->helper("MY_model_helper");
+
+        $property_id = $this->input->post("PropertyId");
+        $really = $this->input->post("Really");
+        $userid = $this->input->post("UserId");
+
+        $really = ($really == "True" || $really == "true") ? true : false;
+
+        $result = delete_property($property_id, $userid, $really);
 
         echo $result;
     }

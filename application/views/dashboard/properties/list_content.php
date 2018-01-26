@@ -103,7 +103,7 @@
             <td>
             <?php
                 $property_edit_link = lang_site_url()."dashboard/props/edit/$item->id";
-                $property_delete_link = lang_site_url()."dashboard/props/delete/$item->id";
+                $property_delete_link = "javascript: onClick_DeleteProperty($item->id);";
                 $property_complete_link = lang_site_url()."dashboard/props/complete/$item->id";
                 $property_approve_link = lang_site_url()."dashboard/props/approve/$item->id";
             ?>
@@ -116,3 +116,33 @@
     <?php } ?>
     </tbody>
 </table>
+
+<script type="text/javascript" src="assets/js/local.property.js"></script>
+
+<script type="text/javascript">
+function onClick_DeleteProperty(propertyId)
+{
+    var really = false;
+    var userid = <?= $this->users->current->id ?>;
+    var confirmed = confirm("Are you sure to delete this property?");
+
+    if (confirmed) 
+    {
+        var promise = nsProperty.Delete(propertyId, userid, really);
+
+        promise.fail((xhr, status, error) =>{
+            ConsoleLog("nsProperty.Delete().fail() " + error);
+            ConsoleLog(xhr.responseText);
+        });
+
+        promise.done((response) =>{
+            ConsoleLog("nsProperty.Delete().done() " + response);
+            location.href = BASEURL + "dashboard/props/list";
+        });
+        
+        promise.always(() => {
+            ConsoleLog("nsProperty.Delete().always()");
+        });
+    }
+}
+</script>

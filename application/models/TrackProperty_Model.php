@@ -22,10 +22,10 @@ class TrackProperty_model extends BaseTable_model {
     /**
      * 
      */
-    function insert($operation, $propData, $userid)
+    function insert($operation, $propData, $userid, $property_id)
     {
         $data = array(
-            'PropertyId'    => isset($propData->Id) ? $propData->Id : $propData["Id"],
+            'PropertyId'    => $property_id,
             'Operation'     => $operation,
             'DetailJson'    => json_encode($propData),
             'CreatedOn'     => date('Y-m-d H:i:s'),

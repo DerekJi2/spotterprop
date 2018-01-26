@@ -10,13 +10,33 @@
         return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
     }
 
-    function track_property($operation, $propertyData, $userid)
+    function track_property_insert($propertyData, $userid)
     {
+        $operation = "INSERT";
         $CI = @get_instance();
         $CI->load->model("TrackProperty_Model");		
 		$model = new TrackProperty_Model();
-		return $model->insert($operation, $propertyData, $userid);
+		return $model->insert($operation, $propertyData, $userid, $propertyData->Id);
     }
+
+    function track_property_update($propertyData, $userid)
+    {
+        $operation = "UPDATE";
+        $CI = @get_instance();
+        $CI->load->model("TrackProperty_Model");		
+		$model = new TrackProperty_Model();
+		return $model->insert($operation, $propertyData, $userid, $propertyData["Id"]);
+    }
+
+    function track_property_delete($propertyId, $userid, $really)
+    {
+        $operation = "DELETE ($really)";
+        $CI = @get_instance();
+        $CI->load->model("TrackProperty_Model");		
+		$model = new TrackProperty_Model();
+		return $model->insert($operation, $propertyId, $userid, $propertyId);
+    }
+
 
     function add_property($propertyData, $new_features, $specs)
     {
@@ -36,7 +56,7 @@
 
             // Track history
             $userid = $this->users->current->id;
-            track_property("INSERT", $createdProperty, $userid);
+            track_property_insert($createdProperty, $userid);
             return $createdProperty;
         }
     }
@@ -58,7 +78,7 @@
             $ok_specs = add_property_specs($propId, $specs);
 
             // Track history
-            track_property("UPDATE", $propertyData, $userid);
+            track_property_update($propertyData, $userid);
         }
         return $ok;
     }
@@ -153,6 +173,17 @@
         $CI->load->model("Gallery_model");		
 		$galleryModel = new Gallery_model();
         $ok = $galleryModel->delete($propertyId, $imageUrl);
+        return $ok;
+    }
+
+    function delete_property($propertyId, $userid, $really = true)
+    {
+        $CI = @get_instance();
+        $CI->load->model("Property_model");		
+		$propModel = new Property_model();
+        $ok = $propModel->delete($propertyId, $really);
+
+        track_property_delete($propertyId, $userid, $really);
         return $ok;
     }
 

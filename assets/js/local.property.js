@@ -53,8 +53,23 @@ nsProperty.Update = function(model) {
     });
 
     return promise;
-
-
 }
 
+
+nsProperty.Delete = function(propertyId, userid, really) {
+    var URL = BASEURL + "Property/Delete";
+    console.log("Delete: really = " + really);
+
+    var promise = $.ajax({
+        url: URL,
+        data: { 
+            PropertyId: propertyId, 
+            Really: really, 
+            UserId: userid
+        }, 
+        type : "POST",
+    });
+
+    return promise;
+}
 

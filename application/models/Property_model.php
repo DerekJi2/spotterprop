@@ -282,4 +282,20 @@ class Property_model extends BaseTable_model {
 
         return $ok; // if failed
     }
+
+    /**
+     * 
+     */
+    public function delete($propertyId, $really = true)
+    {
+        $sql = "DELETE FROM $this->tableName ";
+        if ($really == false)
+            $sql = "UPDATE $this->tableName SET IsDeleted=1";
+
+        $sql = $sql." WHERE Id=$propertyId;";
+
+        echo "\r\n".$sql."\r\n";
+        $ok = $this->db->query($sql);
+        return $ok;
+    }
 }
