@@ -18,17 +18,19 @@ foreach ($users as $user) {
     $user_group            =    farray($this->users->auth->get_user_groups($userId));
     $user_group_id = $user_group->group_id;
 
+    $user_edit_link = site_url(array( 'dashboard', 'users', 'edit', $user->user_id ));
     $delete_button = '<a onclick="return confirm( \'' . _s( 'Would you like to delete this account ?', 'aauth' ) . '\' )" href="' . site_url(array( 'dashboard', 'users', 'delete', $user->user_id )) . '">' . __('Delete', 'aauth') . '</a>';
 
-    // Editors should NOT be able to delete Admin/Editor accounts
+    // Editors should NOT be able to delete or edit Admin/Editor accounts
     if ($login_group_id != 4 && $login_group_id >= $user_group_id)
     {
         $delete_button = "";
+        $user_edit_link = "javascript: alert('Insufficient privileges: you can not edit this account.');";
     }
 
     $complete_users[]    =    array(
         $user->user_id ,
-        '<a href="' . site_url(array( 'dashboard', 'users', 'edit', $user->user_id )) . '">' . $user->user_name . '</a>' ,
+        '<a href="' . $user_edit_link . '">' . $user->user_name . '</a>' ,
         $user->group_name,
         $user->email ,
         $user->last_login,
