@@ -1,5 +1,7 @@
 <link rel="stylesheet" type="text/css" href="assets/css/user.form.validation.css" />
 
+<?php $this->load->view("dashboard/properties/_create_user_check"); ?>
+
 <style>
 .mb-3 { font-size:16px; }
 .row { margin-top:4px; }
