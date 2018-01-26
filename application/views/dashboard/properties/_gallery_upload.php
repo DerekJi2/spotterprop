@@ -78,7 +78,7 @@
             for (var i = 0; i < images.length; i++)
             {
                 var img = images[i];
-                loadImage(img);
+                loadImage(img, true);
             }
         }
     });
@@ -86,10 +86,12 @@
     /**
      * 
      */
-    function loadImage(imageSrc)
+    function loadImage(imageSrc, uploaded)
     {
+        uploaded = uploaded || false;
         var img = $('<img></optionList>').addClass('thumb').attr('src', imageSrc); //create image element
-        var anchor = $('<div class="thumb1"></div>').append(img);
+        var imgDiv = (uploaded == false) ? '<div class="dv-thumb thumb1"></div>' : '<div class="dv-thumb thumb2"></div>';
+        var anchor = $(imgDiv).append(img);
         $('#thumb-output').append(anchor); //append image to output element
     }
 
@@ -124,8 +126,27 @@
         });
 
         //To remove an image if clicked on remove image - deletes the image clicked from uploaded items.
-        $('#thumb-output').on('click', '.thumb1', function () {
+        $('#thumb-output').on('click', '.dv-thumb', function () {
             $(this).remove();
+            if ($(this).hasClass("thumb2"))
+            {
+                var delete_url = BASEURL + "Gallery/Delete";
+                var propertyid = $('#propertyid').val();
+                var imageUrl = $(this).find('img').attr('src');
+                
+                var promise = $.post(delete_url, {
+                    propertyId: propertyid,
+                    imgSource: imageUrl
+                });
+
+                promise.fail((xhr, status, error)=>{
+                    console.log("fail: " + xhr.responseText);
+                });
+
+                promise.done((data)=>{
+                    console.log("done: " + data);
+                });
+            }
         });  
     }
 

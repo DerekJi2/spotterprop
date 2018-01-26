@@ -22,14 +22,14 @@ class TrackProperty_model extends BaseTable_model {
     /**
      * 
      */
-    function insert($operation, $propData)
+    function insert($operation, $propData, $userid)
     {
         $data = array(
-            'PropertyId'    => $propData->Id,
+            'PropertyId'    => isset($propData->Id) ? $propData->Id : $propData["Id"],
             'Operation'     => $operation,
             'DetailJson'    => json_encode($propData),
             'CreatedOn'     => date('Y-m-d H:i:s'),
-            'CreatedBy'     => $propData->PersonId,
+            'CreatedBy'     => $userid,
         );
         $ok = $this->db->insert($this->tableName, $data);
         

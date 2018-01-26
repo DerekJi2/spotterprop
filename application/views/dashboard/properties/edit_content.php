@@ -183,7 +183,7 @@ if (isset($property_id) && $property_id > 0)
         $personId = $loginUser == null ? 0 : $loginUser->id;
     ?>
         <input type="hidden" id="personid" value="<?= $personId ?>" />
-        <input type="hidden" id="propertyid" value="0" />
+        <input type="hidden" id="propertyid" value="<?= $property_id ?>" />
         <input type="hidden" id="guid" value=<?= GUID(); ?> />
     </div>
     <hr class="mb-12">
@@ -191,10 +191,10 @@ if (isset($property_id) && $property_id > 0)
     <div class="row form-group form-row">
         <div class="col-md-12 col-lg-12 col-sm-12 confirm-box" style="display:none;">
             <div class="col-md-6 col-lg-8 col-sm-12 alert alert-warning" role="alert" > 
-                Are you going to create this property? 
+                Are you going to update this property? 
             </div>
-            <button href="javascript:void(0);" onclick="javascript: onPropCreateCancelClick();" class="btn btn-secondary" style="margin:10px;">Cancel</button>
-            <button href="javascript:void(0);" onclick="javascript: onPropCreateSaveConfirm();" class="btn btn-danger" style="margin:10px;">Yes, continue to save</button>
+            <button href="javascript:void(0);" onclick="javascript: onPropEditCancelClick();" class="btn btn-secondary" style="margin:10px;">Cancel</button>
+            <button href="javascript:void(0);" onclick="javascript: onPropEditSaveConfirm();" class="btn btn-danger" style="margin:10px;">Yes, continue to update</button>
         </div>
 
         <div class="col-md-12 col-lg-12 col-sm-12 progress-box" style="display:none;">
@@ -204,8 +204,8 @@ if (isset($property_id) && $property_id > 0)
         </div>
 
         <div class="col-md-3 mb-3" >
-            <!-- <button class="btn btn-default btn-prop-create-cancel" type="button">Cancel</button> -->
-            <button class="btn btn-primary btn-prop-create-save" type="button" onclick="javascript: onPropCreateSaveClick(this);">Save</button>
+            <!-- <button class="btn btn-default btn-prop-edit-cancel" type="button">Cancel</button> -->
+            <button class="btn btn-primary btn-prop-edit-save" type="button" onclick="javascript: onPropEditSaveClick(this);">Save</button>
         </div>        
     </div>
     <hr class="mb-12">
@@ -229,38 +229,40 @@ $(document).ready(function(){
     /**
      * 
      */
-    function onPropCreateSaveConfirm() {
-        var model = new propertyCreateModel();
+    function onPropEditSaveConfirm() {
+        var model = new propertyEditModel();
         console.log(model);
 
         $('.confirm-box').hide();
         show_progress_msg("Saving your property ...");
 
-        var promise = nsProperty.Create(model);
+        var promise = nsProperty.Update(model);
 
         promise.fail((xhr, status, error) =>{
-            ConsoleLog("nsProperty.Create().fail() " + error);
+            ConsoleLog("nsProperty.Update().fail() " + error);
             ConsoleLog(xhr.responseText);
         });
 
         promise.done((response) =>{
-            ConsoleLog("nsProperty.Create().done() ");
+            ConsoleLog("nsProperty.Update().done() ");
             ConsoleLog(response);
-            var propertyId = response;
-            add_progress_msg('Property has been saved successfully! Id = ' + propertyId);
+            add_progress_msg('Property has been saved successfully! (' + response) + ')';
 
+            propertyId = $('#propertyid').val();
             uploadImages(propertyId);
         });
         
         promise.always(() => {
-            ConsoleLog("nsProperty.Create().always()");
+            ConsoleLog("nsProperty.Update().always()");
         });
     }
 
     /**
      * 
      */
-    function propertyCreateModel() {
+    function propertyEditModel() {
+        this.Id = <?= $property_id ?>;
+        this.UserId = <?= $this->users->current->id ?>;
         this.Category = $('input[name=category]:checked').val();
 
         this.Address = $('#address').val();
@@ -302,14 +304,13 @@ $(document).ready(function(){
                 0                       // BuildingArea - NOT IN USE
         ]
 
-        this.guid = $("#guid").val() || "";
         this.Description = $("#description").val() || "";
     }
 
     /**
      * 
      */
-    function onPropCreateSaveClick(btn) {
+    function onPropEditSaveClick(btn) {
         $('.confirm-box').show();
         $(btn).hide();
     }
@@ -317,9 +318,9 @@ $(document).ready(function(){
     /**
      * 
      */
-    function onPropCreateCancelClick() {
+    function onPropEditCancelClick() {
         $('.confirm-box').hide();
-        $(".btn-prop-create-save").show();
+        $(".btn-prop-edit-save").show();
     }
 
     function add_progress_msg(msg)

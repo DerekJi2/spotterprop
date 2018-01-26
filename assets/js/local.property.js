@@ -40,3 +40,21 @@ nsProperty.Create = function(model) {
 
 }
 
+nsProperty.Update = function(model) {
+
+    var URL = BASEURL + "Property/Update";
+    // ConsoleLog(URL);
+    // ConsoleLog(model);
+
+    var promise = $.ajax({
+        url: URL,
+        data: model, 
+        type : "POST",
+    });
+
+    return promise;
+
+
+}
+
+

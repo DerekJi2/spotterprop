@@ -86,10 +86,11 @@ class PropertyFeature_model extends BaseTable_model {
 
     public function delete($propertyId, $featureId, $mark_only = false)
     {
-        $sql_delete = sprintf("DELETE %s", $this->$tableName);
+        $tablename = $this->db->dbprefix("PropertyFeature");
+        $sql_delete = sprintf("DELETE FROM %s", $tablename);
         if ($mark_only == true)
         {
-            $sql_delete = sprintf("UPDATE %s SET IsDeleted=1", $this->$tableName);
+            $sql_delete = sprintf("UPDATE %s SET IsDeleted=1", $tablename);
         }
 
         $sql = sprintf("%s WHERE PropertyId=%d AND FeatureId=%d", $sql_delete, $propertyId, $feature_id);
@@ -103,10 +104,11 @@ class PropertyFeature_model extends BaseTable_model {
         $ok = true;
         if ($features != null && sizeof($features) > 0)
         {
-            $sql_delete = sprintf("DELETE %s", $this->$tableName);
+            $tablename = $this->db->dbprefix("PropertyFeature");
+            $sql_delete = sprintf("DELETE FROM %s", $tablename);
             if ($mark_only == true)
             {
-                $sql_delete = sprintf("UPDATE %s SET IsDeleted=1", $this->$tableName);
+                $sql_delete = sprintf("UPDATE %s SET IsDeleted=1", $tablename);
             }
 
             $values = array();

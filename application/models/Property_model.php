@@ -271,4 +271,15 @@ class Property_model extends BaseTable_model {
 
         return null; // if failed
     }
+
+    /**
+     * return the newly created property row();
+     */
+    function update($data)
+    {
+        $this->db->where('Id', $data["Id"]);
+        $ok = $this->db->update($this->tableName, $data);
+
+        return $ok; // if failed
+    }
 }

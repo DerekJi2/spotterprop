@@ -44,9 +44,22 @@ class Gallery_model extends BaseTable_model {
         $sql = "INSERT INTO $this->tableName(PropertyId, ImageUrl, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy, DisplayNum, IsFloorPlan, IsDeleted) 
         VALUES($propertyId, '$imageUrl', '$now', $personId, '$now', $personId, $displayNum, $isFloorPlan, 0);";
 
-        echo $sql."\r\n";
+        echo "\r\n".$sql."\r\n";
         $ok = $this->db->query($sql);
         return $ok;
     }
 
+    /**
+     * 
+     */
+    public function delete($propertyId, $imageUrl)
+    {
+        $now = date('Y-m-d H:i:s');
+
+        $sql = "DELETE FROM $this->tableName WHERE PropertyId=$propertyId AND ImageUrl='$imageUrl';";
+
+        echo "\r\n".$sql."\r\n";
+        $ok = $this->db->query($sql);
+        return $ok;
+    }
 }

@@ -112,10 +112,48 @@ class Property extends BaseDB_Controller {
         $this->ci->load->model($this->modelName);
         $data["DbResult"] = ($this->model != null) ? $this->model->insert($data) : null;
 */
-        $result = add_property($data, $features, $specs);
+        $userid = $this->input->post("UserId");
+        $result = add_property($data, $features, $specs, $userid);
         $data["DbResult"] = $result;
         //return $this->load->view("Property/Create", $data);
 
         echo $result->Id;
+    }
+
+    public function Update()
+    {
+        $this->ci->load->helper("MY_model_helper");
+
+        $data = array(
+            'Id'        => $this->input->post("Id"),
+            'Category'  => $this->input->post("Category"),
+            'Address'   => $this->input->post("Address"),
+            'Location'  => $this->input->post("Location"),
+            'Latitude'  => $this->input->post("Latitude"),
+            'Longitude' => $this->input->post("Longitude"),
+            'TypeId'    => $this->input->post("TypeId"),
+            // 'Rating'    => 0,
+            // 'CreatedOn' => date('Y-m-d H:i:s'),
+            'Price'     => $this->input->post("Price"),
+            'Featured'  => $this->input->post("Featured"),
+            'BuiltYear' => $this->input->post("BuiltYear"),
+            // 'PersonId'  => $this->input->post("PersonId"),
+            'Description' => $this->input->post("Description"),
+            // 'StatusId'  => 1, // draft
+        );
+
+        $features = $this->input->post("Features");
+        $specs = $this->input->post("Specs");
+
+        /*
+        $this->ci->load->model($this->modelName);
+        $data["DbResult"] = ($this->model != null) ? $this->model->insert($data) : null;
+*/
+        $userid = $this->input->post("UserId");
+        $result = update_property($data, $features, $specs, $userid);
+        $data["DbResult"] = $result;
+        //return $this->load->view("Property/Create", $data);
+
+        echo $result;
     }
 }

@@ -10,12 +10,12 @@
         return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
     }
 
-    function track_property($operation, $propertyData)
+    function track_property($operation, $propertyData, $userid)
     {
         $CI = @get_instance();
         $CI->load->model("TrackProperty_Model");		
 		$model = new TrackProperty_Model();
-		return $model->insert($operation, $propertyData);
+		return $model->insert($operation, $propertyData, $userid);
     }
 
     function add_property($propertyData, $new_features, $specs)
@@ -35,9 +35,32 @@
             $ok_specs = add_property_specs($propId, $specs);
 
             // Track history
-            track_property("INSERT", $createdProperty);
+            $userid = $this->users->current->id;
+            track_property("INSERT", $createdProperty, $userid);
             return $createdProperty;
         }
+    }
+
+    function update_property($propertyData, $new_features, $specs, $userid)
+    {
+        $CI = @get_instance();
+        $CI->load->model("Property_model");		
+		$model = new Property_model();
+        $ok = $model->update($propertyData);
+        if ($ok != null)
+        {
+            $propId = $propertyData["Id"];
+
+            // Update property's features
+            $ok_feature = update_property_features($propId, $new_features);
+
+            // Update property's specs
+            $ok_specs = add_property_specs($propId, $specs);
+
+            // Track history
+            track_property("UPDATE", $propertyData, $userid);
+        }
+        return $ok;
     }
 
     function update_property_features($propertyId, $new_features)
@@ -121,6 +144,15 @@
         $CI->load->model("Gallery_model");		
 		$galleryModel = new Gallery_model();
         $ok = $galleryModel->insert($propertyId, $imageUrl, $personId, $displayNum, $isFloorPlan);
+        return $ok;
+    }
+
+    function delete_gallery($propertyId, $imageUrl)
+    {
+        $CI = @get_instance();
+        $CI->load->model("Gallery_model");		
+		$galleryModel = new Gallery_model();
+        $ok = $galleryModel->delete($propertyId, $imageUrl);
         return $ok;
     }
 

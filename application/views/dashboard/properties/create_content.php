@@ -245,6 +245,8 @@ $(document).ready(function(){
      * 
      */
     function propertyCreateModel() {
+        this.UserId = <?= $this->users->current->id ?>;
+        
         this.Category = $('input[name=category]:checked').val();
 
         this.Address = $('#address').val();
