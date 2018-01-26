@@ -123,3 +123,35 @@
         $ok = $galleryModel->insert($propertyId, $imageUrl, $personId, $displayNum, $isFloorPlan);
         return $ok;
     }
+
+    function get_property_details($property_id)
+    {
+        $CI = @get_instance();
+
+        $CI->load->model("Property_model");
+        $propModel = new Property_model();
+        $result = $propModel->get_json($property_id);
+        $json_data = $result->data;
+        $data["vw"] = $json_data;
+
+        $latest = $propModel->get_latest_result(3);
+        $data['latest'] = $latest;
+
+        $CI->load->model("DefinedSpecification_model");
+        $defSpecModel = new DefinedSpecification_model();
+        $specResult = $defSpecModel->get_result();
+        $data["specs"] = $specResult;
+
+        $CI->load->model("DefinedType_model");
+        $defTypeModel = new DefinedType_model();
+        $typesResult = $defTypeModel->get_result();
+        $data["types"] = $typesResult;
+
+        $CI->load->model("Agent_model");
+        $agentModel = new Agent_model();
+        $agentQuery = $agentModel->query_by_propertyid($property_id);
+        $agentResult = $agentQuery->result();
+        $data["agent"] = ($agentResult == null || sizeof($agentResult) < 1) ? null : $agentResult[0];
+
+        return $data;
+    }

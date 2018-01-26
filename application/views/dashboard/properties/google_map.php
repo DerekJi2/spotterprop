@@ -3,13 +3,14 @@
 <div id="map" style="height:340px;"></div>
 
 <script>
-function initMap() {
+function initMap(city) {
     var lebanon = {lat: 33.854721, lng: 35.862285};
-    var map = new google.maps.Map(document.getElementById('map'), { zoom: 8, center: lebanon});
-    var marker = new google.maps.Marker({ position: lebanon, map: map });
+    city = city || lebanon;
+    var map = new google.maps.Map(document.getElementById('map'), { zoom: 8, center: city});
+    var marker = new google.maps.Marker({ position: city, map: map });
 
-    nsGoogleMap.SetLatitude(lebanon.lat);
-    nsGoogleMap.SetLongitude(lebanon.lng);
+    nsGoogleMap.SetLatitude(city.lat);
+    nsGoogleMap.SetLongitude(city.lng);
 
     google.maps.event.addListener(map, "click", function (e) { 
         //lat and lng is available in e object
@@ -20,7 +21,4 @@ function initMap() {
     });
 }
 
-$(document).ready(function(){
-    initMap();                    
-});
 </script>

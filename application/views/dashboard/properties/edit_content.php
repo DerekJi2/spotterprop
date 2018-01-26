@@ -12,16 +12,26 @@
 
 <div class="col-md-8 order-md-1">
 
+<?php
+
+if (isset($property_id) && $property_id > 0)
+{
+    $data = get_property_details($property_id);
+    $vw = $data["vw"];
+
+    $category = $vw->category;
+
+?>
 <form>
     
     <div class="row">
         <div class="col-md-5 mb-3">
             <div class="custom-control custom-radio">
                 <label for="country">Purpose: </label>
-                <input name="category" id="category-1" type="radio" class="custom-control-input" value="1" checked>
+                <input name="category" id="category-1" type="radio" class="custom-control-input" value="1" <?= ($category == 1) ? "checked" : "" ?>>
                 <label class="custom-control-label" for="category-1">For Sale</label>
 
-                <input name="category" id="category-2" type="radio" class="custom-control-input" value="2">
+                <input name="category" id="category-2" type="radio" class="custom-control-input" value="2" <?= ($category == 2) ? "checked" : "" ?>>
                 <label class="custom-control-label" for="category-2">For Rent</label>
             </div>
         </div>
@@ -30,12 +40,12 @@
     <div class="row">
         <div class="col-md-8 mb-3">
             <label for="address">Address</label>
-            <input type="text" class="form-control" id="address" placeholder="Detailed Address" value="123" required>
+            <input type="text" class="form-control" id="address" placeholder="Detailed Address" value="<?= $vw->title ?>" required>
             <div class="invalid-feedback"></div>
         </div>
         <div class="col-md-4 mb-3">
             <label for="location">City</label>
-            <input type="text" class="form-control" id="location" placeholder="Enter the City" value="Lebanon" required>
+            <input type="text" class="form-control" id="location" placeholder="Enter the City" value="<?= $vw->location ?>" required>
             <div class="invalid-feedback"></div>
         </div>
     </div>
@@ -49,7 +59,7 @@
             foreach ($types as $type)
             { 
                 $count++;
-                $checked = ($count == 1) ? "checked" : ""; ?>
+                $checked = ($type->Id == $vw->TypeId) ? "checked" : ""; ?>
                 <span class="span-type-item">
                 <input id="typeid-<?= $type->Id ?>" name="typeid" type="radio" 
                     class="custom-control-input"
@@ -66,37 +76,37 @@
         <div class="col-md-4">
             <label for="price">Price: </label>
             <div class="input-group">
-                <input type="text" class="form-control" id="price" placeholder="Price" value="100000" required>
+                <input type="text" class="form-control" id="price" placeholder="Price" value="<?= $vw->price ?>" required>
             </div>
         </div> 
         <div class="col-md-4">
             <label for="builtyear">Built Year: </label>
             <div class="input-group">
-                <input type="text" class="form-control" id="builtyear" placeholder="Built Year" value="1980" required>
+                <input type="text" class="form-control" id="builtyear" placeholder="Built Year" value="<?= $vw->year ?>" required>
             </div>
         </div>    
         <div class="col-md-4">
             <label for="Bedrooms">Bedrooms: </label>
             <div class="input-group">
-                <input type="text" class="form-control" id="Bedrooms" placeholder="Bedrooms" value="2" required>
+                <input type="text" class="form-control" id="Bedrooms" placeholder="Bedrooms" value="<?= $vw->item_specific["Bedrooms"] ?>" required>
             </div>
         </div> 
         <div class="col-md-4">
             <label for="Bathrooms">Bathrooms: </label>
             <div class="input-group">
-                <input type="text" class="form-control" id="Bathrooms" placeholder="Bathrooms" value="1" required>
+                <input type="text" class="form-control" id="Bathrooms" placeholder="Bathrooms" value="<?= $vw->item_specific["Bathrooms"] ?>" required>
             </div>
         </div> 
         <div class="col-md-4">
             <label for="Garages">Garages: </label>
             <div class="input-group">
-                <input type="text" class="form-control" id="Garages" placeholder="Garages" value="0" required>
+                <input type="text" class="form-control" id="Garages" placeholder="Garages" value="<?= $vw->item_specific["Garages"] ?>" required>
             </div>
         </div> 
         <div class="col-md-4">
             <label for="Area">Area: </label>
             <div class="input-group">
-                <input type="text" class="form-control" id="Area" placeholder="Area" value="80" required>
+                <input type="text" class="form-control" id="Area" placeholder="Area" value="<?= $vw->item_specific["Area"] ?>" required>
             </div>
         </div> 
         <div class="col-md-4">
@@ -104,12 +114,12 @@
             <div class="input-group featured-group" style="margin-top:5px;">
                 <span class="span-feature-item">
                     <input id="featured-yes" name="featured" type="radio" 
-                        class="custom-control-input" value="1" >
+                        class="custom-control-input" value="1" <?= $vw->featured ? "checked" : "" ?>>
                     <label class="custom-control-label" for="credit">Yes</label>
                 </span>
                 <span class="span-feature-item">
                     <input id="featured-yes" name="featured" type="radio" 
-                        class="custom-control-input" value="0" checked>
+                        class="custom-control-input" value="0" <?= $vw->featured ? "" : "checked" ?>>
                     <label class="custom-control-label" for="credit">No</label>
                 </span>
             </div>
@@ -131,9 +141,10 @@
             foreach ($features as $feature)
             { 
                 $count++;
+                $checked = in_array($feature->Name, $vw->features) ? "checked" : "";
             ?>
                 <span class="spn-feature-item">
-                    <input type="checkbox" class="custom-control-input feature-item" id="feature-<?= $feature->Id ?>" value="<?= $feature->Id ?>">
+                    <input type="checkbox" class="custom-control-input feature-item" id="feature-<?= $feature->Id ?>" value="<?= $feature->Id ?>" <?= $checked ?>>
                     <label class="custom-control-label" for="feature-<?= $feature->Id ?>"><?= get_lang($feature->Name) ?></label>
                 </span>
             <?php } ?>
@@ -145,7 +156,7 @@
     <div class="row form-group form-row">
         <div class="col-md-12 mb-3">
             <div><label>Description</label></div>
-            <textarea id="description" class="custom-control-label" style="width:100%;height:60px;"></textarea>
+            <textarea id="description" class="custom-control-label" style="width:100%;height:60px;"><?= $vw->description ?></textarea>
         </div>
     </div>
 
@@ -154,10 +165,11 @@
             <label for="latitude">Latitude & Longitued</label>
             <table class="table map-latlng-table">
                 <tr class="row map-latlng-tr">
-                    <td class="map-latlng-td">Latitude: <span class="map-latitude">0</span></td>
-                    <td class="map-latlng-td">Longitude: <span class="map-longitude">0</span></td>
+                    <td class="map-latlng-td">Latitude: <span class="map-latitude"><?= $vw->latitude ?></span></td>
+                    <td class="map-latlng-td">Longitude: <span class="map-longitude"><?= $vw->longitude ?></span></td>
                 </tr>
             </table>
+            
             <?php $this->load->view("dashboard/properties/google_map"); ?>
         </div>
     </div>
@@ -198,14 +210,18 @@
     </div>
     <hr class="mb-12">
 </form>
+<?php }  // </form> ?>
 </div>
 
 <script type="text/javascript" src="assets/js/local.property.js"></script>
 
 <script>
 
+var gallery_json = '<?= json_encode($vw->gallery) ?>';
+
 $(document).ready(function(){
-    initMap();                  
+    var city = {lat: <?= $vw->latitude ?>, lng: <?= $vw->longitude ?>};
+    initMap(city);                  
 });
 </script>
 

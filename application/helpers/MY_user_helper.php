@@ -26,6 +26,18 @@ function get_group_id($userId)
     return $group_id;
 }
 
+function get_property_person_id($property_id)
+{
+    $CI = @get_instance();
+    $CI->load->model("Property_model");
+    $propModel = new Property_model();
+    $prop = $propModel->get_row($property_id);
+    $property_owner_id = $prop->PersonId;
+
+    return $property_owner_id;
+    
+}
+
 /**
  * 
  */

@@ -598,15 +598,31 @@ class aauth_dashboard extends CI_model
 
     public function props($page = 'list', $index = 1)
     {
-        if ($page == 'list') {
+        $data["property_id"] = $index;
 
+        if ($page == 'list') {
             $this->Gui->set_title(__('Properties', 'aauth'));
             $this->load->mu_module_view( 'aauth', 'props/list', null);
         }
         elseif ($page == 'create') {
             $this->Gui->set_title(__('Create a Property', 'aauth'));
-
             $this->load->mu_module_view( 'aauth', 'props/create', null);
+        }
+        elseif ($page == 'edit') {
+            $this->Gui->set_title(__('Edit Property', 'aauth'));
+            $this->load->mu_module_view( 'aauth', 'props/edit', $data);
+        }
+        elseif ($page == 'delete') {
+            $this->Gui->set_title(__('Edit Property', 'aauth'));
+            $this->load->mu_module_view( 'aauth', 'props/delete', $data);
+        }
+        elseif ($page == 'complete') {
+            $this->Gui->set_title(__('Edit Property', 'aauth'));
+            $this->load->mu_module_view( 'aauth', 'props/complete', $data);
+        }
+        elseif ($page == 'approve') {
+            $this->Gui->set_title(__('Edit Property', 'aauth'));
+            $this->load->mu_module_view( 'aauth', 'props/approve', $data);
         }
     }
 }

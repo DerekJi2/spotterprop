@@ -26,29 +26,8 @@ class Property extends BaseDB_Controller {
      */
     public function Detail($id = 0)
 	{
-        $this->ci->load->model($this->modelName);
-        $result = ($this->model != null) ? $this->model->get_json($id) : null;
-        $json_data = $result->data;
-        $data["vw"] = $json_data;
-
-        $latest = ($this->model != null) ? $this->model->get_latest_result(3) : null;
-        $data['latest'] = $latest;
-
-        $this->ci->load->model("DefinedSpecification_model");
-        $defSpecModel = new DefinedSpecification_model();
-        $specResult = $defSpecModel->get_result();
-        $data["specs"] = $specResult;
-
-        $this->ci->load->model("DefinedType_model");
-        $defTypeModel = new DefinedType_model();
-        $typesResult = $defTypeModel->get_result();
-        $data["types"] = $typesResult;
-
-        $this->ci->load->model("Agent_model");
-        $agentModel = new Agent_model();
-        $agentQuery = $agentModel->query_by_propertyid($id);
-        $agentResult = $agentQuery->result();
-        $data["agent"] = ($agentResult == null || sizeof($agentResult) < 1) ? null : $agentResult[0];
+        $this->load->helper("MY_model_helper");
+        $data= get_property_details($id);
 
         $this->load->view('Property/Detail', $data);
     }

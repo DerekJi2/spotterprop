@@ -22,12 +22,12 @@
     $userId = $this->users->current->id;
     $list->data = filter_properties($list->data, $userId);
 ?>
-<div>
+<!-- <div>
 <a href="dashboard/props/create">
     <span>➕</span>
     <span><?= get_lang("Add New Property")?></span>
 </a>
-</div>
+</div> -->
 <table class="table prop-list-table">
     <thead>
         <tr>
@@ -46,6 +46,7 @@
     foreach ($list->data as $item) { ?>
         <?php
             $count++; 
+            $property_detail_link = lang_site_url()."Property/Detail/$item->id/";
             $agent = get_agent($item->id); 
             $item_gallery = ($item->gallery == null|| sizeof($item->gallery) < 1) ? "assets/img/syr/no-image-house.png" : $item->gallery[0];
             $agent_photo = ($agent == null) ? "assets/img/syr/no-image-user.png" : $agent->Photo;
@@ -61,7 +62,11 @@
             <!-- <th scope="row"><?=$count?></th> -->
             <?php 
             ?>
-            <th scope="row"><img class="gallery" src="<?=site_url($item_gallery); ?>" alt=""></th>
+            <th scope="row">
+                <a href="<?= $property_detail_link ?>" target="_blank">
+                    <img class="gallery" src="<?=site_url($item_gallery); ?>" alt="">
+                </a>
+            </th>
             <td>
                 <div><?=$item->title?>, <span class="prop-list-row-loc"><?=$item->location?></span></div>
                 
@@ -96,10 +101,16 @@
             <td>
             </td>
             <td>
-                <a href="#" title="Edit"><i class="fa fa-edit"></i></a>
-                <a href="#" title="Delete"><i class="fa fa-remove"></i></a>
-                <a href="#" title="Complete"><i class="fa fa-check"></i></a>
-                <a href="#" title="Approve"><i class="fa fa-thumbs-up"></i></a>
+            <?php
+                $property_edit_link = lang_site_url()."dashboard/props/edit/$item->id";
+                $property_delete_link = lang_site_url()."dashboard/props/delete/$item->id";
+                $property_complete_link = lang_site_url()."dashboard/props/complete/$item->id";
+                $property_approve_link = lang_site_url()."dashboard/props/approve/$item->id";
+            ?>
+                <a href="<?= $property_edit_link ?>" title="Edit"><i class="fa fa-edit"></i></a>
+                <a href="<?= $property_delete_link ?>" title="Delete"><i class="fa fa-remove"></i></a>
+                <a href="<?= $property_complete_link ?>" title="Complete"><i class="fa fa-check"></i></a>
+                <a href="<?= $property_approve_link ?>" title="Approve"><i class="fa fa-thumbs-up"></i></a>
             </td>
         </tr>
     <?php } ?>

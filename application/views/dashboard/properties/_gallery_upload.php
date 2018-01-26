@@ -17,6 +17,9 @@
 
 <script type="text/javascript">
 
+    /**
+     * 
+     */
     function uploadImages(propertyId)
     {
         if ($("#thumb-output").find(".thumb1").length > 0) {
@@ -65,8 +68,37 @@
     }
 
     $(document).ready(function () {
-        /* END Static Awaiting Authorisation tutorials */
+        // 1. register events 
+        registerEvents();
 
+        // 2. load existing images
+        if (gallery_json != undefined && gallery_json != null && gallery_json != "") 
+        {
+            var images = JSON.parse(gallery_json);
+            for (var i = 0; i < images.length; i++)
+            {
+                var img = images[i];
+                loadImage(img);
+            }
+        }
+    });
+
+    /**
+     * 
+     */
+    function loadImage(imageSrc)
+    {
+        var img = $('<img></optionList>').addClass('thumb').attr('src', imageSrc); //create image element
+        var anchor = $('<div class="thumb1"></div>').append(img);
+        $('#thumb-output').append(anchor); //append image to output element
+    }
+
+    /**
+     * 
+     */
+    function registerEvents()
+    {
+        // 
         $('#file-input').on('change', function () { //on file input change
             if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
             {
@@ -77,9 +109,10 @@
                         var fRead = new FileReader(); //new filereader
                         fRead.onload = (function (file) { //trigger function on successful read
                             return function (e) {
-                                var img = $('<img></optionList>').addClass('thumb').attr('src', e.target.result); //create image element
-                                var anchor = $('<div class="thumb1"></div>').append(img);
-                                $('#thumb-output').append(anchor); //append image to output element
+                                // var img = $('<img></optionList>').addClass('thumb').attr('src', e.target.result); //create image element
+                                // var anchor = $('<div class="thumb1"></div>').append(img);
+                                // $('#thumb-output').append(anchor); //append image to output element
+                                loadImage(e.target.result);
                             };
                         })(file);
                         fRead.readAsDataURL(file); //URL representing the file's data.
@@ -93,7 +126,7 @@
         //To remove an image if clicked on remove image - deletes the image clicked from uploaded items.
         $('#thumb-output').on('click', '.thumb1', function () {
             $(this).remove();
-        });        
-    });
+        });  
+    }
 
 </script>
