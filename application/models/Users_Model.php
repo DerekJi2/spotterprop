@@ -396,4 +396,19 @@ class Users_model extends CI_Model
         $this->users->auth->allow_group('user', 'delete_property');
         $this->users->auth->allow_group('user', 'list_property');
     }
+
+    public function get_query()
+    { 
+        $tablename = $this->db->dbprefix("aauth_users");
+        $sql = "SELECT * FROM $tablename WHERE banned=0";
+
+        $query = $this->db->query($sql);
+        return $query;
+    }
+
+    public function get_result()
+    {
+        $query = $this->get_query();
+        return $query->result();
+    }
 }

@@ -162,6 +162,8 @@
         </div>
     </div>
 
+    <?php $this->load->view("dashboard/properties/_create_user_select"); ?>
+
     <?php $this->load->view("dashboard/properties/_gallery_upload"); ?>
 
     <div class="hidden">
@@ -203,6 +205,7 @@
 <script type="text/javascript" src="assets/js/local.property.js"></script>
 
 <script>
+var gallery_json = null;
 
 $(document).ready(function(){
     initMap();                  
@@ -245,7 +248,7 @@ $(document).ready(function(){
      * 
      */
     function propertyCreateModel() {
-        this.UserId = <?= $this->users->current->id ?>;
+        this.UserId = $("#personid").val(); //<?= $this->users->current->id ?>;
         
         this.Category = $('input[name=category]:checked').val();
 

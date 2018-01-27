@@ -65,7 +65,7 @@
     /**
      * 
      */
-    function add_property($propertyData, $new_features, $specs)
+    function add_property($propertyData, $new_features, $specs, $userid)
     {
         $CI = @get_instance();
         $CI->load->model("Property_model");		
@@ -82,7 +82,6 @@
             $ok_specs = add_property_specs($propId, $specs);
 
             // Track history
-            $userid = $this->users->current->id;
             track_property_insert($createdProperty, $userid);
             return $createdProperty;
         }

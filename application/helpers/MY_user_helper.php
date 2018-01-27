@@ -60,3 +60,13 @@ function filter_properties($properties_list, $userid)
 
     return $properties_list;
 }
+
+function get_users()
+{
+    $CI = @get_instance();
+    $CI->load->model("Users_Model");
+    $userModel = new Users_model();
+    $users = $userModel->get_result();
+
+    return $users;
+}
