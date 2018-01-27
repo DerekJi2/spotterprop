@@ -174,7 +174,7 @@ var LANGSITEURL = "<?= lang_site_url();?>";
 <?php //$this->view("templates/google_translate"); ?>
 
 <script>
-    var LANG = "<?= get_lang_from_url(); ?>";
+    var LANG = get_lang_from_url();
     var _latitude = 51.541216;
     var _longitude = -0.095678;
     // var jsonPath = '<?=site_url('assets/json/real-estate.json.txt')?>';

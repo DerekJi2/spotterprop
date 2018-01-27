@@ -61,21 +61,31 @@
         return $agent;
     }
 
+    /**
+     * 
+     */
     function get_lang_from_url()
     {
+        $langs = array("en", "ar", "cn");
         $uri = $_SERVER['REQUEST_URI'];
         
         $columns = explode("/", $uri);
-        $a1 = (sizeof($columns) > 1) ? $columns[1] : "";
-
-        $langs = array("en", "ar", "cn");
-        $pos = in_array($a1, $langs) ;
-   
-        $lang = ($pos == 1) ? $a1 : "";
+        $lang = "en";
+        foreach ($columns as $field)
+        {
+            if (in_array($field, $langs))
+            {
+                $lang = $field;
+                break;
+            }
+        }
 
         return $lang;
     }
 
+    /**
+     * 
+     */
     function get_language_from_url()
     {
         $lang = get_lang_from_url();

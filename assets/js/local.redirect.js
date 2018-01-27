@@ -1,7 +1,7 @@
 var nsRedirect = nsRedirect || {};
 
 nsRedirect.AdminRoot = function(){
-    return BASEURL;
+    return BASEURL + get_lang_from_url();
 }
 
 nsRedirect.OnLoad = function() {
