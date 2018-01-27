@@ -31,7 +31,7 @@
                             <!--Listing List-->
                             <section class="block listing div-properties-container">
                             <?php 
-                                $list = get_property_list();
+                                $list = get_property_list(false, [3]);
                             ?>
                             <?php 
                             $count = 0;

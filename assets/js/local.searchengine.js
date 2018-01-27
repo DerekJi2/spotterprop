@@ -16,6 +16,7 @@ nsSearchEngine.Search = function() {
 
         // category: buy/rent
         visible = (prop.category == filter.category);
+        // console.log(`data[${i}].category.visible = ${visible}`);
 
         // bedrooms
         if (visible == true && 
@@ -24,6 +25,7 @@ nsSearchEngine.Search = function() {
             var bedrooms = specs["Bedrooms"];
             visible = filter.bedrooms == bedrooms;
         }
+        // console.log(`data[${i}].bedrooms.visible = ${visible}`);
 
         // bathrooms
         if (visible == true && 
@@ -32,6 +34,7 @@ nsSearchEngine.Search = function() {
             var bathrooms = specs["Bathrooms"];
             visible = filter.bathrooms == bathrooms;
         }
+        // console.log(`data[${i}].bathrooms.visible = ${visible}`);
 
         // prices
         if (visible == true && 
@@ -40,6 +43,7 @@ nsSearchEngine.Search = function() {
             var price = prop.price;
             visible = filter.prices.min <= price && price <= filter.prices.max;
         }
+        // console.log(`data[${i}].prices.visible = ${visible}`);
 
         // features
         if (visible == true && filter.features != null && filter.features.length > 0)
@@ -53,12 +57,14 @@ nsSearchEngine.Search = function() {
                 }
             }
         }
+        // console.log(`data[${i}].features.visible = ${visible}`);
 
         // types
         if (visible == true && filter.types != null && filter.types.length > 0)
         {
             visible = $.inArray(prop.TypeId, filter.types) >= 0;
         }
+        // console.log(`data[${i}].types.visible = ${visible}`);
 
         // location
         if (visible == true && filter.location != null && filter.location != "")
@@ -93,14 +99,18 @@ nsSearchEngine.Search = function() {
                 }
             }
         }
+        // console.log(`data[${i}].location.visible = ${visible}`);
 
         // Finally
         var elem = '.result-property-item-' + prop.id;
         SetVisible(elem, visible);   
+        // console.log($(elem));
+        // console.log($(elem).length);
         if (visible && $(elem).length>0)
         {
             results_count++;
         }
+        // console.log(`results_count = ${results_count}`);
     }
     $('#span-search-results-count').html(results_count);
 }

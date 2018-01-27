@@ -17,6 +17,7 @@ nsRedefineSearch.Search = function() {
         var loc_matched = nsRedefineSearch.LocationMatched(obj, filter);
         var type_matched = nsRedefineSearch.TypeMatched(obj, filter);
 
+        console.log(`key_matched = ${key_matched} && loc_matched = ${loc_matched} && type_matched = ${type_matched}`);
         if (key_matched && loc_matched && type_matched)
         {
             SetRedefineVisible(item, true);

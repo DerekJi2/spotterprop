@@ -62,7 +62,7 @@ class Property extends BaseDB_Controller {
     {
         $this->ci->load->model($this->modelName);
 
-        $result = ($this->model != null) ? $this->model->get_json_array() : null;
+        $result = ($this->model != null) ? $this->model->get_json_array(false, [3]) : null;
     
         //add the header here
         header('Content-Type: application/json');

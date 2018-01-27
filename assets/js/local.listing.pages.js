@@ -90,12 +90,11 @@ nsListingPages.Goto = function(page, number)
     var idx = 0;
     box.find('div.redefine-visible').each(function(x) {
         var propId = $(this).data("propid");
-        // console.log("Goto ->" + propId);
         idx++;
         var div_num = Math.ceil(idx/number);
         if (div_num == page)
         {
-            $('.div-property-item-' + propId).show();            
+            $('#div-item-' + propId).show();  
         }
     });
     

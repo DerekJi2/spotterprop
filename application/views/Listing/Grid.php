@@ -102,11 +102,12 @@ var BASEURL = "<?=site_url() ?>";
                             <section class="block equal-height">
                                 <div class="row div-properties-container">
                                 <?php 
-                                    $list = get_property_list();
+                                    $list = get_property_list(false, [3]);
                                 ?>
                                 <?php 
                                 $count = 0;
                                 $total_count = sizeof($list->data);
+                                
                                 foreach ($list->data as $item) { 
                                 ?>
                                 <?php

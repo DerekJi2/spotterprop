@@ -49,7 +49,7 @@ class Listing extends BaseDB_Controller {
     protected function GetData()
     {
         $this->load->helper("MY_data_helper");
-        $result = get_property_list();
+        $result = get_property_list(false, [3]);
         $data["list"] = $result;
         $data["typesResult"] = get_defined_types();
         $data["types"] = get_defined_types();

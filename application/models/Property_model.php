@@ -81,12 +81,22 @@ class Property_model extends BaseTable_model {
     /**
      * 
      */
-    function get_latest_result($top)
+    function get_latest_result($top, $incDeleted = false, $statusRange = [3])
     {
-        $sql = "SELECT * FROM $this->tableName ORDER BY CreatedOn DESC LIMIT $top";
+        $where = "WHERE StatusId IN (".implode(', ', $statusRange).")";
+        if ($incDeleted == false)
+        {
+            $where = "$where AND IsDeleted = 0";
+        }
+
+        $sql = "SELECT * FROM $this->tableName 
+         $where
+         ORDER BY CreatedOn DESC LIMIT $top";
 
         $query = $this->db->query($sql);
         $result = $query->result();
+
+        // $filter_result = array();
         foreach($result as $row)
         {
             $propId = $row->Id;
@@ -110,9 +120,14 @@ class Property_model extends BaseTable_model {
     /**
      * 
      */
-    function get_featured($top)
+    function get_featured($top, $incDeleted = false, $statusRange = [3])
     {
-        $sql = "SELECT * FROM $this->tableName WHERE Featured=1 ORDER BY CreatedOn DESC LIMIT $top";
+        $where = "WHERE Featured=1 AND StatusId IN (".implode(', ', $statusRange).")";
+        if ($incDeleted == false)
+        {
+            $where = "$where AND IsDeleted = 0";
+        }
+        $sql = "SELECT * FROM $this->tableName $where ORDER BY CreatedOn DESC LIMIT $top";
 
         $query = $this->db->query($sql);
         $result = $query->result();
