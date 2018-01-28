@@ -381,6 +381,10 @@ class Users_model extends CI_Model
         // $this->users->auth->allow_group('administrator', 'toggle_modules');
         // $this->users->auth->allow_group('administrator', 'extract_modules');
 
+        $this->users->auth->allow_group('administrator', 'create_users');
+        $this->users->auth->allow_group('administrator', 'edit_users');
+        $this->users->auth->allow_group('administrator', 'delete_users');
+
         $this->users->auth->allow_group('administrator', 'edit_profile');
 
         $this->users->auth->allow_group('administrator', 'create_property');

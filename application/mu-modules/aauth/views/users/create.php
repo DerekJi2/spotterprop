@@ -18,7 +18,7 @@ $this->Gui->add_meta(array(
     'autoload'    =>    false,
     'footer'    =>    array(
         'submit'    =>    array(
-            'label'    =>    __('Create User', 'aauth')
+            'label'    =>    __(get_lang('Create User'), 'aauth')
         )
     )
 ));
@@ -27,7 +27,7 @@ $this->Gui->add_meta(array(
 
 $this->Gui->add_item(array(
     'type'            =>    'text',
-    'label'            =>    __('User Name', 'aauth'),
+    'label'            =>    __(get_lang('User Name'), 'aauth'),
     'name'            =>    'username',
 ), 'create_user', 1);
 
@@ -35,7 +35,7 @@ $this->Gui->add_item(array(
 
 $this->Gui->add_item(array(
     'type'            =>    'text',
-    'label'            =>    __('User Email', 'aauth'),
+    'label'            =>    __(get_lang('User Email'), 'aauth'),
     'name'            =>    'user_email',
 ), 'create_user', 1);
 
@@ -43,7 +43,7 @@ $this->Gui->add_item(array(
 
 $this->Gui->add_item(array(
     'type'            =>    'password',
-    'label'            =>    __('Password', 'aauth'),
+    'label'            =>    __(get_lang('Password'), 'aauth'),
     'name'            =>    'password',
 ), 'create_user', 1);
 
@@ -51,18 +51,18 @@ $this->Gui->add_item(array(
 
 $this->Gui->add_item(array(
     'type'            =>    'password',
-    'label'            =>    __('Confirm', 'aauth'),
+    'label'            =>    __(get_lang('Confirm'), 'aauth'),
     'name'            =>    'confirm',
 ), 'create_user', 1);
 
 $this->Gui->add_item(array(
     'type'        =>    'select',
     'name'        =>    'user_status',
-    'label'        =>    __('User Status', 'aauth'),
+    'label'        =>    __(get_lang('User Status'), 'aauth'),
     'options'    =>    array(
-        'default'   =>  __( 'Default', 'aauth'),
-        '0'    =>  __( 'Active' , 'aauth'),
-        '1'  =>  __( 'Unactive' , 'aauth')
+        'default'   =>  __( get_lang('Default'), 'aauth'),
+        '0'    =>  __( get_lang('Active') , 'aauth'),
+        '1'  =>  __( get_lang('Unactive') , 'aauth')
     )
 ), 'create_user',1 );
 
@@ -78,13 +78,13 @@ $user_group_id = $user_group->group_id;
 foreach ($groups as $group) {
     if ($user_group_id <= $group->id)
     {
-        $groups_array[ $group->id ] = $group->definition != null ? $group->definition : $group->name;
+        $groups_array[ $group->id ] = $group->definition != null ? get_lang($group->definition) : get_lang($group->name);
     }
 }
 
 $this->Gui->add_item(array(
     'type'            =>    'select',
-    'label'            =>    __('Add to a group', 'aauth'),
+    'label'            =>    __(get_lang('Add to a group'), 'aauth'),
     'name'            =>    'userprivilege',
     'options'        =>    $groups_array
 ), 'create_user', 1);

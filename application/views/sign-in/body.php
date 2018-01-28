@@ -16,7 +16,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
             ?>
         </div>
       <div class="login-box-body">
-        <p class="login-box-msg"><?php echo $this->events->apply_filters('signin_notice_message', $this->lang->line('signin-notice-message'));?></p>
+        <!-- <p class="login-box-msg"><?php echo $this->events->apply_filters('signin_notice_message', $this->lang->line('signin-notice-message'));?></p> -->
+        <p class="login-box-msg"><?= get_lang("Sign in to start your session") ?></p>
         <p><?php echo(validation_errors()) != '' ? tendoo_error(strip_tags(validation_errors())) : '';?></p>
         <p><?php echo fetch_notice_from_url();?></p>
         <p>
@@ -33,7 +34,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         if (intval(riake('site_registration', $Options)) == true) {
             ?>
         <a href="<?php echo site_url(array( 'sign-in', 'recovery' )) ;
-            ?>"><?php _e('I Lost My Password');
+            ?>"><?php _e(get_lang('I Lost My Password'));
             ?></a><br>
 		<?php
         // Should checks whether a registration is enabled

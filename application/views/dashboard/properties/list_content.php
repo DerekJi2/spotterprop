@@ -78,7 +78,7 @@
                     <span><?= get_lang($item->type); ?></span>
                 </div>
 
-                <div><span>Price: </span>$<?=number_format($item->price)?></div>
+                <div><span><?= get_lang("Price") ?>: </span>$<?=number_format($item->price)?></div>
             </td>
 
             <td>
@@ -110,23 +110,23 @@
                 // $property_publish_link = lang_site_url()."dashboard/props/publish/$item->id";
             ?>
             <td class='td-status' allign="center">
-                <div><span class="label <?= get_status_label($item->StatusId) ?>"><?= get_status_text($item->StatusId) ?></span></div>
+                <div><span class="label <?= get_status_label($item->StatusId) ?>"><?= get_lang(get_status_text($item->StatusId)) ?></span></div>
 
                 <!-- show submit button if 'draft' -->
                 <?php if ($item->StatusId == 1 ) { ?>   
-                <div><a href="javascript:void(0);" onclick="<?= $property_submit_link ?>" title="Submit">submit now!</a></div>
+                <div><a href="javascript:void(0);" onclick="<?= $property_submit_link ?>" title="<?= get_lang("Submit") ?>"><?= get_lang("submit now") ?>!</a></div>
                 <?php } ?>
 
                 <!-- show publish button if 'submitted' -->
                 <?php if (get_group_id($userId) < 6 && $item->StatusId == 2 ) { ?>
                 <br/>
-                <div><a href="javascript:void(0);" onclick="<?= $property_publish_link ?>" title="Publish" style="" class="btn-xs btn-danger"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> </a></div>
+                <div><a href="javascript:void(0);" onclick="<?= $property_publish_link ?>" title="<?= get_lang("Publish") ?>" style="" class="btn-xs btn-danger"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> </a></div>
                 <?php } ?>
             </td>
             <td>            
-                <a href="<?= $property_edit_link ?>" title="Edit"><i class="fa fa-edit" style="color:blue;"></i> Edit</a>
+                <a href="<?= $property_edit_link ?>" title="<?= get_lang("Edit") ?>"><i class="fa fa-edit" style="color:blue;"></i> <?= get_lang("Edit") ?></a>
                 <br/><br/>
-                <a href="javascript:void(0);" onclick="<?= $property_delete_link ?>" title="Delete"><i class="fa fa-remove" style="color:#FF5733;"></i> Delete</a>
+                <a href="javascript:void(0);" onclick="<?= $property_delete_link ?>" title="<?= get_lang("Delete") ?>"><i class="fa fa-remove" style="color:#FF5733;"></i> <?= get_lang("Delete") ?></a>
                 
             </td>
         </tr>
@@ -152,7 +152,7 @@ function onClick_DeleteProperty(propertyId)
 {
     var really = false;
     var userid = <?= $this->users->current->id ?>;
-    var confirmed = confirm("Are you sure to delete this property?");
+    var confirmed = confirm("<?= get_lang("Are you sure to delete this property?") ?>");
 
     if (confirmed) 
     {
@@ -178,7 +178,7 @@ function onClick_SubmitProperty(obj, propertyId)
 {
     var userid = <?= $this->users->current->id ?>;
     var groupid = <?= get_group_id($userId) ?>;
-    var confirmed = confirm("Are you sure to submit this property?");
+    var confirmed = confirm("<?= get_lang("Are you sure to submit this property?") ?>");
 
     if (confirmed) 
     {
@@ -214,7 +214,7 @@ function onClick_SubmitProperty(obj, propertyId)
 function onClick_PublishProperty(obj, propertyId)
 {
     var userid = <?= $this->users->current->id ?>;
-    var confirmed = confirm("Are you sure to publish this property?");
+    var confirmed = confirm("<?= get_lang("Are you sure to publish this property?") ?>");
 
     if (confirmed) 
     {

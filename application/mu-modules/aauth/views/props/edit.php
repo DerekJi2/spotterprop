@@ -4,7 +4,7 @@
 
 	<section class="content-header">
         <h1>
-            Edit Property<small></small>
+            <?= get_lang("Edit Property") ?><small></small>
         </h1>
         <a class="btn btn-primary btn-sm pull-right ng-binding" href="<?= lang_site_url("dashboard/props/list") ?>"><?= get_lang("Return to the list") ?></a>
     </section> <!-- section .content-header -->

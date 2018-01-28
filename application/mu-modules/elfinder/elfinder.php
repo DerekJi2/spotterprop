@@ -28,7 +28,7 @@ class elFinder extends CI_Model{
         if( User::can( 'edit_options' ) ) :
             $menus  =   array_insert_before( 'settings', $menus, 'elfinder', array(
                 array(
-                    'title' =>  __( 'File Manager', 'elfinder' ),
+                    'title' =>  __( get_lang('File Manager'), 'elfinder' ),
                     'href'  =>  site_url( array( get_lang_from_url() . '/dashboard', 'elfinder' ) ),
                     'icon'  =>  'fa fa-file'
                 )

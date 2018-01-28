@@ -3,7 +3,7 @@
 ?>
 	<section class="content-header">
         <h1>
-            Property List <small></small>
+            <?= get_lang("Property List") ?> <small></small>
         </h1>
         <a class="btn btn-primary btn-sm pull-right ng-binding" href="<?= lang_site_url("dashboard/props/create") ?>"><?= get_lang("Add New Property") ?></a>
     </section> <!-- section .content-header -->

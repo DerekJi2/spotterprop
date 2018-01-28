@@ -65,16 +65,19 @@ class aauth_fields extends CI_model
     }
     public function create_login_fields()
     {
+        $email_or_username = get_lang('Email or User Name');
+        $password = get_lang("Password");
+
         // default login fields
         $this->config->set_item('signin_fields', array(
             'pseudo'    =>
             '<div class="form-group has-feedback">
-				<input type="text" class="form-control" placeholder="' . __('Email or User Name', 'aauth') .'" name="username_or_email">
+				<input type="text" class="form-control" placeholder="' . __($email_or_username, 'aauth') .'" name="username_or_email">
 				<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 			</div>',
             'password'    =>
             '<div class="form-group has-feedback">
-				<input type="password" class="form-control" placeholder="' . __('Password', 'aauth') .'" name="password">
+				<input type="password" class="form-control" placeholder="' . __($password, 'aauth') .'" name="password">
 				<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 			</div>',
             'submit'    =>
@@ -87,7 +90,7 @@ class aauth_fields extends CI_model
 				  </div>
 				</div><!-- /.col -->
 				<div class="col-xs-5">
-				  <button type="submit" class="btn btn-primary btn-block btn-flat">' . __('Sign In', 'aauth') .'</button>
+				  <button type="submit" class="btn btn-primary btn-block btn-flat">' . __(get_lang('Sign In'), 'aauth') .'</button>
 				</div><!-- /.col -->
 			</div>'
         ));
@@ -106,24 +109,24 @@ class aauth_fields extends CI_model
         ob_start();
         ?>
       <div class="form-group has-feedback">
-         <input type="text" class="form-control" placeholder="<?php _e('User Name', 'aauth');
+         <input type="text" class="form-control" placeholder="<?php _e(get_lang('User Name'), 'aauth');
         ?>" name="username" value="<?php echo set_value('username');
         ?>">
          <span class="glyphicon glyphicon-user form-control-feedback"></span>
        </div>
        <div class="form-group has-feedback">
-         <input type="email" class="form-control" placeholder="<?php _e('Email', 'aauth');
+         <input type="email" class="form-control" placeholder="<?php _e(get_lang('Email'), 'aauth');
         ?>" name="email" value="<?php echo set_value('email');
         ?>">
          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
        </div>
        <div class="form-group has-feedback">
-         <input type="password" class="form-control" placeholder="<?php _e('Password', 'aauth');
+         <input type="password" class="form-control" placeholder="<?php _e(get_lang('Password'), 'aauth');
         ?>" name="password">
          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
        </div>
        <div class="form-group has-feedback">
-         <input type="password" class="form-control" placeholder="<?php _e('Confirm', 'aauth');
+         <input type="password" class="form-control" placeholder="<?php _e(get_lang('Confirm'), 'aauth');
         ?>" name="confirm">
          <span class="glyphicon glyphicon-lock  form-control-feedback"></span>
        </div>
@@ -133,7 +136,7 @@ class aauth_fields extends CI_model
            </div>
          </div><!-- /.col -->
          <div class="col-xs-4">
-           <button type="submit" class="btn btn-primary btn-block btn-flat"><?php _e('Sign Up', 'aauth');
+           <button type="submit" class="btn btn-primary btn-block btn-flat"><?php _e(get_lang('Sign Up'), 'aauth');
         ?></button>
          </div><!-- /.col -->
        </div>

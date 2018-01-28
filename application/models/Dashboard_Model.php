@@ -143,7 +143,7 @@ class Dashboard_Model extends CI_Model
         $admin_menus[ 'dashboard' ][]    =    array(
             'href'            =>        site_url('dashboard'),
             'icon'            =>        'fa fa-dashboard',
-            'title'           =>        __('Dashboard'),
+            'title'           =>        __(get_lang('Dashboard')),
             'disable'         =>        true    // disable menu title showed as first submenu
         );
 
@@ -151,14 +151,14 @@ class Dashboard_Model extends CI_Model
             $admin_menus[ 'dashboard' ][]    =    array(
                 'href'            =>        site_url(array( get_lang_from_url() . '/dashboard', 'update' )),
                 'icon'            =>        'fa fa-dashboard',
-                'title'            =>        __('Update Center', 'aauth'),
+                'title'            =>        __(get_lang('Update Center'), 'aauth'),
                 'notices_nbr'    =>        $this->events->apply_filters('update_center_notice_nbr', 0)
             );
 
             $admin_menus[ 'dashboard' ][]    =    array(
                 'href'            =>        site_url(array( get_lang_from_url() . '/dashboard', 'about' )),
                 'icon'            =>        'fa fa-dashboard',
-                'title'            =>        __('About'),
+                'title'            =>        __(get_lang('About')),
             );
         }
 
@@ -170,7 +170,7 @@ class Dashboard_Model extends CI_Model
             User::can('toggle_modules')
          ) {
             $admin_menus[ 'modules' ][]        =    array(
-                'title'            =>        __('Modules'),
+                'title'            =>        __(get_lang('Modules')),
                 'icon'            =>        'fa fa-puzzle-piece',
                 'href'            =>        lang_site_url('dashboard/modules')
             );
@@ -183,7 +183,7 @@ class Dashboard_Model extends CI_Model
             User::can('delete_options')
          ) {
             $admin_menus[ 'settings' ][]    =    array(
-                'title'            =>        __('Settings'),
+                'title'            =>        __(get_lang('Settings')),
                 'icon'            =>        'fa fa-cogs',
                 'href'            =>        lang_site_url('dashboard/settings')
             );

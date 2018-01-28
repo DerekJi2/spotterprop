@@ -17,7 +17,7 @@ $this->Gui->add_meta(array(
     ),
     'footer'    =>    array(
         'submit'    =>    array(
-            'label'    =>    __('Edit User', 'aauth')
+            'label'    =>    __(get_lang('Edit User'), 'aauth')
         )
     )
 ));
@@ -38,7 +38,7 @@ $this->Gui->add_meta(array(
 
 $this->Gui->add_item(array(
     'type'            =>    'text',
-    'label'            =>    __('User Name', 'aauth'),
+    'label'            =>    __(get_lang('User Name'), 'aauth'),
     'name'            =>    'username',
     'disabled'        =>    true,
     'value'            =>    $this->users->current->name
@@ -48,7 +48,7 @@ $this->Gui->add_item(array(
 
 $this->Gui->add_item(array(
     'type'            =>    'text',
-    'label'            =>    __('User Email', 'aauth'),
+    'label'            =>    __(get_lang('User Email'), 'aauth'),
     'name'            =>    'user_email',
     'value'            =>    $this->users->current->email
 ), 'user_profile', 1);
@@ -57,13 +57,13 @@ $this->Gui->add_item(array(
 
 $this->Gui->add_item(array(
     'type'            =>    'password',
-    'label'            =>    __('Old Password', 'aauth'),
+    'label'            =>    __(get_lang('Old Password'), 'aauth'),
     'name'            =>    'old_pass',
 ), 'user_profile', 1);
 
 $this->Gui->add_item(array(
     'type'            =>    'password',
-    'label'            =>    __('New Password', 'aauth'),
+    'label'            =>    __(get_lang('New Password'), 'aauth'),
     'name'            =>    'password',
 ), 'user_profile', 1);
 
@@ -71,20 +71,20 @@ $this->Gui->add_item(array(
 
 $this->Gui->add_item(array(
     'type'            =>    'password',
-    'label'            =>    __('Confirm New', 'aauth'),
+    'label'            =>    __(get_lang('Confirm New'), 'aauth'),
     'name'            =>    'confirm',
 ), 'user_profile', 1);
 
 $this->Gui->add_item(array(
     'type'            =>    'text',
-    'label'            =>    __('Phone', 'aauth'),
+    'label'            =>    __(get_lang('Phone'), 'aauth'),
     'name'            =>    'Phone',
     'value'            =>    $this->users->current->Phone
 ), 'user_profile', 1);
 
 $this->Gui->add_item(array(
     'type'            =>    'text',
-    'label'            =>    __('Mobile', 'aauth'),
+    'label'            =>    __(get_lang('Mobile'), 'aauth'),
     'name'            =>    'Mobile',
     'value'            =>    $this->users->current->Mobile
 ), 'user_profile', 1);

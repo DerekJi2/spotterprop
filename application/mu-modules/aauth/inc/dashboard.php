@@ -82,7 +82,7 @@ class aauth_dashboard extends CI_model
             // Top level
             $menus[ 'users' ]        =    array(
                 array(
-                    'title'     =>        __('Users Management', 'aauth'),
+                    'title'     =>        __(get_lang('Users Management'), 'aauth'),
                     'icon'      =>        'fa fa-users',
                     'href'      =>        lang_site_url('dashboard/users'),
                     'disable'   =>        true  // disable menu title showed as first submenu
@@ -91,7 +91,7 @@ class aauth_dashboard extends CI_model
 
             // Sub level - 1. List all users
             $menus[ 'users' ][]    =                array(
-                'title'            =>        __('Users List', 'aauth'),
+                'title'            =>        __(get_lang('Users List'), 'aauth'),
                 'icon'            =>        'fa fa-users',
                 'href'            =>        lang_site_url('dashboard/users/list')
             );
@@ -99,7 +99,7 @@ class aauth_dashboard extends CI_model
 
             // Sub level - 2. Create a user
             $menus[ 'users' ][]    =                array(
-                'title'            =>        __('Create New', 'aauth'),
+                'title'            =>        __(get_lang('Create New'), 'aauth'),
                 'icon'            =>        'fa fa-user-plus',
                 'href'            =>        lang_site_url('dashboard/users/create')
             );
@@ -113,7 +113,7 @@ class aauth_dashboard extends CI_model
         }        
 
         $menus[ 'users' ][]    =                array(
-            'title'            =>        __('My profile', 'aauth'),
+            'title'            =>        __(get_lang('My Profile'), 'aauth'),
             'icon'            =>        'fa fa-user-circle',
             'href'            =>        lang_site_url('dashboard/users/profile')
         );
@@ -124,7 +124,7 @@ class aauth_dashboard extends CI_model
         {
             $menus[ 'roles' ]        =        array(
                 array(
-                    'title'            =>        __('Roles & Permissions', 'aauth'),
+                    'title'            =>        __(get_lang('Roles & Permissions'), 'aauth'),
                     'icon'            =>        'fa fa-shield',
                     'href'            =>        lang_site_url('dashboard/groups')
                 )
@@ -156,7 +156,7 @@ class aauth_dashboard extends CI_model
         ) {
             $menus[ 'props' ]        =    array(
                 array(
-                    'title'     =>        __('Property Management', 'aauth'),
+                    'title'     =>        __(get_lang('Property Management'), 'aauth'),
                     'icon'      =>        'fa fa-home',
                     'href'      =>        lang_site_url('dashboard/props'),
                     'disable'   =>        true  // disable menu title showed as first submenu
@@ -164,13 +164,13 @@ class aauth_dashboard extends CI_model
             );
 
             $menus[ 'props' ][]    =                array(
-                'title'            =>        __('List', 'aauth'),
+                'title'            =>        __(get_lang('Property List'), 'aauth'),
                 'icon'            =>        'fa fa-list',
                 'href'            =>        lang_site_url('dashboard/props/list')
             );
 
             $menus[ 'props' ][]    =                array(
-                'title'            =>        __('Create a Property', 'aauth'),
+                'title'            =>        __(get_lang('Create New Property'), 'aauth'),
                 'icon'            =>        'fa fa-plus',
                 'href'            =>        lang_site_url('dashboard/props/create')
             );
@@ -291,14 +291,14 @@ class aauth_dashboard extends CI_model
             $filter     =  '<section class="content-header">
               <h1>
                     ' . str_replace('&mdash; ' . get('core_signature'), '', Html::get_title()) . '<small></small>
-                    <a class="btn btn-primary btn-sm pull-right ng-binding" href="' . lang_site_url('dashboard/users/create') . '">' . __( 'Add A User', 'aauth' ) . '</a>
+                    <a class="btn btn-primary btn-sm pull-right ng-binding" href="' . lang_site_url('dashboard/users/create') . '">' . __( get_lang('Add A User'), 'aauth' ) . '</a>
               </h1>
 
             </section>';
             return $filter;
         });
 
-        $this->Gui->set_title(sprintf(__('Users &mdash; %s', 'aauth'), get('core_signature')));
+        $this->Gui->set_title(sprintf(__(get_lang("Users") . ' &mdash; %s', 'aauth'), get('core_signature')));
 
         $this->load->mu_module_view( 'aauth', 'users/body', array(
             'users'                    =>    $users,
@@ -425,7 +425,7 @@ class aauth_dashboard extends CI_model
             return $filter;
         });
 
-        $this->Gui->set_title(sprintf(__('Create a new user &mdash; %s', 'aauth'), get('core_signature')));
+        $this->Gui->set_title(sprintf(__(get_lang('Create a new user') . ' &mdash; %s', 'aauth'), get('core_signature')));
 
         $this->load->mu_module_view( 'aauth', 'users/create', array(
             'groups'    =>    $groups
@@ -499,7 +499,7 @@ class aauth_dashboard extends CI_model
 
         $data                   =   array();
         $data[ 'apps' ]         =   $this->oauthlibrary->getUserApp( User::id() );
-        $this->Gui->set_title(sprintf(__('My Profile &mdash; %s', 'aauth'), get('core_signature')));
+        $this->Gui->set_title(sprintf(__(get_lang("My Profile").' &mdash; %s', 'aauth'), get('core_signature')));
 
         $this->load->mu_module_view( 'aauth', 'users/profile', $data );
     }
@@ -540,7 +540,7 @@ class aauth_dashboard extends CI_model
 
         $data                   =   array();
         $data[ 'apps' ]         =   $this->oauthlibrary->getUserApp( User::id() );
-        $this->Gui->set_title(sprintf(__('My Profile &mdash; %s', 'aauth'), get('core_signature')));
+        $this->Gui->set_title(sprintf(__(get_lang("My Profile").' &mdash; %s', 'aauth'), get('core_signature')));
 
          $this->load->mu_module_view( 'aauth', 'users/profile', $data );
     } 

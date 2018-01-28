@@ -132,6 +132,105 @@ $lang['home_Contact_Us'] = '联系我们';
 $lang['home_All_rights_reserved'] = '版权所有';
 
 
+// Sign In
+$lang['home_Sign In'] = "登录";
+$lang['home_Sign in to start your session'] = "登录";
+$lang['home_Email or User Name'] = "邮箱或用户名";
+$lang['home_Password'] = "密码";
 
+// Sign Up
+$lang['home_Sign up to'] = "注册新账号";
+$lang['home_User Name'] = "用户名";
+$lang['home_Email'] = "邮箱";
+$lang['home_Confirm'] = "确认密码";
+$lang['home_Sign Up'] = "注册";
+$lang['home_I Lost My Password'] = "忘记密码";
+$lang['home_I Already Have An Account'] = "已有账号";
 
+// Top Nav Bar
+$lang['home_Sign Out'] = "退出";
+$lang['home_Profile'] = "我的资料";
 
+// Left Sidebar
+$lang['home_Dashboard'] = "设置"; // Dashboard_Model.php
+    $lang['home_Settings'] = "系统设置"; // Dashboard_Model.php
+    $lang['home_Update Center'] = "更新中心"; // Dashboard_Model.php
+    $lang['home_About'] = "关于"; // Dashboard_Model.php
+$lang['home_Modules'] = "系统模块"; // Dashboard_Model.php
+
+    // - File Manager
+$lang['home_File Manager'] = "文件管理"; //mu-modules/elfinder/elfinder.php
+
+    // - Users
+$lang['home_Users Management'] = "用户管理"; // mu-modules/aauth/inc/dashboard.php
+    $lang['home_Users List'] = "用户列表"; // mu-modules/aauth/inc/dashboard.php
+    $lang['home_Create New'] = "创建新用户"; // mu-modules/aauth/inc/dashboard.php
+    $lang['home_My Profile'] = "我的资料"; // mu-modules/aauth/inc/dashboard.php
+    $lang['home_Roles & Permissions'] = "角色与权限"; // mu-modules/aauth/inc/dashboard.php
+
+    // - Properties
+$lang['home_Property Management'] = "房产管理"; // mu-modules/aauth/inc/dashboard.php
+    $lang['home_Property List'] = "房产列表"; // mu-modules/aauth/inc/dashboard.php
+    $lang['home_Create New Property'] = "创建新房产"; // mu-modules/aauth/inc/dashboard.php
+    $lang['home_My Profile'] = "我的资料"; // mu-modules/aauth/inc/dashboard.php
+    $lang['home_Roles & Permissions'] = "角色与权限"; // mu-modules/aauth/inc/dashboard.php
+
+// User Management
+$lang['home_Users'] = "用户"; // /mu-modules/aauth/inc/dashboard.php
+$lang['home_Add A User'] = "添加用户"; // /mu-modules/aauth/inc/dashboard.php
+$lang['home_Users List'] = "用户列表"; // /mu-modules/aauth/views/users/body.php
+$lang['home_Role'] = "角色"; // /mu-modules/aauth/views/users/body.php
+$lang['home_Email'] = "邮箱"; // /mu-modules/aauth/views/users/body.php
+$lang['home_Activity'] = "活动"; // /mu-modules/aauth/views/users/body.php
+$lang['home_Status'] = "状态"; // /mu-modules/aauth/views/users/body.php
+$lang['home_Actions'] = "操作"; // /mu-modules/aauth/views/users/body.php
+$lang['home_Unactive'] = "已禁用"; // /mu-modules/aauth/views/users/body.php
+$lang['home_Active'] = "正常"; // /mu-modules/aauth/views/users/body.php
+$lang['home_Delete'] = "删除"; // /mu-modules/aauth/views/users/body.php
+$lang['home_Insufficient privileges: you can not edit this account.'] = "权限不足：您不能编辑此用户"; // /mu-modules/aauth/views/users/body.php
+$lang['home_Would you like to delete this account ?'] = "确认删除此用户吗？"; // /mu-modules/aauth/views/users/body.php
+
+// Create a new user 
+$lang['home_Create a new user'] = "创建新用户"; // /mu-modules/aauth/inc/dashboard.php
+$lang['home_User Email'] = "电子邮箱"; // mu-modules\aauth\views\users\create.php
+$lang['home_User Status'] = "用户状态"; // mu-modules\aauth\views\users\create.php
+$lang['home_Default'] = "默认"; // mu-modules\aauth\views\users\create.php
+$lang['home_Add to a group'] = "选择角色组"; // mu-modules\aauth\views\users\create.php
+$lang['home_Editors'] = "编辑"; // mu-modules\aauth\views\users\create.php
+$lang['home_Create User'] = "创建用户"; // mu-modules\aauth\views\users\create.php
+
+// My Profile 
+$lang['home_My Profile'] = "我的资料"; // /mu-modules/aauth/inc/dashboard.php
+$lang['home_User Email'] = "电子邮箱"; // mu-modules\aauth\views\users\profile.php
+$lang['home_Old Password'] = "旧密码"; // mu-modules\aauth\views\users\profile.php
+$lang['home_New Password'] = "新密码"; // mu-modules\aauth\views\users\profile.php
+$lang['home_Confirm New'] = "确认信密码"; // mu-modules\aauth\views\users\profile.php
+$lang['home_Phone'] = "电话"; // mu-modules\aauth\views\users\profile.php
+$lang['home_Mobile'] = "手机"; // mu-modules\aauth\views\users\profile.php
+$lang['home_Edit User'] = "保存"; // mu-modules\aauth\views\users\profile.php
+$lang['home_My Photo'] = "我的照片"; // mu-modules\aauth\views\users\_photo.php
+$lang['home_Add a photo'] = "添加照片"; // mu-modules\aauth\views\users\_photo.php
+
+// Property List
+$lang['home_Add New Property'] = "创建新房产"; // mu-modules/aauth/views/props/list.php
+$lang['home_Edit Property'] = "编辑房产"; // mu-modules/aauth/views/props/edit.php
+$lang['home_Property'] = "房产"; // views/dashboard/properties/list_content.php
+$lang['home_Specification'] = "参数"; // views/dashboard/properties/list_content.php
+$lang['home_Agent/Owner'] = "中介/房主"; // views/dashboard/properties/list_content.php
+$lang['home_Price'] = "价格"; // views/dashboard/properties/list_content.php
+$lang['home_Edit'] = "编辑"; // views/dashboard/properties/list_content.php
+$lang['home_submit now'] = "提交"; // views/dashboard/properties/list_content.php
+$lang['home_Submit'] = "提交"; // views/dashboard/properties/list_content.php
+$lang['home_Publish'] = "发布"; // views/dashboard/properties/list_content.php
+$lang['home_Are you sure to delete this property?'] = "确定删除吗？"; // views/dashboard/properties/list_content.php
+$lang['home_Are you sure to submit this property?'] = "确定提交吗？"; // views/dashboard/properties/list_content.php
+$lang['home_Are you sure to publish this property?'] = "确定发布吗？"; // views/dashboard/properties/list_content.php
+$lang['home_draft'] = "草稿"; // views/dashboard/properties/list_content.php
+$lang['home_submitted'] = "已提交"; // views/dashboard/properties/list_content.php
+$lang['home_published'] = "已发布"; // views/dashboard/properties/list_content.php
+
+// Create Property
+$lang['home_Return to the list'] = "返回列表"; // mu-modules/aauth/views/props/create.php
+$lang['home_Purpose'] = "目的"; // views/dashboard/properties/edit_content.php
+$lang['home_For Sale'] = "售卖"; // views/dashboard/properties/edit_content.php
+$lang['home_For Rent'] = "出租"; // views/dashboard/properties/edit_content.php

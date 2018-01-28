@@ -131,8 +131,8 @@ $this->load->helper("MY_data_helper");
 
                                 $sign_out_url = $this->events->apply_filters('user_header_sign_out_link', site_url(array( 'sign-out' )) . '?redirect=' . urlencode(current_url()));
                                 ?>
-                                    <div class="pull-left"> <a href="<?php echo xss_clean($profile_url);?>" class="btn btn-default btn-flat"><?php _e('Profile');?></a> </div>
-                                    <div class="pull-right"> <a href="<?php echo xss_clean($sign_out_url);?>" class="btn btn-default btn-flat"><?php _e('Sign Out');?></a> </div>
+                                    <div class="pull-left"> <a href="<?php echo xss_clean($profile_url);?>" class="btn btn-default btn-flat"><?php _e(get_lang('Profile'));?></a> </div>
+                                    <div class="pull-right"> <a href="<?php echo xss_clean($sign_out_url);?>" class="btn btn-default btn-flat"><?php _e(get_lang('Sign Out'));?></a> </div>
                                 </li>
                             </ul>
                         </li>

@@ -27,12 +27,12 @@ if (isset($property_id) && $property_id > 0)
     <div class="row">
         <div class="col-md-5 mb-3">
             <div class="custom-control custom-radio">
-                <label for="country">Purpose: </label>
+                <label for="country"><?= get_lang("Purpose") ?>: </label>
                 <input name="category" id="category-1" type="radio" class="custom-control-input" value="1" <?= ($category == 1) ? "checked" : "" ?>>
-                <label class="custom-control-label" for="category-1">For Sale</label>
+                <label class="custom-control-label" for="category-1"><?= get_lang("For Sale") ?></label>
 
                 <input name="category" id="category-2" type="radio" class="custom-control-input" value="2" <?= ($category == 2) ? "checked" : "" ?>>
-                <label class="custom-control-label" for="category-2">For Rent</label>
+                <label class="custom-control-label" for="category-2"><?= get_lang("For Rent") ?></label>
             </div>
         </div>
     </div>

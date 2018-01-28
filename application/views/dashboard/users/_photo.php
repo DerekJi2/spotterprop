@@ -12,11 +12,11 @@ function uploadUserPhoto()
 
 <div class="row">
     <div class="col-md-12">
-        <label for="username">My Photo</label>
+        <label for="username"><?= get_lang("My Photo") ?></label>
         <div class="form-group col-lg-12 col-md-12" style="margin-top:10px;padding-bottom:10px;">
             <!--Adding excess tenant images by PM in work order -->
             <div id="thumb-output" style="float:left;margin-left:10px;"></div>
-            <label class="pm-file-container text-center" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add more photos">
+            <label class="pm-file-container text-center" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?= get_lang("Add a photo")?>">
                 <img src="<?= $current_photo ?>" style="height:100%" id="img-user-photo">
                 <input type="file" id="file-input">
                 <input type="hidden" name="Photo" id="input-photo" value="<?= $current_photo ?>" />
