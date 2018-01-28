@@ -19,6 +19,7 @@ class Tendoo_Controller extends CI_Controller
         // get system lang
         $this->load->library('enqueue');
         $this->load->library('notice');
+        $this->load->helper('MY_data_helper');
 
         // Load Global Lang lines
         $this->lang->load_lines(APPPATH . '/language/system_lang.php'); // @since 3.0.9
@@ -74,8 +75,11 @@ class Tendoo_Controller extends CI_Controller
             });
         }
 
+        $seg_controller = $this->uri->segment(1);
+        $lang = get_lang_from_url();
+        $seg_controller = ($seg_controller == $lang) ? $this->uri->segment(2) : $seg_controller;
         // Checks system status
-        if (in_array($this->uri->segment(1), $this->config->item('reserved_controllers')) || $this->uri->segment(1) === null) {
+        if (in_array($seg_controller, $this->config->item('reserved_controllers')) || $seg_controller === null) {
             // null for index page
 
             // there are some section which need tendoo to be installed. Before getting there, tendoo controller checks if for those

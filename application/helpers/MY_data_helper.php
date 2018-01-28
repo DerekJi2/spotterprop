@@ -133,5 +133,7 @@
         return $langWord;
     }
 
+    $CI = @get_instance();
+    $CI->load->helper('url');
     // multiple languages
-    $this->lang->load('home', get_language_from_url());
+    $CI->lang->load('home', get_language_from_url());
