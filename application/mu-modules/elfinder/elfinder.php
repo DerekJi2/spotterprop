@@ -29,7 +29,7 @@ class elFinder extends CI_Model{
             $menus  =   array_insert_before( 'settings', $menus, 'elfinder', array(
                 array(
                     'title' =>  __( 'File Manager', 'elfinder' ),
-                    'href'  =>  site_url( array( 'dashboard', 'elfinder' ) ),
+                    'href'  =>  site_url( array( get_lang_from_url() . '/dashboard', 'elfinder' ) ),
                     'icon'  =>  'fa fa-file'
                 )
             ));

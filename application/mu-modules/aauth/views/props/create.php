@@ -6,7 +6,7 @@
         <h1>
             Add a Property<small></small>
         </h1>
-        <a class="btn btn-primary btn-sm pull-right ng-binding" href="http://localhost:8080/syrian/dashboard/props/list"><?= get_lang("Return to the list") ?></a>
+        <a class="btn btn-primary btn-sm pull-right ng-binding" href="<?= lang_site_url("dashboard/props/list") ?>"><?= get_lang("Return to the list") ?></a>
     </section> <!-- section .content-header -->
     
     <div class="content">

@@ -149,14 +149,14 @@ class Dashboard_Model extends CI_Model
 
         if (User::can('manage_core')) {
             $admin_menus[ 'dashboard' ][]    =    array(
-                'href'            =>        site_url(array( 'dashboard', 'update' )),
+                'href'            =>        site_url(array( get_lang_from_url() . '/dashboard', 'update' )),
                 'icon'            =>        'fa fa-dashboard',
                 'title'            =>        __('Update Center', 'aauth'),
                 'notices_nbr'    =>        $this->events->apply_filters('update_center_notice_nbr', 0)
             );
 
             $admin_menus[ 'dashboard' ][]    =    array(
-                'href'            =>        site_url(array( 'dashboard', 'about' )),
+                'href'            =>        site_url(array( get_lang_from_url() . '/dashboard', 'about' )),
                 'icon'            =>        'fa fa-dashboard',
                 'title'            =>        __('About'),
             );
@@ -172,7 +172,7 @@ class Dashboard_Model extends CI_Model
             $admin_menus[ 'modules' ][]        =    array(
                 'title'            =>        __('Modules'),
                 'icon'            =>        'fa fa-puzzle-piece',
-                'href'            =>        site_url('dashboard/modules')
+                'href'            =>        lang_site_url('dashboard/modules')
             );
         }
 
@@ -185,7 +185,7 @@ class Dashboard_Model extends CI_Model
             $admin_menus[ 'settings' ][]    =    array(
                 'title'            =>        __('Settings'),
                 'icon'            =>        'fa fa-cogs',
-                'href'            =>        site_url('dashboard/settings')
+                'href'            =>        lang_site_url('dashboard/settings')
             );
         }
 

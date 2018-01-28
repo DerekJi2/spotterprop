@@ -65,7 +65,7 @@ class aauth_dashboard extends CI_model
             array(
                 'title'            =>        __('Users', 'aauth'),
                 'icon'            =>        'fa fa-users',
-                'href'            =>        site_url('dashboard/users'),
+                'href'            =>        lang_site_url('dashboard/users'),
                 'disable'    => true
             )
         );
@@ -84,7 +84,7 @@ class aauth_dashboard extends CI_model
                 array(
                     'title'     =>        __('Users Management', 'aauth'),
                     'icon'      =>        'fa fa-users',
-                    'href'      =>        site_url('dashboard/users'),
+                    'href'      =>        lang_site_url('dashboard/users'),
                     'disable'   =>        true  // disable menu title showed as first submenu
                 )
             );
@@ -93,7 +93,7 @@ class aauth_dashboard extends CI_model
             $menus[ 'users' ][]    =                array(
                 'title'            =>        __('Users List', 'aauth'),
                 'icon'            =>        'fa fa-users',
-                'href'            =>        site_url('dashboard/users/list')
+                'href'            =>        lang_site_url('dashboard/users/list')
             );
 
 
@@ -101,7 +101,7 @@ class aauth_dashboard extends CI_model
             $menus[ 'users' ][]    =                array(
                 'title'            =>        __('Create New', 'aauth'),
                 'icon'            =>        'fa fa-user-plus',
-                'href'            =>        site_url('dashboard/users/create')
+                'href'            =>        lang_site_url('dashboard/users/create')
             );
 
             // Sub leve - 3. Delete a user
@@ -115,7 +115,7 @@ class aauth_dashboard extends CI_model
         $menus[ 'users' ][]    =                array(
             'title'            =>        __('My profile', 'aauth'),
             'icon'            =>        'fa fa-user-circle',
-            'href'            =>        site_url('dashboard/users/profile')
+            'href'            =>        lang_site_url('dashboard/users/profile')
         );
 
         if (
@@ -126,7 +126,7 @@ class aauth_dashboard extends CI_model
                 array(
                     'title'            =>        __('Roles & Permissions', 'aauth'),
                     'icon'            =>        'fa fa-shield',
-                    'href'            =>        site_url('dashboard/groups')
+                    'href'            =>        lang_site_url('dashboard/groups')
                 )
             );
         }
@@ -140,7 +140,7 @@ class aauth_dashboard extends CI_model
             array(
                 'title'            =>        __('Props', 'aauth'),
                 'icon'            =>        'fa fa-home',
-                'href'            =>        site_url('dashboard/props'),
+                'href'            =>        lang_site_url('dashboard/props'),
                 'disable'    => true
             )
         );
@@ -158,7 +158,7 @@ class aauth_dashboard extends CI_model
                 array(
                     'title'     =>        __('Property Management', 'aauth'),
                     'icon'      =>        'fa fa-home',
-                    'href'      =>        site_url('dashboard/props'),
+                    'href'      =>        lang_site_url('dashboard/props'),
                     'disable'   =>        true  // disable menu title showed as first submenu
                 )
             );
@@ -166,13 +166,13 @@ class aauth_dashboard extends CI_model
             $menus[ 'props' ][]    =                array(
                 'title'            =>        __('List', 'aauth'),
                 'icon'            =>        'fa fa-list',
-                'href'            =>        site_url('dashboard/props/list')
+                'href'            =>        lang_site_url('dashboard/props/list')
             );
 
             $menus[ 'props' ][]    =                array(
                 'title'            =>        __('Create a Property', 'aauth'),
                 'icon'            =>        'fa fa-plus',
-                'href'            =>        site_url('dashboard/props/create')
+                'href'            =>        lang_site_url('dashboard/props/create')
             );
 
         //     $menus[ 'roles' ]        =        array(
@@ -187,13 +187,13 @@ class aauth_dashboard extends CI_model
         // $menus[ 'users' ][]    =                array(
         //     'title'            =>        __('Delete', 'aauth'),
         //     'icon'            =>        'fa fa-trash',
-        //     'href'            =>        site_url('dashboard/users/delete')
+        //     'href'            =>        lang_site_url('dashboard/users/delete')
         // );
 
         // $menus[ 'users' ][]    =                array(
         //     'title'            =>        __('My profile', 'aauth'),
         //     'icon'            =>        'fa fa-user-circle',
-        //     'href'            =>        site_url('dashboard/users/profile')
+        //     'href'            =>        lang_site_url('dashboard/users/profile')
         // );
 
             return $menus;
@@ -291,7 +291,7 @@ class aauth_dashboard extends CI_model
             $filter     =  '<section class="content-header">
               <h1>
                     ' . str_replace('&mdash; ' . get('core_signature'), '', Html::get_title()) . '<small></small>
-                    <a class="btn btn-primary btn-sm pull-right ng-binding" href="' . site_url([ 'dashboard', 'users', 'create' ] ) . '">' . __( 'Add A user', 'aauth' ) . '</a>
+                    <a class="btn btn-primary btn-sm pull-right ng-binding" href="' . lang_site_url('dashboard/users/create') . '">' . __( 'Add A User', 'aauth' ) . '</a>
               </h1>
 
             </section>';
@@ -359,7 +359,7 @@ class aauth_dashboard extends CI_model
             $filter     =  '<section class="content-header">
                 <h1>
                     ' . str_replace('&mdash; ' . get('core_signature'), '', Html::get_title()) . '<small></small>
-                    <a class="btn btn-primary btn-sm pull-right ng-binding" href="' . site_url([ 'dashboard', 'users' ] ) . '">' . __( 'Return to the list', 'aauth' ) . '</a>
+                    <a class="btn btn-primary btn-sm pull-right ng-binding" href="' . site_url([ get_lang_from_url() . '/dashboard', 'users' ] )  . '">' . __( 'Return to the list', 'aauth' ) . '</a>
                 </h1>
 
             </section>';
@@ -418,7 +418,7 @@ class aauth_dashboard extends CI_model
             $filter     =  '<section class="content-header">
               <h1>
                     ' . str_replace('&mdash; ' . get('core_signature'), '', Html::get_title()) . '<small></small>
-                    <a class="btn btn-primary btn-sm pull-right ng-binding" href="' . site_url([ 'dashboard', 'users' ] ) . '">' . __( 'Return to the list', 'aauth' ) . '</a>
+                    <a class="btn btn-primary btn-sm pull-right ng-binding" href="' . site_url([ get_lang_from_url() . '/dashboard', 'users' ] ) . '">' . __( 'Return to the list', 'aauth' ) . '</a>
               </h1>
 
             </section>';

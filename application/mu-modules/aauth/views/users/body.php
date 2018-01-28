@@ -4,7 +4,7 @@
  *	Description :	header file for each admin page. include <html> tag and ends at </head> closing tag
  *	Since		:	1.4
 **/
-
+$this->load->helper("MY_data_helper");
 $complete_users    =    array();
 
 // Get current login user's group_id
@@ -18,7 +18,7 @@ foreach ($users as $user) {
     $user_group            =    farray($this->users->auth->get_user_groups($userId));
     $user_group_id = $user_group->group_id;
 
-    $user_edit_link = site_url(array( 'dashboard', 'users', 'edit', $user->user_id ));
+    $user_edit_link = site_url(array( get_lang_from_url() . '/dashboard', 'users', 'edit', $user->user_id ));
     $delete_button = '<a onclick="return confirm( \'' . _s( 'Would you like to delete this account ?', 'aauth' ) . '\' )" href="' . site_url(array( 'dashboard', 'users', 'delete', $user->user_id )) . '">' . __('Delete', 'aauth') . '</a>';
 
     // Editors should NOT be able to delete or edit Admin/Editor accounts

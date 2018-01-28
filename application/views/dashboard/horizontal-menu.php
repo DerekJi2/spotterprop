@@ -1,5 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
+$this->load->helper("MY_data_helper");
 /**
  * 	@details : Admin header page
  *	@role : This page page is used to displays dashboard header
@@ -123,8 +125,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <?php echo xss_clean($this->events->apply_filters('after_user_card', ''));?>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
-                                    <div class="pull-left"> <a href="<?php echo xss_clean($this->events->apply_filters('user_header_profile_link', '#'));?>" class="btn btn-default btn-flat"><?php _e('Profile');?></a> </div>
-                                    <div class="pull-right"> <a href="<?php echo xss_clean($this->events->apply_filters('user_header_sign_out_link', site_url(array( 'sign-out' )) . '?redirect=' . urlencode(current_url())));?>" class="btn btn-default btn-flat"><?php _e('Sign Out');?></a> </div>
+                                <?php
+                                $profile_url = $this->events->apply_filters('user_header_profile_link', '#');
+                                $profile_url = str_replace(site_url(), lang_site_url(), $profile_url);
+
+                                $sign_out_url = $this->events->apply_filters('user_header_sign_out_link', site_url(array( 'sign-out' )) . '?redirect=' . urlencode(current_url()));
+                                ?>
+                                    <div class="pull-left"> <a href="<?php echo xss_clean($profile_url);?>" class="btn btn-default btn-flat"><?php _e('Profile');?></a> </div>
+                                    <div class="pull-right"> <a href="<?php echo xss_clean($sign_out_url);?>" class="btn btn-default btn-flat"><?php _e('Sign Out');?></a> </div>
                                 </li>
                             </ul>
                         </li>

@@ -28,6 +28,7 @@ class Sign_in extends Tendoo_Controller
     
     public function index()
     {
+        
         $this->events->do_action('set_login_rules');
         // in order to let validation return true
         $this->form_validation->set_rules('submit_button', __('Submit button'), 'alpha_dash');
@@ -40,7 +41,7 @@ class Sign_in extends Tendoo_Controller
                 if (riake('redirect', $_GET)) {
                     redirect(urldecode(riake('redirect', $_GET)));
                 } else {
-                    redirect( $this->events->apply_filters( 'login_redirection', array( 'dashboard' ) ) );
+                    redirect( $this->events->apply_filters( 'login_redirection', array( get_lang_from_url().'dashboard' ) ) );
                 }
             }
             $this->notice->push_notice($this->lang->line($exec));
