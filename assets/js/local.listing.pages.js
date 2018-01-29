@@ -3,7 +3,7 @@ var nsListingPages = nsListingPages || {};
 /**
  * 
  */
-nsListingPages.NumbersPerPage = 3;
+nsListingPages.NumbersPerPage = 10;
 
 /**
  * 
