@@ -229,8 +229,39 @@ $lang['home_draft'] = "草稿"; // views/dashboard/properties/list_content.php
 $lang['home_submitted'] = "已提交"; // views/dashboard/properties/list_content.php
 $lang['home_published'] = "已发布"; // views/dashboard/properties/list_content.php
 
-// Create Property
+// Create/Edit Property
 $lang['home_Return to the list'] = "返回列表"; // mu-modules/aauth/views/props/create.php
 $lang['home_Purpose'] = "目的"; // views/dashboard/properties/edit_content.php
 $lang['home_For Sale'] = "售卖"; // views/dashboard/properties/edit_content.php
 $lang['home_For Rent'] = "出租"; // views/dashboard/properties/edit_content.php
+$lang['home_Address'] = "地址"; // views/dashboard/properties/edit_content.php
+$lang['home_City'] = "城市"; // views/dashboard/properties/edit_content.php
+$lang['home_Property Type'] = "类型"; // views/dashboard/properties/edit_content.php
+$lang['home_Built Year'] = "年份"; // views/dashboard/properties/edit_content.php
+$lang['home_Featured'] = "装修"; // views/dashboard/properties/edit_content.php
+$lang['home_Latitude & Longitude'] = "经纬度"; // views/dashboard/properties/edit_content.php
+$lang['home_Latitude'] = "纬度"; // views/dashboard/properties/edit_content.php
+$lang['home_Longitude'] = "经度"; // views/dashboard/properties/edit_content.php
+$lang['home_Select the Owner'] = "选择房主"; // views/dashboard/properties/edit_content.php
+$lang['home_Are you going to update this property'] = "确定修改吗"; // views/dashboard/properties/edit_content.php
+$lang['home_Are you going to create this property'] = "确定创建吗"; // views/dashboard/properties/edit_content.php
+$lang['home_Cancel'] = "取消"; // views/dashboard/properties/edit_content.php
+$lang['home_Yes, continue to update'] = "确定，继续保存"; // views/dashboard/properties/edit_content.php
+$lang['home_Yes, continue to save'] = "确定，继续保存"; // views/dashboard/properties/edit_content.php
+$lang['home_Save'] = "保存"; // views/dashboard/properties/edit_content.php
+$lang['home_Warning'] = "提示"; // views/dashboard/properties/edit_content.php
+
+$lang['home_Gallery'] = "图片"; // views/dashboard/properties/_gallery_upload.php
+$lang['home_Add more photos'] = "添加更多"; // views/dashboard/properties/_gallery_upload.php
+
+$lang['home_Sorry, you are not allowed to update this property.'] = "对不起，您无法修改这个房子的信息。"; 
+$lang['home_Sorry, the number of properties you created has exceeded limit.'] = "对不起，您创建的房产数已超出系统限制。"; 
+$lang['home_According to our policies, only 1 property can be created for free.'] = "根据我们的规定，每人只能免费创建一条信息。"; 
+$lang['home_If you are pretty sure there must be something wrong, please contact our service staff.'] = "如果您确定是系统的问题，请联系我们的客服人员："; 
+$lang['home_If you have more properties to sell or rent, please contact our service staff.'] = "如果您需要创建更多房产信息，请联系我们的客服人员："; 
+
+// Roles & Permissions
+$lang['home_Roles'] = "角色";       // mu-modules/aauth/inc/dashboard.php
+$lang['home_Role List'] = "角色列表";   // mu-modules/aauth/views/groups/body.php
+$lang['home_Role Name'] = "角色名称";   // mu-modules/aauth/views/groups/body.php
+$lang['home_Permissions'] = "权限";   // mu-modules/aauth/views/groups/body.php

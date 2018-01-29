@@ -11,7 +11,7 @@ $this->Gui->col_width(1, 4);
 
 $this->Gui->add_meta(array(
     'namespace'        =>    'role_list',
-    'title'            =>    __('Role List', 'aauth'),
+    'title'            =>    __(get_lang('Role List'), 'aauth'),
     'col_id'        =>    1,
     'footer'        =>    array(
         //'pagination'	=>	array( true )
@@ -45,9 +45,9 @@ $this->Gui->add_item(array(
     'type'            =>    'table',
     'cols'            =>    array(
                                 // __('Role name', 'aauth'), 
-                                __('Role Name', 'aauth'), 
+                                __(get_lang('Role Name'), 'aauth'), 
                                 // __('Admin', 'aauth'), 
-                                __('Permissions', 'aauth') 
+                                __(get_lang('Permissions'), 'aauth') 
                             ),
     'rows'            =>    $group_array
 ), 'role_list', 1);

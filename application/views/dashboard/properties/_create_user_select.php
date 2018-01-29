@@ -7,7 +7,7 @@ if ($groupid < 6)
     $users = get_users();
 ?>
     <div class="form-group">
-        <label for="select-owner">Select the Owner:</label>
+        <label for="select-owner"><?= get_lang("Select the Owner") ?>:</label>
         <select class="form-control" id="select-owner" onchange="javascript: onSelect_UserOption();">
     <?php
         

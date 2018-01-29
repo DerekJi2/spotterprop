@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-md-12">
-        <label for="username">Gallery</label>
+        <label for="username"><?= get_lang("Gallery") ?></label>
         <div class="form-group col-lg-12 col-md-12" style="margin-top:10px;padding-bottom:10px;">
             <!--Adding excess tenant images by PM in work order -->
             <div id="thumb-output" style="float:left;margin-left:10px;"></div>
-            <label class="pm-file-container text-center" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add more photos">
+            <label class="pm-file-container text-center" data-toggle="tooltip" data-placement="top" title="" data-original-title="<?= get_lang("Add more photos") ?>">
                 <i class="fa fa-picture-o"></i>
                 <input type="file" id="file-input" multiple="">
             </label>

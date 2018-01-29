@@ -22,11 +22,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <p><?php echo fetch_notice_from_url();?></p>
         <p>
 		<?php
-            $this->events->do_action('displays_public_errors');
+            // $this->events->do_action('displays_public_errors');
         ?></p>
         <form method="post">
         	<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-        	<?php //$this->events->do_action('display_login_fields');?>
+        	<?php $this->events->do_action('display_login_fields');?>
         </form>
 
 		<?php

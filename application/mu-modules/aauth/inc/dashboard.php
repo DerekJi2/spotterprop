@@ -588,7 +588,7 @@ class aauth_dashboard extends CI_model
         if ($page == 'list') {
             $groups        =    $this->users->auth->list_groups();
 
-            $this->Gui->set_title(sprintf(__('Roles &mdash; %s', 'aauth'), get('core_signature')));
+            $this->Gui->set_title(sprintf(__(get_lang('Roles') . ' &mdash; %s', 'aauth'), get('core_signature')));
 
             $this->load->mu_module_view( 'aauth', 'groups/body', array(
                 'groups'    =>    $groups

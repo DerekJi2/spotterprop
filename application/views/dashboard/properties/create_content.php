@@ -17,32 +17,32 @@
     <div class="row">
         <div class="col-md-5 mb-3">
             <div class="custom-control custom-radio">
-                <label for="country">Purpose: </label>
+                <label for="country"><?= get_lang("Purpose") ?>: </label>
                 <input name="category" id="category-1" type="radio" class="custom-control-input" value="1" checked>
-                <label class="custom-control-label" for="category-1">For Sale</label>
+                <label class="custom-control-label" for="category-1"><?= get_lang("For Sale") ?></label>
 
                 <input name="category" id="category-2" type="radio" class="custom-control-input" value="2">
-                <label class="custom-control-label" for="category-2">For Rent</label>
+                <label class="custom-control-label" for="category-2"><?= get_lang("For Rent") ?></label>
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-8 mb-3">
-            <label for="address">Address</label>
-            <input type="text" class="form-control" id="address" placeholder="Detailed Address" value="123" required>
+            <label for="address"><?= get_lang("Address") ?></label>
+            <input type="text" class="form-control" id="address" placeholder="<?= get_lang("Detailed Address") ?>" value="123" required>
             <div class="invalid-feedback"></div>
         </div>
         <div class="col-md-4 mb-3">
-            <label for="location">City</label>
-            <input type="text" class="form-control" id="location" placeholder="Enter the City" value="Lebanon" required>
+            <label for="location"><?= get_lang("City") ?></label>
+            <input type="text" class="form-control" id="location" placeholder="<?= get_lang("Enter the City") ?>" value="Lebanon" required>
             <div class="invalid-feedback"></div>
         </div>
     </div>
 
     <div class="row form-group form-row">
         <div class="col-md-12 mb-3">
-            <div><label for="country">Property Type: </label></div>
+            <div><label for="country"><?= get_lang("Property Type") ?>: </label></div>
             <?php 
             $types = get_defined_types();
             $count = 0;
@@ -64,53 +64,53 @@
 
     <div class="row form-group form-row">
         <div class="col-md-4">
-            <label for="price">Price: </label>
+            <label for="price"><?= get_lang("Price") ?>: </label>
             <div class="input-group">
                 <input type="text" class="form-control" id="price" placeholder="Price" value="100000" required>
             </div>
         </div> 
         <div class="col-md-4">
-            <label for="builtyear">Built Year: </label>
+            <label for="builtyear"><?= get_lang("Built Year") ?>: </label>
             <div class="input-group">
                 <input type="text" class="form-control" id="builtyear" placeholder="Built Year" value="1980" required>
             </div>
         </div>    
         <div class="col-md-4">
-            <label for="Bedrooms">Bedrooms: </label>
+            <label for="Bedrooms"><?= get_lang("Bedrooms") ?>: </label>
             <div class="input-group">
                 <input type="text" class="form-control" id="Bedrooms" placeholder="Bedrooms" value="2" required>
             </div>
         </div> 
         <div class="col-md-4">
-            <label for="Bathrooms">Bathrooms: </label>
+            <label for="Bathrooms"><?= get_lang("Bathrooms") ?>: </label>
             <div class="input-group">
                 <input type="text" class="form-control" id="Bathrooms" placeholder="Bathrooms" value="1" required>
             </div>
         </div> 
         <div class="col-md-4">
-            <label for="Garages">Garages: </label>
+            <label for="Garages"><?= get_lang("Garages") ?>: </label>
             <div class="input-group">
                 <input type="text" class="form-control" id="Garages" placeholder="Garages" value="0" required>
             </div>
         </div> 
         <div class="col-md-4">
-            <label for="Area">Area: </label>
+            <label for="Area"><?= get_lang("Area") ?>: </label>
             <div class="input-group">
                 <input type="text" class="form-control" id="Area" placeholder="Area" value="80" required>
             </div>
         </div> 
         <div class="col-md-4">
-            <label for="featured">Featured: </label>
+            <label for="featured"><?= get_lang("Featured") ?>: </label>
             <div class="input-group featured-group" style="margin-top:5px;">
                 <span class="span-feature-item">
                     <input id="featured-yes" name="featured" type="radio" 
                         class="custom-control-input" value="1" >
-                    <label class="custom-control-label" for="credit">Yes</label>
+                    <label class="custom-control-label" for="credit"><?= get_lang("Yes") ?></label>
                 </span>
                 <span class="span-feature-item">
                     <input id="featured-yes" name="featured" type="radio" 
                         class="custom-control-input" value="0" checked>
-                    <label class="custom-control-label" for="credit">No</label>
+                    <label class="custom-control-label" for="credit"><?= get_lang("No") ?></label>
                 </span>
             </div>
         </div>   
@@ -122,7 +122,7 @@
 
     <div class="row form-group form-row">
         <div class="col-md-12 mb-3">
-            <div><label>Features</label></div>
+            <div><label><?= get_lang("Features") ?></label></div>
             <div class="custom-control custom-checkbox">
                 <div class="form-group">
             <?php 
@@ -144,18 +144,18 @@
 
     <div class="row form-group form-row">
         <div class="col-md-12 mb-3">
-            <div><label>Description</label></div>
+            <div><label><?= get_lang("Description") ?></label></div>
             <textarea id="description" class="custom-control-label" style="width:100%;height:60px;"></textarea>
         </div>
     </div>
 
     <div class="row form-group form-row">
         <div class="col-md-12 mb-3">
-            <label for="latitude">Latitude & Longitued</label>
+            <label for="latitude"><?= get_lang("Latitude & Longitude") ?></label>
             <table class="table map-latlng-table">
                 <tr class="row map-latlng-tr">
-                    <td class="map-latlng-td">Latitude: <span class="map-latitude">0</span></td>
-                    <td class="map-latlng-td">Longitude: <span class="map-longitude">0</span></td>
+                    <td class="map-latlng-td"><?= get_lang("Latitude") ?>: <span class="map-latitude">0</span></td>
+                    <td class="map-latlng-td"><?= get_lang("Longitude") ?>: <span class="map-longitude">0</span></td>
                 </tr>
             </table>
             <?php $this->load->view("dashboard/properties/google_map"); ?>
@@ -181,10 +181,10 @@
     <div class="row form-group form-row">
         <div class="col-md-12 col-lg-12 col-sm-12 confirm-box" style="display:none;">
             <div class="col-md-6 col-lg-8 col-sm-12 alert alert-warning" role="alert" > 
-                Are you going to create this property? 
+                <?= get_lang("Are you going to create this property") ?>? 
             </div>
-            <button href="javascript:void(0);" onclick="javascript: onPropCreateCancelClick();" class="btn btn-secondary" style="margin:10px;">Cancel</button>
-            <button href="javascript:void(0);" onclick="javascript: onPropCreateSaveConfirm();" class="btn btn-danger" style="margin:10px;">Yes, continue to save</button>
+            <button href="javascript:void(0);" onclick="javascript: onPropCreateCancelClick();" class="btn btn-secondary" style="margin:10px;"><?= get_lang("Cancel") ?></button>
+            <button href="javascript:void(0);" onclick="javascript: onPropCreateSaveConfirm();" class="btn btn-danger" style="margin:10px;"><?= get_lang("Yes, continue to save") ?></button>
         </div>
 
         <div class="col-md-12 col-lg-12 col-sm-12 progress-box" style="display:none;">
@@ -195,7 +195,7 @@
 
         <div class="col-md-3 mb-3" >
             <!-- <button class="btn btn-default btn-prop-create-cancel" type="button">Cancel</button> -->
-            <button class="btn btn-primary btn-prop-create-save" type="button" onclick="javascript: onPropCreateSaveClick(this);">Save</button>
+            <button class="btn btn-primary btn-prop-create-save" type="button" onclick="javascript: onPropCreateSaveClick(this);"><?= get_lang("Save") ?></button>
         </div>        
     </div>
     <hr class="mb-12">
