@@ -56,7 +56,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </form>
                 <p class="login-box-msg">
             <?php
-            $this->events->do_action('displays_public_errors');
+            // $this->events->do_action('displays_public_errors');
             ?>
         </p>
     </div>
