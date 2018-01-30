@@ -181,4 +181,15 @@ class Property extends BaseDB_Controller {
         }
         echo $result;
     }
+
+    public function status_stats()
+    {
+        $this->ci->load->model($this->modelName);
+
+        $result = ($this->model != null) ? $this->model->status_stats() : null;
+    
+        //add the header here
+        header('Content-Type: application/json');
+        echo json_encode( $result );
+    }
 }

@@ -63,7 +63,7 @@ class aauth_dashboard extends CI_model
     {
         $menus[ 'users' ]        =    array(
             array(
-                'title'            =>        __('Users', 'aauth'),
+                'title'            =>        __(get_lang('Users'), 'aauth'),
                 'icon'            =>        'fa fa-users',
                 'href'            =>        lang_site_url('dashboard/users'),
                 'disable'    => true

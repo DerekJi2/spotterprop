@@ -152,7 +152,7 @@ $lang['home_Sign Out'] = "退出";
 $lang['home_Profile'] = "我的资料";
 
 // Left Sidebar
-$lang['home_Dashboard'] = "设置"; // Dashboard_Model.php
+$lang['home_Dashboard'] = "控制面板"; // Dashboard_Model.php
     $lang['home_Settings'] = "系统设置"; // Dashboard_Model.php
     $lang['home_Update Center'] = "更新中心"; // Dashboard_Model.php
     $lang['home_About'] = "关于"; // Dashboard_Model.php
