@@ -141,7 +141,7 @@ class Dashboard_Model extends CI_Model
     public function __set_admin_menu()
     {
         $admin_menus[ 'dashboard' ][]    =    array(
-            'href'            =>        site_url('dashboard'),
+            'href'            =>        lang_site_url('dashboard'),
             'icon'            =>        'fa fa-dashboard',
             'title'           =>        __(get_lang('Dashboard')),
             'disable'         =>        true    // disable menu title showed as first submenu

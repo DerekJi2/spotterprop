@@ -342,4 +342,18 @@ class Property_model extends BaseTable_model {
         $ok = $this->db->query($sql);
         return $ok;
     }
+
+    public function status_stats($userid = false)
+    {
+        $sql = "SELECT StatusId, COUNT(Id) AS Num FROM $this->tableName ";
+        if ($userid != false && $userid > 0)
+        {
+            $sql .= "WHERE PersonId=$userid ";
+        }
+        
+        $sql .= "GROUP BY StatusId";
+
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
 }
