@@ -340,3 +340,32 @@
         }
         return "UNDEFINED";
     }
+
+    /**
+     * 
+     */
+    function get_property($property_id)
+    {
+        $CI = @get_instance();
+
+        $CI->load->model("Property_model");
+        $propModel = new Property_model();
+        $result = $propModel->get_json($property_id);
+        $json_data = $result->data;
+        
+        return $json_data;
+    }
+
+    /**
+     * 
+     */
+    function get_property_history($property_id)
+    {
+        $CI = @get_instance();
+
+        $CI->load->model("TrackProperty_model");
+        $trackModel = new TrackProperty_model();
+        $result = $trackModel->get_list($property_id);
+        
+        return $result;
+    }

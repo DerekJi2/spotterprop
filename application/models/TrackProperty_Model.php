@@ -35,4 +35,22 @@ class TrackProperty_model extends BaseTable_model {
         
         return $ok;
     }
+
+    /**
+     * 
+     */
+    function get_list($propertyId)
+    {
+        $userTable = $this->db->dbprefix("aauth_users");
+
+        $sql = "SELECT T.*, U.name, U.email 
+        FROM $this->tableName T
+            LEFT JOIN $userTable U ON T.CreatedBy=U.ID
+        WHERE PropertyId=$propertyId
+        ORDER BY T.ID DESC";
+
+        $query = $this->db->query($sql);
+        $result = $query->result();
+        return $result;
+    }
 }

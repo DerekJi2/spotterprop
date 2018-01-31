@@ -265,3 +265,12 @@ $lang['home_Roles'] = "角色";       // mu-modules/aauth/inc/dashboard.php
 $lang['home_Role List'] = "角色列表";   // mu-modules/aauth/views/groups/body.php
 $lang['home_Role Name'] = "角色名称";   // mu-modules/aauth/views/groups/body.php
 $lang['home_Permissions'] = "权限";   // mu-modules/aauth/views/groups/body.php
+
+
+// Property History
+//$lang['home_'] = ""; // mu-modules/aauth/views/props/history.php
+$lang['home_Property History'] = "历史操作"; // views/dashboard/properties/history_content.php
+$lang['home_Date/Time'] = "日期时间"; // views/dashboard/properties/history_content.php
+$lang['home_Account'] = "账号"; // views/dashboard/properties/history_content.php
+$lang['home_Operation'] = "操作"; // views/dashboard/properties/history_content.php
+$lang['home_Details'] = "具体内容"; // views/dashboard/properties/history_content.php

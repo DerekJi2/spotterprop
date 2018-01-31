@@ -248,7 +248,8 @@ $(document).ready(function(){
      * 
      */
     function propertyCreateModel() {
-        this.UserId = $("#personid").val(); //<?= $this->users->current->id ?>;
+        this.CreateUserId = <?= $this->users->current->id ?>;
+        this.UserId = $("#personid").val(); //
         
         this.Category = $('input[name=category]:checked').val();
 

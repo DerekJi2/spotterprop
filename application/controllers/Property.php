@@ -112,7 +112,7 @@ class Property extends BaseDB_Controller {
         $this->ci->load->model($this->modelName);
         $data["DbResult"] = ($this->model != null) ? $this->model->insert($data) : null;
 */
-        $userid = $this->input->post("UserId");
+        $userid = $this->input->post("CreateUserId");
         $result = add_property($data, $features, $specs, $userid);
         $data["DbResult"] = $result;
         //return $this->load->view("Property/Create", $data);

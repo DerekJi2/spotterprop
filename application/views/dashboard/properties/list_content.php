@@ -106,6 +106,7 @@
                 $property_delete_link = "javascript: onClick_DeleteProperty($item->id);";
                 $property_submit_link = "javascript: onClick_SubmitProperty(this, $item->id);";
                 $property_publish_link = "javascript: onClick_PublishProperty(this, $item->id);";
+                $property_history_link = lang_site_url()."dashboard/props/history/$item->id";
                 // $property_submit_link = lang_site_url()."dashboard/props/submit/$item->id";
                 // $property_publish_link = lang_site_url()."dashboard/props/publish/$item->id";
             ?>
@@ -125,9 +126,12 @@
             </td>
             <td>            
                 <a href="<?= $property_edit_link ?>" title="<?= get_lang("Edit") ?>"><i class="fa fa-edit" style="color:blue;"></i> <?= get_lang("Edit") ?></a>
-                <br/><br/>
+                <br/>
                 <a href="javascript:void(0);" onclick="<?= $property_delete_link ?>" title="<?= get_lang("Delete") ?>"><i class="fa fa-remove" style="color:#FF5733;"></i> <?= get_lang("Delete") ?></a>
-                
+                <?php if (get_group_id($userId) == 4) { ?>
+                <br/>
+                <a href="<?= $property_history_link ?>" title="<?= get_lang("History") ?>" style="color:#313131;"><i class="fa fa-history"></i> <?= get_lang("History") ?></a>
+                <?php } ?>
             </td>
         </tr>
     <?php } ?>

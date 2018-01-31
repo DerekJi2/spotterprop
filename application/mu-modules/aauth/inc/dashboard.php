@@ -626,6 +626,10 @@ class aauth_dashboard extends CI_model
             $data["target_status_id"] = 3;
             $this->load->mu_module_view( 'aauth', 'props/update_status', $data);
         }
+        elseif ($page == 'history') {
+            $this->Gui->set_title(__('Property History', 'aauth'));
+            $this->load->mu_module_view( 'aauth', 'props/history', $data);
+        }
     }
 }
 new aauth_dashboard;
