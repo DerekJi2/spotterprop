@@ -31,6 +31,8 @@
     <span><?= get_lang("Add New Property")?></span>
 </a>
 </div> -->
+<?php $this->load->view("dashboard/properties/list_paging"); ?>
+
 <table class="table prop-list-table">
     <thead>
         <tr>
@@ -61,7 +63,7 @@
             $Garages = array_value($item->item_specific, "Garages", 0); 
             $Area = array_value($item->item_specific, "Area", 0); 
         ?>
-        <tr>
+        <tr class="tr-row tr-row-seq-<?= $count ?>" data-seq="<?= $count ?>">
             <!-- <th scope="row"><?=$count?></th> -->
             <?php 
             ?>
