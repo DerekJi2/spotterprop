@@ -1,10 +1,4 @@
-<style>
-.nav-prop-list-pagination {
-    text-align:center;
-}
 
-.tr-row { display: none; }
-</style>
 
 <nav aria-label="Page navigation" class="nav-prop-list-pagination">
   <ul class="pagination">
@@ -45,3 +39,15 @@ $(".prop-list-table").ready(function(){
 
 
 </script>
+
+<style>
+.nav-prop-list-pagination {
+    text-align:center;
+}
+
+.tr-row { display: none; }
+
+.page-item-selected  {
+    color:#337ab7;
+}
+</style>
