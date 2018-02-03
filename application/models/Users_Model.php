@@ -404,7 +404,13 @@ class Users_model extends CI_Model
     public function get_query()
     { 
         $tablename = $this->db->dbprefix("aauth_users");
-        $sql = "SELECT * FROM $tablename WHERE banned=0";
+        $groupTable = $this->db->dbprefix("aauth_groups");
+        $user2group = $this->db->dbprefix("aauth_user_to_group");
+        $sql = "SELECT U.*, G.id AS group_id, G.name group_name, G.definition AS roles
+        FROM $tablename U
+            LEFT JOIN $user2group UG ON U.id=UG.user_id
+            LEFT JOIN $groupTable G ON UG.group_id=G.id
+        WHERE banned=0";
 
         $query = $this->db->query($sql);
         return $query;

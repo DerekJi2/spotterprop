@@ -548,6 +548,11 @@ class aauth_dashboard extends CI_model
     public function users($page = 'list', $index = 0)
     {
         if ($page == 'list') {
+            //$this->users_list($index);
+            $this->Gui->set_title(__('Users', 'aauth'));
+            $this->load->mu_module_view( 'aauth', 'users/list', null);
+        }
+        elseif ($page == 'list2') {
             $this->users_list($index);
         }
         elseif ($page == 'edit') {
