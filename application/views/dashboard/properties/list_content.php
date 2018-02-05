@@ -16,6 +16,17 @@
 .td-status .label { display:inline-block; width:60px; }
 .td-status div { width:100%; text-align:center; }
 .td-status div a { font-size:12px; }
+.show-560 { display: none; }
+
+@media screen and (max-width:768px) {
+    .hdn-768 {display: none;}
+}
+
+@media screen and (max-width:560px) {
+    .hdn-560 {display: none;}
+    .show-560 { display:block; }
+    .page-link { width: 20px; font-size: 9px; padding: 2px 2px !important; }
+}
 </style>
 
 <?php 
@@ -33,14 +44,14 @@
 </div> -->
 <?php $this->load->view("dashboard/properties/list_paging"); ?>
 
-<table class="table prop-list-table">
+<table class="table prop-list-table table-responsive">
     <thead>
         <tr>
         <th scope="col">#</th>
         <th scope="col"><?= get_lang("Property")?></th>
-        <th scope="col"><?= get_lang("Specification")?></th>
-        <th scope="col"><?= get_lang("Agent/Owner")?></th>
-        <th scope="col" style="text-align:center;"><?= get_lang("Status")?></th>
+        <th scope="col" class="hdn-560"><?= get_lang("Specification")?></th>
+        <th scope="col" class="hdn-768"><?= get_lang("Agent/Owner")?></th>
+        <th scope="col" class="hdn-560" style="text-align:center;"><?= get_lang("Status")?></th>
         <th scope="col"></th>
         </tr>
     </thead>
@@ -81,9 +92,31 @@
                 </div>
 
                 <div><span><?= get_lang("Price") ?>: </span>$<?=number_format($item->price)?></div>
+
+                <div class="item-specific show-560">
+                    <span class="spn-item-spec-sm" title="<?= get_lang('Bedrooms') ?>"><img class="item-spec" src="<?=site_url('assets/img/bedrooms.png'); ?>" alt=""><?=$Bedrooms; ?></span>
+                    <span class="spn-item-spec-sm" title="<?= get_lang('Bathrooms') ?>"><img class="item-spec" src="<?=site_url('assets/img/bathrooms.png'); ?>" alt=""><?=$Bathrooms; ?></span>
+                    <span class="spn-item-spec-sm" title="<?= get_lang('Garages') ?>"><img class="item-spec" src="<?=site_url('assets/img/garages.png'); ?>" alt=""><?=$Garages; ?></span>
+                    <span class="spn-item-spec-lg" title="<?= get_lang('Area') ?>"><img class="item-spec" src="<?=site_url('assets/img/area.png'); ?>" alt=""><?=$Area; ?>m<sup>2</sup></span>
+                </div>
+
+                <div class='show-560' allign="center">
+                    <div><span class="label <?= get_status_label($item->StatusId) ?>"><?= get_lang(get_status_text($item->StatusId)) ?></span></div>
+
+                    <!-- show submit button if 'draft' -->
+                    <?php if ($item->StatusId == 1 ) { ?>   
+                    <div><a href="javascript:void(0);" onclick="<?= $property_submit_link ?>" title="<?= get_lang("Submit") ?>"><?= get_lang("submit now") ?>!</a></div>
+                    <?php } ?>
+
+                    <!-- show publish button if 'submitted' -->
+                    <?php if (get_group_id($userId) < 6 && $item->StatusId == 2 ) { ?>
+                    <br/>
+                    <div><a href="javascript:void(0);" onclick="<?= $property_publish_link ?>" title="<?= get_lang("Publish") ?>" style="" class="btn-xs btn-danger"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> </a></div>
+                    <?php } ?>
+                </div>
             </td>
 
-            <td>
+            <td class="hdn-560">
                 <div class="item-specific">
                     <span class="spn-item-spec-sm" title="<?= get_lang('Bedrooms') ?>"><img class="item-spec" src="<?=site_url('assets/img/bedrooms.png'); ?>" alt=""><?=$Bedrooms; ?></span>
                     <span class="spn-item-spec-sm" title="<?= get_lang('Bathrooms') ?>"><img class="item-spec" src="<?=site_url('assets/img/bathrooms.png'); ?>" alt=""><?=$Bathrooms; ?></span>
@@ -93,7 +126,7 @@
                     <span class="spn-item-spec-lg" title="<?= get_lang('Area') ?>"><img class="item-spec" src="<?=site_url('assets/img/area.png'); ?>" alt=""><?=$Area; ?>m<sup>2</sup></span>
                 </div>
             </td>
-            <td class="td-agent">                
+            <td class="td-agent hdn-768">                
                 <div class="agent-image">
                     <img src="<?php echo site_url($agent_photo) ?>" alt="">
                     <strong><?=$agent_name?></strong>
@@ -112,7 +145,7 @@
                 // $property_submit_link = lang_site_url()."dashboard/props/submit/$item->id";
                 // $property_publish_link = lang_site_url()."dashboard/props/publish/$item->id";
             ?>
-            <td class='td-status' allign="center">
+            <td class='td-status hdn-560' allign="center">
                 <div><span class="label <?= get_status_label($item->StatusId) ?>"><?= get_lang(get_status_text($item->StatusId)) ?></span></div>
 
                 <!-- show submit button if 'draft' -->
@@ -127,12 +160,12 @@
                 <?php } ?>
             </td>
             <td>            
-                <a href="<?= $property_edit_link ?>" title="<?= get_lang("Edit") ?>"><i class="fa fa-edit" style="color:blue;"></i> <?= get_lang("Edit") ?></a>
+                <a href="<?= $property_edit_link ?>" title="<?= get_lang("Edit") ?>"><i class="fa fa-edit" style="color:blue;"></i> <span class="hdn-768"><?= get_lang("Edit") ?></span></a>
                 <br/>
-                <a href="javascript:void(0);" onclick="<?= $property_delete_link ?>" title="<?= get_lang("Delete") ?>"><i class="fa fa-remove" style="color:#FF5733;"></i> <?= get_lang("Delete") ?></a>
+                <a href="javascript:void(0);" onclick="<?= $property_delete_link ?>" title="<?= get_lang("Delete") ?>"><i class="fa fa-remove" style="color:#FF5733;"></i> <span class="hdn-768"><?= get_lang("Delete") ?></span></a>
                 <?php if (get_group_id($userId) == 4) { ?>
                 <br/>
-                <a href="<?= $property_history_link ?>" title="<?= get_lang("History") ?>" style="color:#313131;"><i class="fa fa-history"></i> <?= get_lang("History") ?></a>
+                <a href="<?= $property_history_link ?>" title="<?= get_lang("History") ?>" style="color:#313131;"><i class="fa fa-history"></i> <span class="hdn-768"><?= get_lang("History") ?></span></a>
                 <?php } ?>
             </td>
         </tr>

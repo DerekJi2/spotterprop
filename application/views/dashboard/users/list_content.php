@@ -43,7 +43,7 @@ foreach ($users as $user) {
     
     $user_edit_link = site_url(array( get_lang_from_url() . '/dashboard', 'users', 'edit', $user->id ));
     $delete_button = '<a onclick="return confirm( \'' . _s( $delete_confirm_string, 'aauth' ) . '\' )" href="' . site_url(array( 'dashboard', 'users', 'delete', $user->id )) . 
-    '">' . '<i class="fa fa-trash-o"></i>' . get_lang("Delete") . '</a>';
+    '">' . '<i class="fa fa-trash-o"></i>' . get_lang("") . '</a>';
 
     // Editors should NOT be able to delete or edit Admin/Editor accounts
     if ($login_group_id != 4 && $login_group_id >= $user_group_id)
@@ -89,7 +89,7 @@ foreach ($users as $user) {
             $field_status = $user->banned   ==  1 ? __( get_lang('Unactive') , 'aauth') : __( get_lang('Active') , 'aauth'); 
         ?>
         <div class="row user-row">
-            <div class="col-sm-5 col-md-5 col-lg-4">
+            <div class="col-sm-4 col-md-5 col-lg-4">
                 <strong>#<?= $user->id ?>. </strong>
                 <small class="user-role-<?= $user->roles ?>"><?= get_lang($user->roles) ?></small>
                 <span class="user-name"><?= $field_name ?></span>
@@ -100,8 +100,7 @@ foreach ($users as $user) {
             <div class="col-sm-1 col-md-1 col-lg-1 user-delete">
                 <?= $delete_button ?>
             </div>
-
-            
+           
             <!-- <div class="col-sm-12 col-md- col-lg-2"><?= $field_activity ?></div> -->
         </div>
         

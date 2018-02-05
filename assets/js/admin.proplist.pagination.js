@@ -56,7 +56,7 @@ AdminPropListPage.resetPageButtons = function (pageNum, totalNum)
     if (max_number > max_pages)
     {
         max_number = max_pages;
-        min_number = max_number - (AdminPropListPage.MAX_PAGE_BUTTONS + 1);
+        min_number = max_number - (AdminPropListPage.MAX_PAGE_BUTTONS - 1);
     }
 
     $(".pagination").html('');
