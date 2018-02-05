@@ -86,8 +86,8 @@
                             </section>
                             <!--end Listing List-->
                             <!--Pagination-->
-                            <nav>
-                                <ul class="pagination pull-right"></ul>
+                            <nav style="text-align:center;">
+                                <ul class="pagination"></ul>
                                 <input type="hidden" value="1" id="hdn-list-page-number" />
                             </nav>
                             <!--end Pagination-->
