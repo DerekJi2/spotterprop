@@ -42,7 +42,8 @@ foreach ($users as $user) {
     $delete_confirm_string = get_lang("Would you like to delete this account ?");
     
     $user_edit_link = site_url(array( get_lang_from_url() . '/dashboard', 'users', 'edit', $user->id ));
-    $delete_button = '<a onclick="return confirm( \'' . _s( $delete_confirm_string, 'aauth' ) . '\' )" href="' . site_url(array( 'dashboard', 'users', 'delete', $user->id )) . '">' . '<i class="fa fa-trash-o"></i></a>';
+    $delete_button = '<a onclick="return confirm( \'' . _s( $delete_confirm_string, 'aauth' ) . '\' )" href="' . site_url(array( 'dashboard', 'users', 'delete', $user->id )) . 
+    '">' . '<i class="fa fa-trash-o"></i>' . get_lang("Delete") . '</a>';
 
     // Editors should NOT be able to delete or edit Admin/Editor accounts
     if ($login_group_id != 4 && $login_group_id >= $user_group_id)
@@ -112,7 +113,7 @@ foreach ($users as $user) {
 .user-row {
     /* border: 1px solid #939393; */
     font-size:12px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     width:80%;
 }
 
