@@ -1,2 +1,5 @@
 .brand a img { margin:5px; height:25px;}
 .brand a span { font-size: 24px; display: inline-block; top: 6px; position: relative; font-weight: bold;}
+@media screen and (max-width:768px) {
+    .pagination li a { width:20px; height:20px; line-height:16px;}
+}

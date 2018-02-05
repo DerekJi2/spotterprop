@@ -3,7 +3,8 @@ var nsListingPages = nsListingPages || {};
 /**
  * 
  */
-nsListingPages.NumbersPerPage = 10;
+nsListingPages.NumbersPerPage = 2;
+nsListingPages.MAX_PAGE_BUTTONS = 10;
 
 /**
  * 
@@ -17,20 +18,25 @@ nsListingPages.Total = function()
  * 
  */
 nsListingPages.OnLoad = function() {
-    nsListingPages.ResetPageButtons();
+    nsListingPages.initPageButtons();
     nsListingPages.Goto(1);
 }
 
 /**
  * 
  */
-nsListingPages.ResetPageButtons = function()
+nsListingPages.initPageButtons = function()
 {
     var total = nsListingPages.Total();
     var number = nsListingPages.NumbersPerPage;
     var max_page_number = Math.ceil(total/number);
 
+    max_page_number = (max_page_number > nsListingPages.MAX_PAGE_BUTTONS) ? nsListingPages.MAX_PAGE_BUTTONS : max_page_number;
+
     $('ul.pagination').html('');
+    var prev = $('<li class="li-page-prev"><a href="javascript:nsListingPages.GotoNext(-1);" class="previous" ><i class="fa fa-angle-left"></i></a></li>');
+    prev.appendTo($('ul.pagination'));
+    
     var first = $('<li class="li-page-1 active"><a href="javascript:nsListingPages.Goto(1);">1</a></li>');
     first.appendTo($('ul.pagination'));
 
@@ -42,13 +48,56 @@ nsListingPages.ResetPageButtons = function()
         page.appendTo($('ul.pagination'));
     }
     
-    var prev = $('<li class="li-page-prev"><a href="javascript:nsListingPages.GotoNext(-1);" class="previous" ><i class="fa fa-angle-left"></i></a></li>');
     var next = $('<li class="li-page-next"><a href="javascript:nsListingPages.GotoNext(1);" class="next"><i class="fa fa-angle-right"></i></a></li>');
-    prev.appendTo($('ul.pagination'));
     next.appendTo($('ul.pagination')); 
 
     nsListingPages.Cleanup(1, number, total);
 }
+
+nsListingPages.resetPageButtons = function(pageNum)
+{
+    var total = nsListingPages.Total();
+    var number = nsListingPages.NumbersPerPage;
+    var max_page_number = Math.ceil(total/number);
+
+    if (max_page_number <= nsListingPages.MAX_PAGE_BUTTONS)
+    {        
+        //nsListingPages.initPageButtons();
+        return;
+    }
+
+    var min_number = pageNum - Math.ceil(nsListingPages.MAX_PAGE_BUTTONS/2);
+    if (min_number < 1)
+    {
+        //nsListingPages.initPageButtons();
+        return;
+    }
+
+    var max_number = pageNum + Math.floor(nsListingPages.MAX_PAGE_BUTTONS/2) - 1;
+    if (max_number > max_page_number)
+    {
+        max_number = max_page_number;
+        min_number = max_number - (nsListingPages.MAX_PAGE_BUTTONS - 1);
+    }
+
+    $('ul.pagination').html('');
+    var prev = $('<li class="li-page-prev"><a href="javascript:nsListingPages.GotoNext(-1);" class="previous" ><i class="fa fa-angle-left"></i></a></li>');
+    prev.appendTo($('ul.pagination'));
+
+    for (var i = min_number; i <= max_number; i++)
+    {
+        var page = $('<li class="li-page-' + i + '"><a href="javascript:nsListingPages.Goto(' + i + ');">' + i + '</a></li>');
+        var pre_page = $('.li-page-' + parseInt(i-1));
+    
+        page.appendTo($('ul.pagination'));
+    }
+    
+    var next = $('<li class="li-page-next"><a href="javascript:nsListingPages.GotoNext(1);" class="next"><i class="fa fa-angle-right"></i></a></li>');
+    next.appendTo($('ul.pagination')); 
+
+    //nsListingPages.Cleanup(1, number, total);
+}
+
 
 /**
  * 
@@ -58,6 +107,8 @@ nsListingPages.ResetPageButtons = function()
  */
 nsListingPages.Cleanup = function(page, number, total)
 {
+   
+
     if (page == 1)
         $('.li-page-prev').hide();
     else
@@ -83,6 +134,8 @@ nsListingPages.Goto = function(page, number)
 {
     number = number || nsListingPages.NumbersPerPage;
     var total = nsListingPages.Total();
+
+    nsListingPages.resetPageButtons(page);
 
     $('.div-property-item').hide();
 
