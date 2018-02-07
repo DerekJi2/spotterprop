@@ -4,7 +4,7 @@ $this->load->helper('url');
 $this->load->helper('MY_data_helper');
 $this->load->helper('MY_AboutUs_helper');
 
-$aboutUs = get_aboutus_model();
+$aboutUs = get_aboutus("en");
 
 $_DEBUG_ = true;
 $_Timestamp = "?v=";
@@ -86,7 +86,7 @@ var BASEURL = "<?=site_url() ?>";
                                 </figure>
                                 <div class="description">
                                     <h2><?= $aboutUs->Title ?></h2>
-                                    <p><?= $aboutUs->Description ?>
+                                    <p><?= $aboutUs->Descriptions ?>
                                     </p>
                                 </div>
                             </div>

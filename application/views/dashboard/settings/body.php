@@ -1,137 +1,55 @@
 <?php
-/**
- * 	File Name 	: 	body.php
- *	Description :	settings option page for dashboard
- *	Since		:	1.5
-**/
+    $this->load->view("dashboard/properties/_framework_header");
+?>
 
-/************************************************************************
- ********************** 	GENERAL SETTINGS   **************************
-*************************************************************************/
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-$this->Gui->col_width(1, 2);
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-$this->Gui->add_meta(array(
-    'type'        =>    'box-primary',
-    'title'        =>    __('General Settings'),
-    'namespace'    =>    'general-settings',
-    'col_id'    =>    1, // required,
-    'gui_saver'    =>    true, // use tendoo option saver
-    'footer'    =>    array(
-        'submit'    =>    array(
-            'label'    =>    __('Save Settings')
-        )
-    ),
-    'use_namespace'    =>    false
-));
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-$this->Gui->add_item(array(
-    'type'        =>    'text',
-    'name'        =>    'site_name',
-    'label'        =>    __('Site Name'),
-    'placeholder'    =>    __('Enter your site name')
-), 'general-settings', 1);
 
-$this->Gui->add_item(array(
-    'type'        =>    'textarea',
-    'name'        =>    'site_description',
-    'label'        =>    __('Site Description'),
-    'placeholder'    =>    __('Enter your site description')
-), 'general-settings', 1);
+	<section class="content-header">
+        <h1>
+            <?= get_lang("Settings") ?> <small></small>
+        </h1>
+    </section> <!-- section .content-header -->
+    
+    <div class="content">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="javascript:void(0);" onclick="javascript:clickTab(this);" data-id="1">AboutUs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);" onclick="javascript:clickTab(this);" data-id="2">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);" onclick="javascript:clickTab(this);" data-id="3">Page</a>
+            </li>
+        </ul>
+        <?php $this->load->view("dashboard/settings/aboutus"); ?>
+        <?php $this->load->view("dashboard/settings/contact"); ?>
+        <?php $this->load->view("dashboard/settings/pages"); ?>
+    </div> <!-- div .content -->
 
-$this->Gui->add_item(array(
-    'type'            =>    'select',
-    'name'            =>    'site_timezone',
-    'label'            =>    __('Timezone'),
-    'placeholder'    =>    __('Enter your site timezone'),
-    'options'        =>    $this->config->item('site_timezone')
-), 'general-settings', 1);
+<?php
+    $this->load->view("dashboard/properties/_framework_end");
+?>
 
-// @since 4.0.5
-$this->Gui->add_item(array(
-    'type'        =>    'select',
-    'name'        =>    'site_language',
-    'label'        =>    __('Language'),
-    'placeholder'=>    __('Choose a language'),
-    'options'    =>    get_instance()->config->item('supported_languages')
-), 'general-settings', 1);
+<script>
+function clickTab(obj)
+{
+    var id = $(obj).data("id");
 
-$this->events->do_action('register_general_settings_fields');
+    $(".nav-link").removeClass("active");
+    $(obj).addClass("active");
 
-/************************************************************************
- ********************** 	Advanced Settings   **************************
-*************************************************************************/
+    
+    $(".div-tab").hide();
+    $(".div-tab-" + id).show();
 
-$this->Gui->col_width(2, 2);
-
-$this->Gui->add_meta(array(
-    'type'        =>    'box-primary',
-    'title'        =>    __('Advanced Settings'),
-    'namespace'    =>    'advanced-settings',
-    'col_id'    =>    2, // required,
-    'gui_saver'    =>    true, // use tendoo option saver
-    'footer'    =>    array(
-        'submit'    =>    array(
-            'label'    =>    __('Save Advanced')
-        ),
-    ),
-    'use_namespace'    =>    false
-));
-
-$this->Gui->add_item(array(
-    'type'        =>    'select',
-    'name'        =>    'site_registration',
-    'label'        =>    __('Open registration'),
-    'placeholder'=>    __('Open Registration ?'),
-    'options'    =>    array(
-        0    =>    __('No'),
-        1    =>    __('Yes')
-    )
-), 'advanced-settings', 2);
-
-$this->Gui->add_item(array(
-    'type'        =>    'select',
-    'name'        =>    'require_validation',
-    'label'        =>    __('Require validation'),
-    'options'    =>    array(
-        0    =>    __('No'),
-        1    =>    __('Yes')
-    ),
-    'description'   =>  __( 'Each new account will have to check the verification email in order to validate their account.' )
-), 'advanced-settings', 2);
-
-$this->Gui->add_item(array(
-    'type'        =>    'select',
-    'name'        =>    'webdev_mode',
-    'label'        =>    __('Enable Developer mode ?'),
-    'placeholder'=>    __('Enable developer mode'),
-    'description'    =>    __('Tools like module package will be enabled.'),
-    'options'    =>    array(
-        0    =>    __('No'),
-        1    =>    __('Yes')
-    )
-), 'advanced-settings', 2);
-
-// $this->Gui->add_item(array(
-//     'type'        =>    'select',
-//     'name'        =>    'allow-role-selection',
-//     'label'        =>    __('Allow Role Selection'),
-//     'placeholder'=>    __('Allow Role selection'),
-//     'options'    =>    array(
-//         0    =>    __('No'),
-//         1    =>    __('Yes')
-//     )
-// ), 'advanced-settings', 2);
-//
-// $this->Gui->add_item(array(
-//     'type'        =>    'select',
-//     'name'        =>    'auto_update',
-//     'label'        =>    __('Auto update tendoo'),
-//     'placeholder'=>    __('Auto update tendoo'),
-//     'options'    =>    array(
-//         0    =>    __('No'),
-//         1    =>    __('Yes')
-//     )
-// ), 'advanced-settings', 2);
-
-$this->Gui->output();
+}
+</script>

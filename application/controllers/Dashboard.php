@@ -552,7 +552,7 @@ class Dashboard extends Tendoo_Controller
         });
 
         $this->Gui->set_title(sprintf(__('Settings &mdash; %s'), get('core_signature')));
-        $this->load->view('dashboard/setting/body');
+        $this->load->view('dashboard/settings/body');
         
     }
 }

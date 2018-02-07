@@ -5,10 +5,12 @@
         $CI = @get_instance();
         $CI->load->model("AboutUs_model");		
 		$model = new AboutUs_model();
-		return $model->getModel($lang);
+        $result = $model->getModel($lang);
+
+        return $result;
     }
 
-    function save_aboutus($lang, $title, $desc, $bgImage, $bgText)
+    function save_aboutus($lang, $title, $desc, $bgImage = "", $bgText = "")
     {
         $CI = @get_instance();
         $CI->load->model("AboutUs_model");		

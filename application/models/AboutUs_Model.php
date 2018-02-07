@@ -4,7 +4,7 @@
 defined('__ROOT__') OR define('__ROOT__', dirname(dirname(__FILE__))); 
 require_once(__ROOT__.'/models/BaseTable_model.php'); 
 
-class Gallery_model extends BaseTable_model {
+class AboutUs_model extends BaseTable_model {
    
     /**
      * 
@@ -18,28 +18,27 @@ class Gallery_model extends BaseTable_model {
     /**
      * 
      */
-    function getModel($lang)
+    function getModel($lang = "en")
     {
-        $tablename = $this->db->dbprefix($this->tableName);
-        $sql = "SELECT * FROM $tablename WHERE Lang=$lang";
+        $sql = "SELECT * FROM $this->tableName WHERE Lang='$lang'";
 
-        $result = $this->db->query($sql).result();
-
-        return $result;
+        $query = $this->db->query($sql);
+        $result = $query->result();
+        return $result[0];
     }
 
     /**
      * 
      */
-    function saveModel($lang, $title, $desc, $bgImage, $bgText)
+    function saveModel($lang, $title, $desc, $bgImage = "", $bgText = "")
     {
         $tablename = $this->db->dbprefix($this->tableName);
-        $sql = "UPDATE $tablename SET
+        $sql = "UPDATE $this->tableName SET
             Title='$title',
-            Descriptions='$desc',
-            BackgroundImage='$bgImage',
-            BackgroundText='$bgText'        
-        WHERE Lang=$lang";
+            Descriptions='$desc'
+            -- BackgroundImage='$bgImage',
+            -- BackgroundText='$bgText'        
+        WHERE Lang='$lang'";
 
         $result = $this->db->query($sql);
         return $result;
