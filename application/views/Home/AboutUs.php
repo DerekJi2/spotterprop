@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->helper('url');
 $this->load->helper('MY_data_helper');
+$this->load->helper('MY_AboutUs_helper');
+
+$aboutUs = get_aboutus_model();
 
 $_DEBUG_ = true;
 $_Timestamp = "?v=";
@@ -70,7 +73,7 @@ var BASEURL = "<?=site_url() ?>";
             <div id="page-content">
                 <section class="container">
                     <header>
-                        <h1 class="page-title">About Us</h1>
+                        <h1 class="page-title"><?= get_lang("About Us") ?></h1>
                     </header>
                 </section>
                 <!--/.container-->
@@ -82,10 +85,8 @@ var BASEURL = "<?=site_url() ?>";
                                     <img src="<?=site_url('assets/img/marker.png'); ?>" alt="">
                                 </figure>
                                 <div class="description">
-                                    <h2>The best spots in one place</h2>
-                                    <p>
-                                        Suspendisse potenti. Integer quis eleifend neque. Curabitur lobortis dictum mollis.
-                                        In rhoncus sapien eget tellus sodales.
+                                    <h2><?= $aboutUs->Title ?></h2>
+                                    <p><?= $aboutUs->Description ?>
                                     </p>
                                 </div>
                             </div>

@@ -149,10 +149,9 @@ class Dashboard_Model extends CI_Model
 
         if (User::can('manage_core')) {
             $admin_menus[ 'dashboard' ][]    =    array(
-                'href'            =>        site_url(array( get_lang_from_url() . '/dashboard', 'update' )),
-                'icon'            =>        'fa fa-dashboard',
-                'title'            =>        __(get_lang('Update Center'), 'aauth'),
-                'notices_nbr'    =>        $this->events->apply_filters('update_center_notice_nbr', 0)
+                'href'            =>        site_url(array( get_lang_from_url() . '/dashboard', 'settings' )),
+                'icon'            =>        'fa fa-wrench',
+                'title'            =>        __(get_lang('Settings'), 'aauth'),
             );
 
             $admin_menus[ 'dashboard' ][]    =    array(
@@ -173,19 +172,6 @@ class Dashboard_Model extends CI_Model
                 'title'            =>        __(get_lang('Modules')),
                 'icon'            =>        'fa fa-puzzle-piece',
                 'href'            =>        lang_site_url('dashboard/modules')
-            );
-        }
-
-        if (
-            User::can('create_options') ||
-            User::can('read_options') ||
-            User::can('edit_options') ||
-            User::can('delete_options')
-         ) {
-            $admin_menus[ 'settings' ][]    =    array(
-                'title'            =>        __(get_lang('Settings')),
-                'icon'            =>        'fa fa-cogs',
-                'href'            =>        lang_site_url('dashboard/settings')
             );
         }
 

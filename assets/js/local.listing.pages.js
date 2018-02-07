@@ -62,14 +62,14 @@ nsListingPages.resetPageButtons = function(pageNum)
 
     if (max_page_number <= nsListingPages.MAX_PAGE_BUTTONS)
     {        
-        //nsListingPages.initPageButtons();
+        nsListingPages.initPageButtons();
         return;
     }
 
     var min_number = pageNum - Math.ceil(nsListingPages.MAX_PAGE_BUTTONS/2);
     if (min_number < 1)
     {
-        //nsListingPages.initPageButtons();
+        nsListingPages.initPageButtons();
         return;
     }
 

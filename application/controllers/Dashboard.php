@@ -540,4 +540,19 @@ class Dashboard extends Tendoo_Controller
         $this->Gui->set_title(sprintf(__('About &mdash; %s'), get('core_signature')));
         $this->load->view('dashboard/about/body');
     }
+
+    public function settings()
+    {
+        if (! User::can('manage_core')) {
+            redirect(array( 'dashboard', 'access-denied' ));
+        }
+
+        $this->events-> add_filter('gui_page_title', function () { // disabling header
+            return;
+        });
+
+        $this->Gui->set_title(sprintf(__('Settings &mdash; %s'), get('core_signature')));
+        $this->load->view('dashboard/setting/body');
+        
+    }
 }
