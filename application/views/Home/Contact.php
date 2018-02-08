@@ -67,6 +67,12 @@ var BASEURL = "<?=site_url() ?>";
             </section>
             <!--end Sub Header-->
 
+            <?php
+                $this->load->helper("MY_Contact_helper");
+                $contact = get_contact("en");
+                $this->load->helper("MY_AboutUs_helper");
+                $aboutus = get_aboutus("en");
+            ?>
             <!--Page Content-->
             <div id="page-content">
                 <section id="map-simple" class="map-contact"></section>
@@ -75,47 +81,50 @@ var BASEURL = "<?=site_url() ?>";
                         <!--Content-->
                         <div class="col-md-9">
                             <header>
-                                <h1 class="page-title">Contact</h1>
+                                <h1 class="page-title"><?= get_lang("Contact") ?></h1>
                             </header>
                             <section>
                                 <div class="row">
                                     <div class="col-md-4 col-sm-4">
-                                        <header class="no-border"><h3>Address</h3></header>
+                                        <header class="no-border"><h3><?= get_lang("Address") ?></h3></header>
                                         <address>
-                                            <div><strong>Spotter Limited</strong></div>
-                                            <div>63 Birch Street</div>
-                                            <div>Granada Hills, CA 91344</div>
+                                            <div><strong><?= $contact->CompanyName ?></strong></div>
+                                            <div><?= $contact->Address1 ?></div>
+                                            <div><?= $contact->Address2 ?></div>
                                             <br>
                                             <figure>
                                                 <div class="info">
                                                     <i class="fa fa-mobile"></i>
-                                                    <span>818-832-5258</span>
+                                                    <span><?= $contact->Phone ?></span>
                                                 </div>
                                                 <div class="info">
                                                     <i class="fa fa-phone"></i>
-                                                    <span>+1 123 456 789</span>
+                                                    <span><?= $contact->Mobile ?></span>
                                                 </div>
                                                 <div class="info">
                                                     <i class="fa fa-globe"></i>
-                                                    <a href="#">www.spotterlimited.com</a>
+                                                    <a href="#"><?= $contact->Website ?></a>
                                                 </div>
                                             </figure>
                                         </address>
                                     </div>
                                     <!--/.col-md-4-->
                                     <div class="col-md-4 col-sm-4">
-                                        <header class="no-border"><h3>Social Networks</h3></header>
-                                        <a href="#" class="social-button"><i class="fa fa-twitter"></i>Twitter</a>
-                                        <a href="#" class="social-button"><i class="fa fa-facebook"></i>Facebook</a>
-                                        <a href="#" class="social-button"><i class="fa fa-pinterest"></i>Pinterest</a>
+                                        <header class="no-border"><h3><?= get_lang("Social Networks") ?></h3></header>
+                                        <?php if ($contact->Twitter != null && $contact->Twitter != "") {?>
+                                        <a href="<?= $contact->Twitter ?>" class="social-button"><i class="fa fa-twitter"></i>Twitter</a>
+                                        <?php } ?>
+                                        <?php if ($contact->Facebook != null && $contact->Facebook != "") {?>
+                                        <a href="<?= $contact->Facebook ?>" class="social-button"><i class="fa fa-facebook"></i>Facebook</a>
+                                        <?php } ?>
+                                        <?php if ($contact->Pinterest != null && $contact->Pinterest != "") {?>
+                                        <a href="<?= $contact->Pinterest ?>" class="social-button"><i class="fa fa-pinterest"></i>Pinterest</a>
+                                        <?php } ?>
                                     </div>
                                     <!--/.col-md-4-->
                                     <div class="col-md-4 col-sm-4">
                                         <header class="no-border"><h3>About Us</h3></header>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique imperdiet
-                                            nibh tincidunt fermentum. Nunc enim nibh, convallis et tincidunt in, vehicula a diam.
-                                            Nullam in risus erat
-                                        </p>
+                                        <p><?= $aboutus->Descriptions ?></p>
                                         <a href="<?=site_url('Home/AboutUs'); ?>" class="read-more icon">Read More</a>
                                     </div>
                                     <!--/.col-md-4-->
