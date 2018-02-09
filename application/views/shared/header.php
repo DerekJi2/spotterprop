@@ -12,6 +12,7 @@
 <!-- Add Scale for mobile devices, @since 3.0.7 -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="icon" href="<?= site_url('assets/img/syr/icon.ico') ?>" type="image/ico">
 <!-- End Add Scale for mobile devices -->
 
 <?php Html::title();?>

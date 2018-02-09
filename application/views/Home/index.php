@@ -35,7 +35,7 @@ var LANGSITEURL = "<?= lang_site_url();?>";
     
     ?>
 
-    <link rel="icon" href="/assets/img/syr/icon.ico" type="image/ico">
+    <link rel="icon" href="assets/img/syr/icon.ico" type="image/ico">
     <link href="assets/fonts/font-awesome.css<?=".$_Timestamp" ?>" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
