@@ -284,3 +284,6 @@ $lang["home_Company Name"] = "公司名称";
 $lang["home_Title"] = "标题";
 $lang["home_Descriptions"] = "详细介绍";
 $lang["home_Website"] = "网站";
+$lang["home_Latest Properties"] = "最新房产";
+$lang["home_Total"] = "合计";
+$lang["home_Draft"] = "草稿";

@@ -24,9 +24,17 @@ class Property_model extends BaseTable_model {
      */
     function get_json_array($incDeleted = false, $statusRange = [1,2,3])
     {
-        $arr = array();
+        
 
         $result = $this->get_result();
+        $json = $this->get_json_array_by_result($result, $incDeleted, $statusRange);
+
+        return $json;
+    }
+
+    function get_json_array_by_result($result, $incDeleted = false, $statusRange = [1,2,3])
+    {
+        $arr = array();
         foreach($result as $row)
         {
             $included = true;
@@ -81,12 +89,17 @@ class Property_model extends BaseTable_model {
     /**
      * 
      */
-    function get_latest_result($top, $incDeleted = false, $statusRange = [3])
+    function get_latest_result($top, $incDeleted = false, $statusRange = [3], $userid = 0)
     {
         $where = "WHERE StatusId IN (".implode(', ', $statusRange).")";
         if ($incDeleted == false)
         {
             $where = "$where AND IsDeleted = 0";
+        }
+
+        if ($userid != 0)
+        {
+            $where = "$where AND personId = $userid";
         }
 
         $sql = "SELECT * FROM $this->tableName 

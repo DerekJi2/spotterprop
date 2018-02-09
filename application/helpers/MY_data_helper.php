@@ -10,13 +10,24 @@
 		return $propertyModel->get_json_array($incDeleted, $statusRange);
     }
 
-    function get_property_latest($top)
+    function get_property_latest($top, $include_deleted = false, $statusRange = [3], $userid = 0)
     {
         $CI = @get_instance();
         $CI->load->model("Property_model");		
 		$propertyModel = new Property_model();
-		return $propertyModel->get_latest_result($top);
+		return $propertyModel->get_latest_result($top, $include_deleted, $statusRange, $userid);
     }
+
+    function get_json_array_by_result($result)
+    {
+        $CI = @get_instance();
+        $CI->load->model("Property_model");		
+		$propertyModel = new Property_model();
+
+        $json = $propertyModel->get_json_array_by_result($result, false, [1,2,3]);
+        return $json;
+    }
+
 
     function get_property_featured($top)
     {

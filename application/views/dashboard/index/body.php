@@ -59,7 +59,7 @@
                 <div class="circle-overview dot-red">
                     <span class="number-of-issues" id="span-number-total">0</span>
                 </div>
-                <p class="circleSubtitle">Total</p>                
+                <p class="circleSubtitle"><?= get_lang("Total") ?></p>                
             </div>
 
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 posRela text-center oper oper-equal">=</div>
@@ -68,7 +68,7 @@
                 <div class="circle-overview dot-green">
                     <span class="number-of-issues" id="span-number-publish">0</span>
                 </div>
-                <p class="circleSubtitle">Publish</p>
+                <p class="circleSubtitle"><?= get_lang("Publish") ?></p>
             </div>
 
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 posRela text-center oper oper-plus">+</div>
@@ -77,7 +77,7 @@
                 <div class="circle-overview dot-yellow">
                     <span class="number-of-issues" id="span-number-submit">0</span>
                 </div>
-                <div class="circleSubtitle">Submit</div>
+                <div class="circleSubtitle"><?= get_lang("Submit") ?></div>
             </div>
 
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 posRela text-center oper oper-plus">+</div>
@@ -86,12 +86,14 @@
                 <div class="circle-overview dot-blue">
                     <span class="number-of-issues" id="span-number-draft">0</span>
                 </div>
-                <p class="circleSubtitle">Draft</p>
+                <p class="circleSubtitle"><?= get_lang("Draft") ?></p>
             </div>
 
             
         </div>
     </div> <!-- div .content -->
+
+    <?php $this->load->view("dashboard/index/_latest.php"); ?>
 
 <?php
     $this->load->view("dashboard/properties/_framework_end");
