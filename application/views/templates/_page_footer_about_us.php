@@ -1,8 +1,10 @@
 <?php
+    $lang = get_lang_from_url();
+
     $this->load->helper("MY_Contact_helper");
-    $contact = get_contact("en");
+    $contact = get_contact($lang);
     $this->load->helper("MY_AboutUs_helper");
-    $aboutus = get_aboutus("en");
+    $aboutus = get_aboutus($lang);
 ?>
 
 <div class="col-md-4 col-sm-4">
@@ -41,6 +43,6 @@
             <?php } ?>
         </div>
 
-        <a href="<?php echo site_url('Home/Contact') ?>" class="btn framed icon"><?=get_lang('Contact_Us') ?><i class="fa fa-angle-right"></i></a>
+        <a href="<?php echo lang_site_url('Home/Contact') ?>" class="btn framed icon"><?=get_lang('Contact_Us') ?><i class="fa fa-angle-right"></i></a>
     </section>
 </div>

@@ -68,10 +68,12 @@ var BASEURL = "<?=site_url() ?>";
             <!--end Sub Header-->
 
             <?php
+                $lang = get_lang_from_url();
+
                 $this->load->helper("MY_Contact_helper");
-                $contact = get_contact("en");
+                $contact = get_contact($lang);
                 $this->load->helper("MY_AboutUs_helper");
-                $aboutus = get_aboutus("en");
+                $aboutus = get_aboutus($lang);
             ?>
             <!--Page Content-->
             <div id="page-content">
@@ -123,9 +125,9 @@ var BASEURL = "<?=site_url() ?>";
                                     </div>
                                     <!--/.col-md-4-->
                                     <div class="col-md-4 col-sm-4">
-                                        <header class="no-border"><h3>About Us</h3></header>
+                                        <header class="no-border"><h3><?= get_lang("About Us") ?></h3></header>
                                         <p><?= $aboutus->Descriptions ?></p>
-                                        <a href="<?=site_url('Home/AboutUs'); ?>" class="read-more icon">Read More</a>
+                                        <a href="<?=lang_site_url('Home/AboutUs'); ?>" class="read-more icon"><?= get_lang("Read More") ?></a>
                                     </div>
                                     <!--/.col-md-4-->
                                 </div>

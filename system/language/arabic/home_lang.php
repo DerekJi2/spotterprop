@@ -274,3 +274,13 @@ $lang['home_Date/Time'] = "日期时间"; // views/dashboard/properties/history_
 $lang['home_Account'] = "账号"; // views/dashboard/properties/history_content.php
 $lang['home_Operation'] = "操作"; // views/dashboard/properties/history_content.php
 $lang['home_Details'] = "具体内容"; // views/dashboard/properties/history_content.php
+
+
+$lang["home_ABOUT US"] = "关于我们";
+$lang["home_About Us"] = "关于我们";
+$lang["home_Read More"] = "了解更多";
+$lang["home_Social Networks"] = "社交网络";
+$lang["home_Company Name"] = "公司名称";
+$lang["home_Title"] = "标题";
+$lang["home_Descriptions"] = "详细介绍";
+$lang["home_Website"] = "网站";

@@ -469,6 +469,54 @@ class Installation_Model extends CI_Model
         }
     }
 
+    public function install_setting_tables($database_prefix)
+    {
+        if (true) // About Us
+        {
+            $this->db->query("DROP TABLE IF EXISTS `{$database_prefix}about_us`");
+            $this->db->query("CREATE TABLE `{$database_prefix}about_us` (
+                    `Id` int(11) NOT NULL,
+                    `Lang` varchar(20) NOT NULL,
+                    `Title` varchar(512) NOT NULL,
+                    `Descriptions` varchar(4096) NOT NULL,
+                    `BackgroundImage` varchar(4096) NOT NULL,
+                    `BackgroundText` varchar(4096) NOT NULL
+                  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            ");
+            $this->db->query("INSERT INTO `{$database_prefix}agency` 
+                VALUES 
+                (1, 'en', 'THE BEST REAL ESTATE SITE IN SYRIA', 'Bootstrap tabs are components which separate content placed in the same wrapper, but in the separate pane. Only one pane can be displayed at the time.', '', ''),
+                (2, 'ar', '', '', '', ''),
+                (3, 'cn', '', '', '', '');");
+        }
+
+        if (true) // Contact
+        {
+            $this->db->query("DROP TABLE IF EXISTS `{$database_prefix}contact`");
+            $this->db->query("CREATE TABLE `{$database_prefix}contact` (
+                   `Id` int(11) NOT NULL,
+                   `Lang` varchar(20) NOT NULL,
+                   `CompanyName` varchar(128) NOT NULL,
+                   `Address1` varchar(512) NOT NULL,
+                   `Address2` varchar(512) NOT NULL,
+                   `Phone` varchar(50) NOT NULL,
+                   `Mobile` varchar(128) NOT NULL,
+                   `Email` varchar(512) NOT NULL,
+                   `Website` varchar(512) NOT NULL,
+                   `Twitter` varchar(512) NOT NULL,
+                   `Facebook` varchar(512) NOT NULL,
+                   `Pinterest` varchar(512) NOT NULL
+                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            ");
+            $this->db->query("INSERT INTO `{$database_prefix}agency` 
+                VALUES 
+                (1, 'en', 'Brick Services PTY LTD.', '911 Event St', 'Washington, 20341', '08 9600000', '61433999888', 'mouris@brickservices.com', 'http://www.badluck.com', 'http://', 'http://', 'http://'),
+                (2, 'ar', '', '', '', '', '', '', '', '', '', ''),
+                (3, 'cn', '', '', '', '', '', '', '', '', '', '');
+            ");
+        }
+    }
+
     /**
      * Create a config file
      *

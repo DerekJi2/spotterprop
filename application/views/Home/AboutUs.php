@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $this->load->helper('url');
 $this->load->helper('MY_data_helper');
 $this->load->helper('MY_AboutUs_helper');
-
-$aboutUs = get_aboutus("en");
+$lang = get_lang_from_url();
+$aboutUs = get_aboutus($lang);
 
 $_DEBUG_ = true;
 $_Timestamp = "?v=";

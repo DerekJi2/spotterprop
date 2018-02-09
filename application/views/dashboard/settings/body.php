@@ -21,13 +21,13 @@
     <div class="content">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="javascript:void(0);" onclick="javascript:clickTab(this);" data-id="1">AboutUs</a>
+                <a class="nav-link active" href="javascript:void(0);" onclick="javascript:clickTab(this);" data-id="1"><?= get_lang("About Us") ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);" onclick="javascript:clickTab(this);" data-id="2">Contact</a>
+                <a class="nav-link" href="javascript:void(0);" onclick="javascript:clickTab(this);" data-id="2"><?= get_lang("Contact") ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);" onclick="javascript:clickTab(this);" data-id="3">Page</a>
+                <a class="nav-link" href="javascript:void(0);" onclick="javascript:clickTab(this);" data-id="3"><?= get_lang("Page Setting") ?></a>
             </li>
         </ul>
         <?php $this->load->view("dashboard/settings/aboutus"); ?>
