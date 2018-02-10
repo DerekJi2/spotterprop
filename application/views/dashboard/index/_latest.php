@@ -2,8 +2,9 @@
 $latestNumber = 5;
 $this->load->helper("MY_data_helper");
 $loginId = $this->users->current->id;
+$groupId = get_group_id($loginId);
+$loginId = ($groupId == 6) ? $loginId : 0;
 $latest = get_property_latest($latestNumber, false, [1,2,3], $loginId);
-
 ?>
 
 <div class="col-md-8 col-sm-12">    
