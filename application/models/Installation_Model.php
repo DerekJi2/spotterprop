@@ -480,14 +480,15 @@ class Installation_Model extends CI_Model
                     `Title` varchar(512) NOT NULL,
                     `Descriptions` varchar(4096) NOT NULL,
                     `BackgroundImage` varchar(4096) NOT NULL,
-                    `BackgroundText` varchar(4096) NOT NULL
+                    `BackgroundText` varchar(4096) NOT NULL,
+                    `Keywords` varchar(1024) NOT NULL
                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
             ");
             $this->db->query("INSERT INTO `{$database_prefix}agency` 
                 VALUES 
-                (1, 'en', 'THE BEST REAL ESTATE SITE IN SYRIA', 'Bootstrap tabs are components which separate content placed in the same wrapper, but in the separate pane. Only one pane can be displayed at the time.', '', ''),
-                (2, 'ar', '', '', '', ''),
-                (3, 'cn', '', '', '', '');");
+                (1, 'en', 'THE BEST REAL ESTATE SITE IN SYRIA', 'Bootstrap tabs are components which separate content placed in the same wrapper, but in the separate pane. Only one pane can be displayed at the time.', '', '', ''),
+                (2, 'ar', '', '', '', '', ''),
+                (3, 'cn', '', '', '', '', '');");
         }
 
         if (true) // Contact
