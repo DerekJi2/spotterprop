@@ -18,7 +18,7 @@ $this->lang->load('home', 'english');
         <div class="modal-body">
             <div class="gallery">
                 <div class="image">
-                    <div class="price">$<?php echo number_format($vw->price); ?></div>
+                    <div class="price"><?= get_currency() ?><?php echo number_format($vw->price); ?></div>
                     <div class="type"><i><img src="<?php echo site_url($vw->type_icon); ?>" alt=""></i><span><?= get_lang($vw->type) ?></span></div>
                     <div class="owl-carousel gallery">
                         <?php 

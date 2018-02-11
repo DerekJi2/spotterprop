@@ -144,6 +144,11 @@
         return $langWord;
     }
 
+    function get_currency()
+    {
+        return "SYP.";
+    }
+
     $CI = @get_instance();
     $CI->load->helper('url');
     // multiple languages

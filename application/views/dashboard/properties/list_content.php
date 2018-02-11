@@ -91,7 +91,7 @@
                     <span><?= get_lang($item->type); ?></span>
                 </div>
 
-                <div><span><?= get_lang("Price") ?>: </span>$<?=number_format($item->price)?></div>
+                <div><span><?= get_lang("Price") ?>: </span><?= get_currency() ?><?=number_format($item->price)?></div>
 
                 <div class="item-specific show-560">
                     <span class="spn-item-spec-sm" title="<?= get_lang('Bedrooms') ?>"><img class="item-spec" src="<?=site_url('assets/img/bedrooms.png'); ?>" alt=""><?=$Bedrooms; ?></span>

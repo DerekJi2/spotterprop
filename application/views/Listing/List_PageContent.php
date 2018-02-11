@@ -75,7 +75,7 @@
                                                 <i><img src="<?=site_url($item->type_icon); ?>" alt=""></i>
                                                 <span><?= get_lang($item->type); ?></span>
                                             </div>
-                                            <div class="price"><figure>$<?=$item->price; ?></figure></div>
+                                            <div class="price"><figure><?= get_currency() ?><?=$item->price; ?></figure></div>
                                             <!-- <div class="rating" data-rating="4"></div> -->
                                         </div>
                                     </div>

@@ -123,7 +123,7 @@ function selectCategory(me)
             <div class="col-md-6">
                 <div class="form-group">
                     <label><?=get_lang('price'); ?></label>
-                    <div class="ui-slider" id="price-slider" data-value-min="100" data-value-max="600000" data-value-type="price" data-currency="$" data-currency-placement="before">
+                    <div class="ui-slider" id="price-slider" data-value-min="100" data-value-max="600000" data-value-type="price" data-currency="<?= get_currency() ?>" data-currency-placement="before">
                         <div class="values clearfix">
                             <input class="value-min" name="value-min[]" readonly>
                             <input class="value-max" name="value-max[]" readonly>

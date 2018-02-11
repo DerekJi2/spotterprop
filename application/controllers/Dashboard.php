@@ -555,4 +555,19 @@ class Dashboard extends Tendoo_Controller
         $this->load->view('dashboard/settings/body');
         
     }
+
+    public function multilang()
+    {
+        if (! User::can('manage_core')) {
+            redirect(array( 'dashboard', 'access-denied' ));
+        }
+
+        $this->events-> add_filter('gui_page_title', function () { // disabling header
+            return;
+        });
+
+        $this->Gui->set_title(sprintf(__('Multi Languages &mdash; %s'), get('core_signature')));
+        $this->load->view('dashboard/settings/multilang');
+        
+    }
 }

@@ -191,8 +191,9 @@ nsSearchEngine.getFilter_GoogleSelectedLocation = function() {
 }
 
 nsSearchEngine.getFilter_Prices = function() {
-    this.max = parseInt($('#price-slider input.value-max').val().replace('$', '').replace(/,/g, ''));
-    this.min = parseInt($('#price-slider input.value-min').val().replace('$', '').replace(/,/g, ''));
+    var currency = $('.ui-slider').data("currency");
+    this.max = parseInt($('#price-slider input.value-max').val().replace(currency, '').replace(/,/g, ''));
+    this.min = parseInt($('#price-slider input.value-min').val().replace(currency, '').replace(/,/g, ''));
 }
 
 nsSearchEngine.getFilter_Category = function() {

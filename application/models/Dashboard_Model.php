@@ -155,6 +155,12 @@ class Dashboard_Model extends CI_Model
             );
 
             $admin_menus[ 'dashboard' ][]    =    array(
+                'href'            =>        site_url(array( get_lang_from_url() . '/dashboard', 'multilang' )),
+                'icon'            =>        'fa fa-wrench',
+                'title'            =>        __(get_lang('Multilingual Support'), 'aauth'),
+            );
+
+            $admin_menus[ 'dashboard' ][]    =    array(
                 'href'            =>        site_url(array( get_lang_from_url() . '/dashboard', 'about' )),
                 'icon'            =>        'fa fa-dashboard',
                 'title'            =>        __(get_lang('About')),

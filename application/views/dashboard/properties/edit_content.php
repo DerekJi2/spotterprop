@@ -74,7 +74,7 @@ if (isset($property_id) && $property_id > 0)
 
     <div class="row form-group form-row">
         <div class="col-md-4">
-            <label for="price"><?= get_lang("Price") ?>: </label>
+            <label for="price"><?= get_lang("Price") ?> (<?= get_currency() ?>): </label>
             <div class="input-group">
                 <input type="text" class="form-control" id="price" placeholder="Price" value="<?= $vw->price ?>" required>
             </div>
