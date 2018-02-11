@@ -51,4 +51,25 @@ class Settings extends BaseDB_Controller {
 
          echo $result;
      }
+
+     public function save_pagesetting()
+     {
+        $npp_listing = $this->input->post("npp_listing");
+        $npp_admin = $this->input->post("npp_admin");
+
+        $ci = @get_instance();
+        $ci->load->model("Options");
+
+        $model = new Options();
+        if ($npp_listing != "" && $npp_listing > 0) 
+        {
+            $model->set('number-per-page-listing', $npp_listing);
+        }
+        if ($npp_admin != "" && $npp_admin > 0) 
+        {
+            $model->set('number-per-page-admin', $npp_admin);
+        }
+
+        echo "1";
+     }
 }

@@ -18,7 +18,7 @@
             <textarea class="form-control" name="descriptions" id="descriptions" ><?= $aboutus->Descriptions ?></textarea>
         </div>
         <div class="row form-group">
-            <label for="descriptions">SEO <?= get_lang("Keywords") ?>:</label>
+            <label for="keywords">SEO <?= get_lang("Keywords") ?>:</label>
             <textarea class="form-control" name="keywords" id="keywords" ><?= $aboutus->Keywords ?></textarea>
         </div>
         <div class="row form-group">

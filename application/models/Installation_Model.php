@@ -578,6 +578,9 @@ if(!defined('DB_PREFIX'))
         // Saving Site name
         $this->options->set('site_name', $this->input->post('site_name'), true);
 
+        $this->options->set('number-per-page-listing', 10, true);
+        $this->options->set('number-per-page-admin', 10, true);
+
         // Do actions
         $this->events->do_action('tendoo_settings_final_config');
 
