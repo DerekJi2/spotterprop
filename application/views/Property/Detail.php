@@ -6,6 +6,15 @@ $this->load->helper('MY_data_helper');
 $_DEBUG_ = true;
 $_Timestamp = "?v=";
 $_Timestamp .= $_DEBUG_ ? time() : date("Y.m.d");
+
+$keywords = array();
+foreach ($vw->features as $feature)
+{
+    $keyword = get_lang($feature);
+    array_push($keywords, $keyword);
+}
+$seo_keywords = implode(', ', $keywords);
+$seo_desc = $vw->description;
 ?><!DOCTYPE html>
 <script type="text/javascript">
 var BASEURL = "<?php echo site_url() ?>";
@@ -14,7 +23,11 @@ var BASEURL = "<?php echo site_url() ?>";
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php $this->load->view("Property/_property_header"); ?> 
 
+        
+    <meta name="keywords" content="<?= $seo_keywords ?>" />
+    <meta name="description" content="<?= $seo_desc; ?>" />
 
     <link href="<?php echo site_url('assets/fonts/font-awesome.css') ?>" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>

@@ -35,7 +35,8 @@ var LANGSITEURL = "<?= lang_site_url();?>";
     
     ?>
 
-    <link rel="icon" href="assets/img/syr/icon.ico" type="image/ico">
+    <?php  $this->load->view('templates/_header'); ?>
+
     <link href="assets/fonts/font-awesome.css<?=".$_Timestamp" ?>" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
@@ -46,7 +47,7 @@ var LANGSITEURL = "<?= lang_site_url();?>";
     <title>Syrian Properties</title>
 
 </head>
-<?php /* $this->load->view('templates/_header'); */ ?>
+
 
 <body onunload="" class="map-fullscreen page-homepage navigation-off-canvas" id="page-top">
 

@@ -19,8 +19,9 @@ class Settings extends BaseDB_Controller {
          $lang = $this->input->post("lang");
          $title = $this->input->post("title");
          $desc = $this->input->post("desc");
+         $keywords = $this->input->post("keywords");
  
-         $result = save_aboutus($lang, $title, $desc);
+         $result = save_aboutus($lang, $title, $desc, $keywords);
 
          echo $result;
      }

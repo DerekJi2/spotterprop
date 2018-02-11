@@ -10,10 +10,10 @@
         return $result;
     }
 
-    function save_aboutus($lang, $title, $desc, $bgImage = "", $bgText = "")
+    function save_aboutus($lang, $title, $desc, $keywords, $bgImage = "", $bgText = "")
     {
         $CI = @get_instance();
         $CI->load->model("AboutUs_model");		
 		$model = new AboutUs_model();
-		return $model->saveModel($lang, $title, $desc, $bgImage, $bgText);
+		return $model->saveModel($lang, $title, $desc, $keywords, $bgImage, $bgText);
     }

@@ -18,6 +18,10 @@
             <textarea class="form-control" name="descriptions" id="descriptions" ><?= $aboutus->Descriptions ?></textarea>
         </div>
         <div class="row form-group">
+            <label for="descriptions">SEO <?= get_lang("Keywords") ?>:</label>
+            <textarea class="form-control" name="keywords" id="keywords" ><?= $aboutus->Keywords ?></textarea>
+        </div>
+        <div class="row form-group">
             <button type="button" class="btn btn-primary pull-right" onclick="javascript:saveAboutUs();"><?= get_lang("Save") ?></button>
         </div>
     </div>
@@ -34,7 +38,8 @@ function saveAboutUs()
         data: {
             lang: $("#form-about-us").find(`input[name=lang]`).val(),
             title: $("#form-about-us").find(`input[name=title]`).val(),
-            desc: $("#form-about-us").find(`textarea[name=descriptions]`).val()
+            desc: $("#form-about-us").find(`textarea[name=descriptions]`).val(),
+            keywords: $("#form-about-us").find(`textarea[name=keywords]`).val()
         }
     });
 

@@ -30,12 +30,13 @@ class AboutUs_model extends BaseTable_model {
     /**
      * 
      */
-    function saveModel($lang, $title, $desc, $bgImage = "", $bgText = "")
+    function saveModel($lang, $title, $desc, $keywords, $bgImage = "", $bgText = "")
     {
         $tablename = $this->db->dbprefix($this->tableName);
         $sql = "UPDATE $this->tableName SET
             Title='$title',
-            Descriptions='$desc'
+            Descriptions='$desc',
+            Keywords='$keywords' 
             -- BackgroundImage='$bgImage',
             -- BackgroundText='$bgText'        
         WHERE Lang='$lang'";
