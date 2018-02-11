@@ -287,3 +287,4 @@ $lang["home_Website"] = "网站";
 $lang["home_Latest Properties"] = "最新房产";
 $lang["home_Total"] = "合计";
 $lang["home_Draft"] = "草稿";
+$lang["home_Page Setting"] = "页面设置";
