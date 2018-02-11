@@ -3,7 +3,7 @@ var nsListingPages = nsListingPages || {};
 /**
  * 
  */
-nsListingPages.NumbersPerPage = 2;
+nsListingPages.NumbersPerPage = $("#header_npp_listing").val();
 nsListingPages.MAX_PAGE_BUTTONS = 10;
 
 /**

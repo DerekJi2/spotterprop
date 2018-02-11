@@ -1,6 +1,6 @@
 var AdminPropListPage = AdminPropListPage || {};
 
-AdminPropListPage.NUMBER_PER_PAGE = 2;
+AdminPropListPage.NUMBER_PER_PAGE = $("#header_npp_admin").val();
 AdminPropListPage.MAX_PAGE_BUTTONS = 10;
 
 /**
