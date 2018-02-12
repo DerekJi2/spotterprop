@@ -55,14 +55,58 @@ function load_langs_by_lang($lang)
  */
 function get_lang_file($lang)
 {
-    if ($lang == "ar")
+    $arr = array();
+    $arr["ar"] = "arabic";
+    $arr["en"] = "english";
+    $arr["cn"] = "chinese";
+
+    if ($lang == "ar" || $lang == "cn" || $lang == "en")
     {
+        $langdir = $arr[$lang];
+
         $basepath = str_replace("/", "\\", BASEPATH);
-        $basefile = "language\arabic\home_lang.php";
+        $basefile = "language\\$langdir\home_lang.php";
         $filename = $basepath . $basefile;
 
         return $filename;
     }
 
     return "";
+}
+
+/**
+ * 
+ */
+function save_as_lang($lang, $configs)
+{
+    $langfile = get_lang_file($lang);
+
+    save_to_file($langfile, $configs);
+}
+
+/**
+ * 
+ */
+function save_to_file($langfile, $configs)
+{
+    if ($configs == null || sizeof($configs) < 1)
+    {
+        return;
+    }
+
+    $content = "";
+
+    $content .= "<?php defined('BASEPATH') OR exit('No direct script access allowed');";
+    $content .= "\r\n";
+    $content .= "\r\n";
+
+    foreach ($configs as $key => $value)
+    {
+        $value = str_replace("\r", "", $value);
+        $value = str_replace("\n", "", $value);
+        $line = "\$lang['home_$key'] = '$value';";
+        $content .= $line . "\r\n";
+    }
+
+    file_put_contents($langfile, $content);
 }

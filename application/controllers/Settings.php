@@ -72,4 +72,24 @@ class Settings extends BaseDB_Controller {
 
         echo "1";
      }
+
+     public function save_langs()
+     {
+        // INPUT from POST
+        $lang = $this->input->post("lang");
+        $configs_str = $this->input->post("configs");
+
+        // GET Configs
+        $configs = json_decode($configs_str);
+        $langConfigs = array();
+        foreach ($configs as $config)
+        {
+            $langConfigs[$config->key] = $config->val;
+        }
+        
+        $ci = @get_instance();
+        $ci->load->helper("MY_LangConfig_helper");
+
+        save_as_lang($lang, $langConfigs);
+     }
 }
