@@ -1,5 +1,22 @@
 <?php
 
+class LangConfig
+{
+    public $keyword;
+    public $en;
+    public $ar;
+    public $cn;
+
+    function print()
+    {
+        echo "$this->keyword => EN: $this->en";
+        echo "$this->keyword => AR: $this->ar";
+        echo "$this->keyword => CN: $this->cn";
+    }
+}
+
+
+const BASEPATH = 'M:\xampp\htdocs\syrian\system';
 $filename = "home_lang.php";
 
 // $langs = array();
@@ -28,11 +45,16 @@ $filename = "home_lang.php";
 //         }
 //     }
 // }
-$langs = load_file($filename);
 
-$savefile = "save_home.php";
+$all = load_all_langs();
 
-save_to_file($savefile, $langs);
+print_all_langs($all);
+
+// $langs = load_file($filename);
+
+// $savefile = "save_home.php";
+
+// save_to_file($savefile, $langs);
 
 // foreach ($langs as $key => $value)
 // {
@@ -94,4 +116,127 @@ function save_to_file($langfile, $configs)
 
     file_put_contents($langfile, $content);
 }
+
+
+/**
+ * 
+ */
+function load_langs_by_lang($lang)
+{
+    $langfile = get_lang_file($lang);
+
+    echo $langfile . "\r\n";
+    
+    if ($langfile != "" && file_exists($langfile))
+    {
+        echo $langfile . " exists\r\n";
+        return load_file($langfile);
+    }
+
+    return null;
+}
+
+function load_all_langs()
+{
+    $langs = ["en", "ar", "cn"];
+
+    $config_en = load_langs_by_lang("en");
+    $config_ar = load_langs_by_lang("ar");
+    $config_cn = load_langs_by_lang("cn");
+
+    $LangConfigs = array();
+    foreach ($config_en as $key => $en)
+    {
+        $config = new LangConfig();
+        $config->keyword = $key;
+        $config->en = $en;
+
+        array_push($LangConfigs, $config);
+    }
+
+    foreach ($config_ar as $key => $ar)
+    {
+        $item = get_langconfig_item($LangConfigs, $key);
+
+        if ($item != null)
+        {
+            $item->ar = $ar;
+        }
+        else
+        {
+            $config = new LangConfig();
+            $config->keyword = $key;
+            $config->ar = $ar;
+    
+            array_push($LangConfigs, $config);
+        }
+    }
+
+    foreach ($config_cn as $key => $cn)
+    {
+        $item = get_langconfig_item($LangConfigs, $key);
+
+        if ($item != null)
+        {
+            $item->cn = $cn;
+        }
+        else
+        {
+            $config = new LangConfig();
+            $config->keyword = $key;
+            $config->cn = $cn;
+    
+            array_push($LangConfigs, $config);
+        }
+    }
+
+    return $LangConfigs;
+}
+
+
+function print_all_langs($LangConfigs)
+{
+    foreach ($LangConfigs as $item)
+    {
+        $item->print();
+    }
+
+}
+
+/**
+ * 
+ */
+function get_langconfig_item($langConfigArray, $keyword)
+{
+    foreach ($langConfigArray as $item)
+    {
+        if ($item->keyword == $keyword )
+        {
+            return $item;
+        }
+    }
+    return null;
+}
+
+function get_lang_file($lang)
+{
+    $arr = array();
+    $arr["ar"] = "arabic";
+    $arr["en"] = "english";
+    $arr["cn"] = "chinese";
+
+    if ($lang == "ar" || $lang == "cn" || $lang == "en")
+    {
+        $langdir = $arr[$lang];
+
+        $basepath = BASEPATH; //str_replace("/", "\\", BASEPATH);
+        $basefile = "\language\\$langdir\home_lang.php";
+        $filename = $basepath . $basefile;
+
+        return $filename;
+    }
+
+    return "";
+}
 ?>
+
