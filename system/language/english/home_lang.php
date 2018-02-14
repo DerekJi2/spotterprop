@@ -1,42 +1,6 @@
-<?php
-/**
- * CodeIgniter
- *
- * An open source application development framework for PHP
- *
- * This content is released under the MIT License (MIT)
- *
- * Copyright (c) 2014 - 2017, British Columbia Institute of Technology
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2017, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- * @since	Version 1.0.0
- * @filesource
- */
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+$lang['home_Keyword'] = 'Keyword';
 $lang['home_search'] = 'Search';
 $lang['home_buy'] = 'Buy';
 $lang['home_rent'] = 'Rent';
@@ -51,13 +15,8 @@ $lang['home_Feature'] = 'Feature';
 $lang['home_Features'] = 'Features';
 $lang['home_RESULTS'] = 'RESULTS';
 $lang['home_Display'] = 'Display';
-
-
 $lang['home_All'] = 'All';
 $lang['home_Any'] = 'Any';
-
-
-// Features
 $lang['home_Air_Conditioning'] = 'Air Conditioning';
 $lang['home_Balcony'] = 'Balcony';
 $lang['home_Bedding'] = 'Bedding';
@@ -72,21 +31,15 @@ $lang['home_Sauna'] = 'Sauna';
 $lang['home_Trees_and_Landscaping'] = 'Trees and Landscaping';
 $lang['home_Quick_View'] = 'Quick View';
 $lang['home_Go_to_Detail'] = 'Go to Detail';
-
-// Types
 $lang['home_House'] = 'House';
 $lang['home_Town_House'] = 'Town House';
 $lang['home_Apartment'] = 'Apartment';
 $lang['home_Condominium'] = 'Condominium';
 $lang['home_Office_Building'] = 'Office Building';
 $lang['home_Land'] = 'Land';
-
-// Quick View
 $lang['home_Description'] = 'Description';
 $lang['home_Overview'] = 'Overview';
 $lang['home_Show_Detail'] = 'Show Detail';
-
-// Specifications
 $lang['home_Bedrooms'] = 'Bedrooms';
 $lang['home_Bathrooms'] = 'Bathrooms';
 $lang['home_Rooms'] = 'Rooms';
@@ -95,25 +48,19 @@ $lang['home_Area'] = 'Area';
 $lang['home_LandArea'] = 'LandArea';
 $lang['home_BuildingArea'] = 'Building Area';
 $lang['home_Build Year'] = 'Build Year';
-
 $lang['home_Navigation'] = 'Navigation';
 $lang['home_Redefine_Search'] = 'Redefine Search';
 $lang['home_Redefine'] = 'Redefine Search';
 $lang['home_Enter_Keyword'] = 'Enter Keyword';
 $lang['home_Enter_Location'] = 'Enter Location';
-
 $lang['home_Contact_Agent'] = 'Contact Agent';
-
-$lang['home_Navigation'] = 'Navigation';
 $lang['home_SignIn'] = 'Sign In';
 $lang['home_Register'] = 'Register';
 $lang['home_Home'] = 'Home';
 $lang['home_Listing'] = 'Listing';
-$lang['home_About_Us'] = 'About_Us';
+$lang['home_About_Us'] = 'About Us';
 $lang['home_Contact'] = 'Contact';
 $lang['home_Categories'] = 'Categories';
-
-// Listing
 $lang['home_LISTING'] = 'LISTING';
 $lang['home_Grid'] = 'Grid';
 $lang['home_List'] = 'List';
@@ -122,19 +69,131 @@ $lang['home_Date_Newest_First'] = 'Date - Newest First';
 $lang['home_Date_Oldest_First'] = 'Date - Oldest First';
 $lang['home_Price_Highest_First'] = 'Price - Highest First';
 $lang['home_Price_Lowest_First'] = 'Price - Lowest First';
-
-// Footer
 $lang['home_NEW_ITEMS'] = 'NEW ITEMS';
 $lang['home_FEATURED'] = 'FEATURED';
 $lang['home_ABOUT_US'] = 'ABOUT US';
 $lang['home_Contact_Us'] = 'Contact Us';
 $lang['home_All_rights_reserved'] = 'All rights reserved';
-
-
-$lang['home_'] = '';
-$lang['home_'] = '';
-$lang['home_'] = '';
-$lang['home_'] = '';
-$lang['home_'] = '';
-$lang['home_'] = '';
+$lang['home_New Places'] = '';
+$lang['home_Contact Agent'] = '';
+$lang['home_Sign In'] = '';
+$lang['home_Sign in to start your session'] = '';
+$lang['home_Email or User Name'] = '';
+$lang['home_Password'] = '';
+$lang['home_Sign up to'] = '';
+$lang['home_User Name'] = '';
+$lang['home_Email'] = '';
+$lang['home_Confirm'] = '';
+$lang['home_Sign Up'] = '';
+$lang['home_I Lost My Password'] = '';
+$lang['home_I Already Have An Account'] = '';
+$lang['home_Sign Out'] = '';
+$lang['home_Profile'] = '';
+$lang['home_Dashboard'] = '';
+$lang['home_Settings'] = '';
+$lang['home_Update Center'] = '';
+$lang['home_About'] = '';
+$lang['home_Modules'] = '';
+$lang['home_File Manager'] = '';
+$lang['home_Users Management'] = '';
+$lang['home_Users List'] = '';
+$lang['home_Create New'] = '';
+$lang['home_My Profile'] = '';
+$lang['home_Roles & Permissions'] = '';
+$lang['home_Property Management'] = '';
+$lang['home_Property List'] = '';
+$lang['home_Create New Property'] = '';
+$lang['home_Users'] = '';
+$lang['home_Add A User'] = '';
+$lang['home_Role'] = '';
+$lang['home_Activity'] = '';
+$lang['home_Status'] = '';
+$lang['home_Actions'] = '';
+$lang['home_Unactive'] = '';
+$lang['home_Active'] = '';
+$lang['home_Delete'] = '';
+$lang['home_Insufficient privileges: you can not edit this account.'] = '';
+$lang['home_Would you like to delete this account ?'] = '';
+$lang['home_Create a new user'] = '';
+$lang['home_User Email'] = '';
+$lang['home_User Status'] = '';
+$lang['home_Default'] = '';
+$lang['home_Add to a group'] = '';
+$lang['home_Editors'] = '';
+$lang['home_Create User'] = '';
+$lang['home_Old Password'] = '';
+$lang['home_New Password'] = '';
+$lang['home_Confirm New'] = '';
+$lang['home_Phone'] = '';
+$lang['home_Mobile'] = '';
+$lang['home_Edit User'] = '';
+$lang['home_My Photo'] = '';
+$lang['home_Add a photo'] = '';
+$lang['home_Add New Property'] = '';
+$lang['home_Edit Property'] = '';
+$lang['home_Property'] = '';
+$lang['home_Specification'] = '';
+$lang['home_Agent/Owner'] = '';
+$lang['home_Price'] = '';
+$lang['home_Edit'] = '';
+$lang['home_submit now'] = '';
+$lang['home_Submit'] = '';
+$lang['home_Publish'] = '';
+$lang['home_Are you sure to delete this property?'] = '';
+$lang['home_Are you sure to submit this property?'] = '';
+$lang['home_Are you sure to publish this property?'] = '';
+$lang['home_draft'] = '';
+$lang['home_submitted'] = '';
+$lang['home_published'] = '';
+$lang['home_Return to the list'] = '';
+$lang['home_Purpose'] = '';
+$lang['home_For Sale'] = '';
+$lang['home_For Rent'] = '';
+$lang['home_Address'] = '';
+$lang['home_City'] = '';
+$lang['home_Property Type'] = '';
+$lang['home_Built Year'] = '';
+$lang['home_Featured'] = '';
+$lang['home_Latitude & Longitude'] = '';
+$lang['home_Latitude'] = '';
+$lang['home_Longitude'] = '';
+$lang['home_Select the Owner'] = '';
+$lang['home_Are you going to update this property'] = '';
+$lang['home_Are you going to create this property'] = '';
+$lang['home_Cancel'] = '';
+$lang['home_Yes, continue to update'] = '';
+$lang['home_Yes, continue to save'] = '';
+$lang['home_Save'] = '';
+$lang['home_Warning'] = '';
+$lang['home_Gallery'] = '';
+$lang['home_Add more photos'] = '';
+$lang['home_Sorry, you are not allowed to update this property.'] = '';
+$lang['home_Sorry, the number of properties you created has exceeded limit.'] = '';
+$lang['home_According to our policies, only 1 property can be created for free.'] = '';
+$lang['home_If you are pretty sure there must be something wrong, please contact our service staff.'] = '';
+$lang['home_If you have more properties to sell or rent, please contact our service staff.'] = '';
+$lang['home_Roles'] = '';
+$lang['home_Role List'] = '';
+$lang['home_Role Name'] = '';
+$lang['home_Permissions'] = '';
+$lang['home_Property History'] = '';
+$lang['home_Date/Time'] = '';
+$lang['home_Account'] = '';
+$lang['home_Operation'] = '';
+$lang['home_Details'] = '';
+$lang['home_ABOUT US'] = '';
+$lang['home_About Us'] = '';
+$lang['home_Read More'] = '';
+$lang['home_Social Networks'] = '';
+$lang['home_Company Name'] = '';
+$lang['home_Title'] = '';
+$lang['home_Descriptions'] = '';
+$lang['home_Website'] = '';
+$lang['home_Latest Properties'] = '';
+$lang['home_Total'] = '';
+$lang['home_Draft'] = '';
+$lang['home_Page Setting'] = '';
+$lang['home_Keywords'] = '';
+$lang['home_The Number of Properties per Page (Listing)'] = '';
+$lang['home_The Number of Properties per Page (Admin)'] = '';
 $lang['home_'] = '';
