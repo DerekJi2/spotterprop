@@ -8,7 +8,7 @@ class aauth_fields extends CI_model
         $this->events->add_action('display_login_fields', array( $this, 'create_login_fields' ));
         $this->events->add_action('load_users_custom_fields', array( $this, 'user_custom_fields' ));
         $this->events->add_filter('displays_registration_fields', array( $this, 'registration_fields' ));
-        $this->events->add_action('displays_public_errors', array( $this, 'public_errors' ));
+        //$this->events->add_action('displays_public_errors', array( $this, 'public_errors' ));
         $this->events->add_action('displays_dashboard_errors', array( $this, 'displays_dashboard_errors' ));
         $this->events->add_filter('custom_user_meta', array( $this, 'custom_user_meta' ), 10, 1);
         $this->events->add_filter('recovery_fields', array( $this, 'recovery_fields' ));
