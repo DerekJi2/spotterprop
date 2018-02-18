@@ -32,77 +32,9 @@ $this->load->helper("MY_data_helper");
                         <!-- Messages: style can be found in dropdown.less-->
                         <?php $this->events->do_action('display_admin_header_menu');?>
                         <!-- Notifications: style can be found in dropdown.less -->
-                        <?php
-                        // Fetch notices from filter "ui_notices".
-                        $ui_notices    =    $this->events->apply_filters('ui_notices', array());
 
-                        UI::push_notice($ui_notices);
-
-                        // Fetch declared notices
-                        $notices        =    UI::get_notices();
-                        $notices_nbr    =    count($notices);
-
-                        ?>
-                        <li class="dropdown notifications-menu"> 
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-                                <i class="fa fa-bell-o"></i>
-                                <?php if ($notices_nbr > 0):?>
-                                <span class="label label-warning"><?php echo $notices_nbr;?></span>
-                                <?php endif;?>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header"><?php echo sprintf(__('You have %s notices'), count($notices));?> </li>
-                                <li>
-                                    <!-- inner menu: contains the actual data -->
-                                    <ul class="menu">
-                                    <?php
-                                    foreach ($notices as $notice):
-                                        if ( isset($notice[ 'icon' ])) {
-                                            $notice_icon    =    @$notice[ 'icon' ];
-                                        } else {
-                                            switch ( @$notice[ 'type' ]) {
-                                                case 'success' : $notice_icon = 'thumbs-up'; break;
-                                                case 'warning' : $notice_icon = 'warning'; break;
-                                                default : $notice_icon = 'info-circle'; break;
-                                            }
-                                        }
-                                    ?>
-                                        <li>
-                                            <a style="white-space:normal" href="<?php echo xss_clean( @$notice[ 'href' ]);?>">
-                                                <i class="fa fa-<?php echo xss_clean($notice_icon);?> text-aqua"></i>
-                                                <?php echo xss_clean( @$notice[ 'message' ] );?>
-                                                <span
-                                                    data-prefix="<?php echo @$notice[ 'prefix' ];?>"
-                                                    data-namespace="<?php echo @$notice[ 'namespace' ];?>" class="btn btn-xs btn-warning pull-right remove_ui_notice">
-                                                    <i class="fa fa-remove"></i>
-                                                </span>
-                                            </a>
-                                        </li>
-									<?php endforeach;?>
-                                    </ul>
-                                </li>
-                                <!-- <li class="footer"><a href="#">View all</a></li> -->
-                            </ul>
-                        </li>
-                        <script type="text/javascript">
-                        $( document ).ready( function(){
-                            $( '.remove_ui_notice' ).bind( 'click', function(e){
-                                $this       =   $( this );
-                                var url     =    '<?php echo site_url( array( 'rest', 'core', 'app_cache', 'clear' ) );?>/' + $( this ).attr( 'data-namespace' ) + '/' + $( this ).attr( 'data-prefix' );
-                                $.ajax({
-                                    url     :  url,
-                                    method  :   'DELETE',
-                                    success :   function(){
-                                        $this.closest( 'li' ).fadeOut( 500, function(){
-                                            $(this).remove();
-                                        });
-                                    }
-                                })
-                                return false;
-                            })
-                        })
-                        </script>
-
+                        <?php $this->load->view("dashboard/header_pms"); ?>
+                        
                         <?php
                             $this->load->helper("MY_user_helper");
                             $loginUser = get_login_user();

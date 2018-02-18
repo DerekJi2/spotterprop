@@ -18,6 +18,10 @@
         $CI->load->database();
         echo $CI->db->dbprefix("users");
 
+        $this->load->helper("MY_Pms");
+        // send_pms(17, 3, "title", "message");
+        $list = list_pms(3);
+        echo json_encode($list);
     ?>
 </body>
 </html>

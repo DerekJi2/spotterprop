@@ -1,6 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['home_Keyword'] = 'Keyword';
 $lang['home_search'] = 'Search';
 $lang['home_buy'] = 'Buy';
 $lang['home_rent'] = 'Rent';
