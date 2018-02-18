@@ -247,10 +247,18 @@
     {
         $CI = @get_instance();
         $CI->load->model("Property_model");		
-		$propModel = new Property_model();
-        $ok = $propModel->update_status($propertyId, $statusId);
+        $propModel = new Property_model();
 
+        $ok = $propModel->update_status($propertyId, $statusId);
+        
+        // TrackProperty
         track_property_status($propertyId, $userid, $statusId);
+        
+        // Notification
+        $CI->load->helper("MY_Pms");
+        $status_texts = ["", "drafted", "submitted", "published"];
+        send_pms_for_status_update($userid, $propertyId, $status_texts[$statusId]);
+
         return $ok;
     }
 

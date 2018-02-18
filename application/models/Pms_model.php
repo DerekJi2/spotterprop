@@ -14,13 +14,30 @@ class Pms_model extends BaseTable_model {
         parent::__construct($tablename);
     }
 
-    public function list_unread($receiver_id)
+    public function send_pm($sender_id, $receiver_id, $title, $message)
+    {
+        $this->load->database();
+
+        $now = date('Y-m-d H:i:s');
+
+        $sql = "INSERT $this->tableName(sender_id, receiver_id, title, `message`, `date`, `read`)
+                VALUES($sender_id, $receiver_id, '$title', '$message', '$now', 0)";
+
+        $result = $this->db->query($sql);
+
+        return $result;
+    }
+
+    public function list_unread($receiver_id, $desc = true)
     {
         $this->load->database();
 
         $sql = "SELECT *
                 FROM `$this->tableName`
-                WHERE `read`=0 AND `receiver_id`=".$receiver_id;
+                WHERE `read`=0 AND `receiver_id`=$receiver_id 
+                ";
+        if ($desc)
+            $sql .= " ORDER BY id DESC";
 
         $query = $this->db->query($sql);
 

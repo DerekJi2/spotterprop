@@ -9,12 +9,37 @@ function send_pms($userid, $propId, $title, $message)
     $property_json = $propModel->get_json($propId);
     $propertyUserId = $property_json->data->person_id;
 
-    echo "userid = $userid";
-    echo "person_id = $propertyUserId";
+    // echo "userid = $userid";
+    // echo "person_id = $propertyUserId";
 
-    $CI->load->library('session');
-    $CI->load->library('aauth',  array(),  'auth');
-    $CI->auth->send_pm($userid, $propertyUserId, $title, $message);
+    $CI->load->model('Pms_model');
+    $model = new Pms_model();
+    $result = $model->send_pm($userid, $propertyUserId, $title, $message);
+
+    return $result;
+}
+
+function send_pms_for_status_update($userid, $propId, $status_text)
+{
+    $CI =& get_instance();
+    $CI->load->model("Property_model");
+    $propModel = new Property_model();
+
+    $property_json = $propModel->get_json($propId);
+    $propertyUserId = $property_json->data->person_id;
+
+    $property_address = $property_json->data->title;
+    $property_address .= ", ";
+    $property_address .= $property_json->data->location;
+    
+    $message = $property_address . " has been $status_text";
+    $title = "Property $status_text";
+
+    $CI->load->model('Pms_model');
+    $model = new Pms_model();
+    $result = $model->send_pm($userid, $propertyUserId, $title, $message);
+
+    return $result;
 }
 
 function list_pms($receiver_id)
