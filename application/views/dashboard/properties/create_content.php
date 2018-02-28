@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-4 mb-3">
             <label for="location"><?= get_lang("City") ?></label>
-            <input type="text" class="form-control" id="location" placeholder="<?= get_lang("Enter the City") ?>" value="Lebanon" required>
+            <input type="text" class="form-control" id="location" placeholder="<?= get_lang("Enter the City") ?>" value="Damascus" required>
             <div class="invalid-feedback"></div>
         </div>
     </div>

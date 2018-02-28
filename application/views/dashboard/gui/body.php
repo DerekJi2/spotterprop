@@ -37,7 +37,7 @@ Tendoo Version Required : 1.5
         echo(validation_errors()) != '' ? tendoo_error(strip_tags(validation_errors())) : '';
     }
     $this->notice->push_notice(fetch_notice_from_url());
-    $this->events->do_action('displays_dashboard_errors');
+    // $this->events->do_action('displays_dashboard_errors');
     // display notice
     echo $this->notice->output_notice();
 

@@ -76,6 +76,8 @@ class Installation_Model extends CI_Model
 
         $this->install_spotter_tables($database_prefix);
 
+        $this->install_setting_tables($database_prefix);
+
         // Creating Database File
         $this->create_config_file($config);
 
@@ -484,7 +486,7 @@ class Installation_Model extends CI_Model
                     `Keywords` varchar(1024) NOT NULL
                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
             ");
-            $this->db->query("INSERT INTO `{$database_prefix}agency` 
+            $this->db->query("INSERT INTO `{$database_prefix}about_us` 
                 VALUES 
                 (1, 'en', 'THE BEST REAL ESTATE SITE IN SYRIA', 'Bootstrap tabs are components which separate content placed in the same wrapper, but in the separate pane. Only one pane can be displayed at the time.', '', '', ''),
                 (2, 'ar', '', '', '', '', ''),
@@ -509,7 +511,7 @@ class Installation_Model extends CI_Model
                    `Pinterest` varchar(512) NOT NULL
                  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
             ");
-            $this->db->query("INSERT INTO `{$database_prefix}agency` 
+            $this->db->query("INSERT INTO `{$database_prefix}contact` 
                 VALUES 
                 (1, 'en', 'Brick Services PTY LTD.', '911 Event St', 'Washington, 20341', '08 9600000', '61433999888', 'mouris@brickservices.com', 'http://www.badluck.com', 'http://', 'http://', 'http://'),
                 (2, 'ar', '', '', '', '', '', '', '', '', '', ''),

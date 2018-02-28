@@ -4,10 +4,10 @@
 
 <script>
 function initMap(city) {
-    var lebanon = {lat: 33.854721, lng: 35.862285};
-    city = city || lebanon;
+    var Damascus = {lat: 33.5138, lng: 36.2765};
+    city = city || Damascus;
     var map = new google.maps.Map(document.getElementById('map'), { zoom: 8, center: city});
-    var marker = new google.maps.Marker({ position: city, map: map });
+    var marker = new google.maps.Marker({ position: city, map: map /*, draggable: true */ });
 
     nsGoogleMap.SetLatitude(city.lat);
     nsGoogleMap.SetLongitude(city.lng);
@@ -18,6 +18,9 @@ function initMap(city) {
         //console.log(latLng);
         nsGoogleMap.SetLatitude(latLng.lat());
         nsGoogleMap.SetLongitude(latLng.lng());
+
+        marker.setPosition(latLng);
+        map.setCenter(latLng);
     });
 }
 
