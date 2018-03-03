@@ -39,7 +39,7 @@
             </ul> -->
             <a href="<?= site_url('en') ?>"><span class="lang-sm lang-lbl" lang="en"></a>
             <span> | </span>
-            <a href="<?= site_url('ar') ?>"><span class="lang-sm lang-lbl" lang="ar"></a>
+            <a href="<?= site_url('ar') ?>"><img src="<?= site_url('assets/img/syria-flag.png') ?>" width="24"/><span style="font-size:18px;">عربى</span></a>
             <span> | </span>
             <a href="<?= site_url('cn') ?>"><span class="lang-sm lang-lbl" lang="zh"></a>
         </div>

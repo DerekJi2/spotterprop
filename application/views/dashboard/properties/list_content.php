@@ -74,6 +74,16 @@
             $Garages = array_value($item->item_specific, "Garages", 0); 
             $Area = array_value($item->item_specific, "Area", 0); 
         ?>
+
+            <?php
+                $property_edit_link = lang_site_url()."dashboard/props/edit/$item->id";
+                $property_delete_link = "javascript: onClick_DeleteProperty($item->id);";
+                $property_submit_link = "javascript: onClick_SubmitProperty(this, $item->id);";
+                $property_publish_link = "javascript: onClick_PublishProperty(this, $item->id);";
+                $property_history_link = lang_site_url()."dashboard/props/history/$item->id";
+                // $property_submit_link = lang_site_url()."dashboard/props/submit/$item->id";
+                // $property_publish_link = lang_site_url()."dashboard/props/publish/$item->id";
+            ?>
         <tr class="tr-row tr-row-seq-<?= $count ?>" data-seq="<?= $count ?>">
             <!-- <th scope="row"><?=$count?></th> -->
             <?php 
@@ -136,15 +146,6 @@
                 <div class="agent-info agent-mobile"><i class="fa fa-mobile icon-mobile"></i><?=$agent_mobile?></div>
                 <?php } ?>
             </td>
-            <?php
-                $property_edit_link = lang_site_url()."dashboard/props/edit/$item->id";
-                $property_delete_link = "javascript: onClick_DeleteProperty($item->id);";
-                $property_submit_link = "javascript: onClick_SubmitProperty(this, $item->id);";
-                $property_publish_link = "javascript: onClick_PublishProperty(this, $item->id);";
-                $property_history_link = lang_site_url()."dashboard/props/history/$item->id";
-                // $property_submit_link = lang_site_url()."dashboard/props/submit/$item->id";
-                // $property_publish_link = lang_site_url()."dashboard/props/publish/$item->id";
-            ?>
             <td class='td-status hdn-560' allign="center">
                 <div><span class="label <?= get_status_label($item->StatusId) ?>"><?= get_lang(get_status_text($item->StatusId)) ?></span></div>
 
