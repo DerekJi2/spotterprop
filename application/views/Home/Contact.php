@@ -86,6 +86,9 @@ var BASEURL = "<?=site_url() ?>";
                             <header>
                                 <h1 class="page-title"><?= get_lang("Contact") ?></h1>
                             </header>
+                            <?php // Page Footer
+                                $this->view("Home/_contact_email");
+                            ?>
                             <section>
                                 <div class="row">
                                     <div class="col-md-4 col-sm-4">
